@@ -19,6 +19,8 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        sectionLabel.textColor = Theme.accent
+        
         layout.itemSize = CGSize(width: 140, height: 140)
         layout.scrollDirection = .horizontal
         layout.sectionHeadersPinToVisibleBounds = true

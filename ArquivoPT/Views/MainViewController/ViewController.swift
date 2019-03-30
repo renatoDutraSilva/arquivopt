@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         SiteFunctions.readSite(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
+
     }
 }
 

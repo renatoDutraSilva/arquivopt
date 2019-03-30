@@ -10,13 +10,15 @@ import Foundation
 
 class Site {
     
+    let cardImage: String
     let siteLogo: String // URL Data?
     let siteName: String
     let versions: [(String,String)]?
     let category: Category
     
-    init(siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category ){
+    init(cardImage: String, siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category ){
         
+        self.cardImage = cardImage
         self.siteLogo = siteLogo
         self.siteName = siteName
         self.versions = versions ?? [("0","0")]
