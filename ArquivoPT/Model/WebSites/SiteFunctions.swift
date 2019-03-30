@@ -14,7 +14,7 @@ class SiteFunctions {
         
     }
     
-    static func readSite(complition: @escaping () -> () ){
+    static func readSite(completion: @escaping () -> () ){
         
         DispatchQueue.global(qos: .userInteractive).async {
             Data.mainSiteArray = [
@@ -38,7 +38,7 @@ class SiteFunctions {
                 ]
             ]
             DispatchQueue.main.async {
-                complition()
+                completion()
             }
         }
     }

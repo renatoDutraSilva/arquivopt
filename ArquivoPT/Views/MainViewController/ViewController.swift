@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        SiteFunctions.readSite(complition: { [weak self] in
+        SiteFunctions.readSite(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
     }

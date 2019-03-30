@@ -100,6 +100,7 @@
 		889C21E3224C1414003C8D23 /* ArquivoPT */ = {
 			isa = PBXGroup;
 			children = (
+				8CDBF3392250205D001EF727 /* Resources */,
 				8CDBF336224FC138001EF727 /* Extensions */,
 				8C0A0A9E224EFB8400DD4C5C /* Model */,
 				8C0A0A9C224EFB1500DD4C5C /* Views */,
@@ -187,6 +188,13 @@
 				8CDBF337224FC291001EF727 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8CDBF3392250205D001EF727 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BD0FA77AE52733FF498638BF /* Frameworks */ = {
@@ -481,13 +489,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8H82X8G4XN;
+				DEVELOPMENT_TEAM = A5BUCZ3K4T;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,13 +508,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8H82X8G4XN;
+				DEVELOPMENT_TEAM = A5BUCZ3K4T;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
