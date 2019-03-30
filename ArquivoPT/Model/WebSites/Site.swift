@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Site {
+struct Site {
     
     let siteLogo: String// URL Data?
     let siteName: String
