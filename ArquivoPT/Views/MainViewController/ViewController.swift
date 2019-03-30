@@ -12,8 +12,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
     
-    // TESTE COMMIT !
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -44,12 +42,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 19.0)
         //print("\(Category.getRawValueFromIndex(index: indexPath.row))")
         cell.sites = Data.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
-        
-        
+
         return cell
         
     }
-    
-    
 }
-
