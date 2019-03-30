@@ -8,11 +8,21 @@
 
 import Foundation
 
-struct Site {
+class Site {
     
-    let siteLogo: String// URL Data?
+    let siteLogo: String // URL Data?
     let siteName: String
-    let versions: [(String,String)]
+    let versions: [(String,String)]?
     let category: Category
+    
+    init(siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category ){
+        
+        self.siteLogo = siteLogo
+        self.siteName = siteName
+        self.versions = versions ?? [("0","0")]
+        self.category = category
+        
+        // Inittializer definition
+    }
     
 }
