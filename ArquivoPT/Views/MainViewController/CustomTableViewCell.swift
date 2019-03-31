@@ -10,11 +10,12 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
+    weak var delegate:CategoryRowDelegate?
     
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     let layout = UICollectionViewFlowLayout()
-    var sites = [Site]()
+    var sites = [ModelSite]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,8 +33,7 @@ class CustomTableViewCell: UITableViewCell {
         collectionView.backgroundView?.backgroundColor = UIColor(displayP3Red: 55, green: 55, blue: 55, alpha: 100)
         
         //self.collectionView.isPagingEnabled = true
-        
-        // Initialization code
+
         
         
     }
@@ -79,5 +79,11 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if delegate != nil {
+            delegate?.cellTapped(site: sites[indexPath.row])
+        }
     }
 }

@@ -17,7 +17,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var siteNameView: UIView!
     @IBOutlet weak var siteCardBackgroundView: UIImageView!
     
-    var site: Site? = nil
+    var site: ModelSite? = nil
     
     let siteNameLabel = UILabel()
     
@@ -56,4 +56,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletView.addSubview(siteCardBackgroundView)
         chicletView.addSubview(siteNameView)
     }
+}
+
+protocol CategoryRowDelegate:class {
+    func cellTapped(site: ModelSite)
 }

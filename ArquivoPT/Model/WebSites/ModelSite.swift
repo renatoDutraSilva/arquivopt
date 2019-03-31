@@ -8,8 +8,9 @@
 
 import Foundation
 
-class Site {
+class ModelSite {
     
+    let id: UUID
     let cardImage: String
     let siteLogo: String // URL Data?
     let siteName: String
@@ -18,6 +19,7 @@ class Site {
     
     init(cardImage: String, siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category ){
         
+        id = UUID()
         self.cardImage = cardImage
         self.siteLogo = siteLogo
         self.siteName = siteName

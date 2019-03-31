@@ -17,7 +17,7 @@
 		889C21F7224C16D5003C8D23 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21F6224C16D5003C8D23 /* CustomTableViewCell.swift */; };
 		889C21F9224C1C95003C8D23 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21F8224C1C95003C8D23 /* CustomCollectionViewCell.swift */; };
 		889C21FB224C1F11003C8D23 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21FA224C1F11003C8D23 /* Category.swift */; };
-		889C21FD224C1F82003C8D23 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21FC224C1F82003C8D23 /* Site.swift */; };
+		889C21FD224C1F82003C8D23 /* ModelSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21FC224C1F82003C8D23 /* ModelSite.swift */; };
 		889C21FF224CFEE6003C8D23 /* dnLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 889C21FE224CFEE6003C8D23 /* dnLogo.png */; };
 		8C0A0AA1224F003B00DD4C5C /* TimeMachineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */; };
 		8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */; };
@@ -46,7 +46,7 @@
 		889C21F6224C16D5003C8D23 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		889C21F8224C1C95003C8D23 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		889C21FA224C1F11003C8D23 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		889C21FC224C1F82003C8D23 /* Site.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
+		889C21FC224C1F82003C8D23 /* ModelSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSite.swift; sourceTree = "<group>"; };
 		889C21FE224CFEE6003C8D23 /* dnLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dnLogo.png; sourceTree = SOURCE_ROOT; };
 		8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeMachineViewController.storyboard; sourceTree = "<group>"; };
 		8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachineViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		8C0A0AA4224FAA3F00DD4C5C /* WebSites */ = {
 			isa = PBXGroup;
 			children = (
-				889C21FC224C1F82003C8D23 /* Site.swift */,
+				889C21FC224C1F82003C8D23 /* ModelSite.swift */,
 				8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */,
 			);
 			path = WebSites;
@@ -345,7 +345,7 @@
 				889C21E7224C1414003C8D23 /* ViewController.swift in Sources */,
 				8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */,
 				889C21E5224C1414003C8D23 /* AppDelegate.swift in Sources */,
-				889C21FD224C1F82003C8D23 /* Site.swift in Sources */,
+				889C21FD224C1F82003C8D23 /* ModelSite.swift in Sources */,
 				8C0A0AA8224FAC9A00DD4C5C /* Data.swift in Sources */,
 				8C0A0AAF224FB21800DD4C5C /* FavoritesViewController.swift in Sources */,
 				8CDBF338224FC291001EF727 /* UIViewExtensions.swift in Sources */,

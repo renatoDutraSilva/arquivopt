@@ -10,5 +10,5 @@ import Foundation
 
 
 class Data {
-    static var mainSiteArray = [Category: [Site]]()
+    static var mainSiteArray = [Category: [ModelSite]]()
 }
