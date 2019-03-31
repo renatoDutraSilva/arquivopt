@@ -21,7 +21,10 @@ class SiteFunctions {
                 .jornais: [
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Diário de Notícias", versions: nil, category: .jornais),
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Público", versions: nil, category: .jornais),
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Correio da Manhã", versions: nil, category: .jornais)
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Correio da Manhã", versions: nil, category: .jornais),
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Sol", versions: nil, category: .jornais),
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Destak", versions: nil, category: .jornais),
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "DN", versions: nil, category: .jornais)
                 ],
             
                 .artesECultura: [
@@ -35,7 +38,20 @@ class SiteFunctions {
                 ],
                 .organismosSociais: [
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "FCT", versions: nil, category: .organismosSociais)
+                ],
+                .organismosGovernamentais: [
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Presidencia", versions: nil, category: .organismosGovernamentais)
+                ],
+                .universidades: [
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Universidade de Lisboa", versions: nil, category: .universidades)
+                ],
+                .eventos: [
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Expo 98", versions: nil, category: .eventos)
+                ],
+                .personalidades: [
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "José Saramago", versions: nil, category: .personalidades)
                 ]
+                
             ]
             DispatchQueue.main.async {
                 completion()

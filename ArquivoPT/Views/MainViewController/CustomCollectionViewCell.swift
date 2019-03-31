@@ -32,6 +32,21 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     
+//    override var isHighlighted: Bool {
+//        didSet {
+//            if isHighlighted {
+//                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+//                    // animate highlight
+//                }, completion: nil)
+//            } else {
+//                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+//                    // animate unHighligh
+//                }, completion: nil)
+//            }
+//        }
+//    }
+    
+    
     
     func toggleShowBadge() {
         self.siteNameView.isHidden = false
@@ -57,7 +72,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletView.backgroundColor = Theme.chicletBackground
         chicletView.addSubview(siteCardBackgroundView)
         chicletView.addSubview(siteNameView)
-        
     }
 }
 

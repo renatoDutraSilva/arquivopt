@@ -29,7 +29,11 @@ class TimeMachineViewController: UIViewController {
             self.site = modelSite
             
             guard let modelSite = modelSite else {return}//if model is nil then terminate the function (for example, user lost connection to the data base)
-            self.title = modelSite.siteName
+            if case modelSite.siteName = modelSite.siteName{
+                self.title = modelSite.siteName
+            } else {print("Error")}
+            
+            
         }
         
         carouselView.backgroundColor = Theme.background
@@ -44,6 +48,7 @@ class TimeMachineViewController: UIViewController {
         
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
+        
 
     }
 

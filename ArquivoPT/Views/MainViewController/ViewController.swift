@@ -10,11 +10,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, CategoryRowDelegate {
+class ViewController: UIViewController{
     
     @IBOutlet weak var mainTableView: UITableView!
-    
-    let impact = UIImpactFeedbackGenerator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +20,20 @@ class ViewController: UIViewController, CategoryRowDelegate {
         SiteFunctions.readSites(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
-        
-        
     }
-    
+}
+
+extension ViewController: CategoryRowDelegate {
+    func cellTapped(site: ModelSite){
+        
+        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
+        vc.siteId = site.id
+        vc.siteCategory = site.category
+        navigationController?.pushViewController(vc, animated: true)
+        
+        //        selection.selectionChanged()
+    }
 }
 
 
@@ -51,22 +59,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 19.0)
         //print("\(Category.getRawValueFromIndex(index: indexPath.row))")
         cell.sites = Data.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
-        print(Category.getRawValueFromIndex(index: indexPath.row))
+//        print(Category.getRawValueFromIndex(index: indexPath.row))
         return cell
         
-    }
-    
-    func cellTapped(site: ModelSite){
-        
-        
-        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
-        vc.siteId = site.id
-        vc.siteCategory = site.category
-        navigationController?.pushViewController(vc, animated: true)
-        
-        impact.impactOccurred()
-//        selection.selectionChanged()
     }
     
 }
