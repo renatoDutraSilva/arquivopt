@@ -31,6 +31,7 @@ class TimeMachineViewController: UIViewController {
             self.title = modelSite.siteName
         }
         
+        carouselView.backgroundColor = Theme.background
         
         let LinkID = ["19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739"]
         
