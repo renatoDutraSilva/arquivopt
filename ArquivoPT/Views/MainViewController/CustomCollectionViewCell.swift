@@ -31,6 +31,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
     }
     
+    
+    
     func toggleShowBadge() {
         self.siteNameView.isHidden = false
     }

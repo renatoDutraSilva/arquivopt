@@ -10,16 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Time Machine View Controller-->
+        <!--Data Source-->
         <scene sceneID="Qmr-ZN-w8L">
             <objects>
                 <viewController id="Y7f-ie-k2R" customClass="TimeMachineViewController" customModule="ArquivoPT" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="llP-rU-Mqa">
+                    <view key="view" contentMode="scaleToFill" id="llP-rU-Mqa" customClass="iCarousel">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="c2q-xe-AQv"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Y7f-ie-k2R" id="amw-4d-zYU"/>
+                            <outlet property="delegate" destination="Y7f-ie-k2R" id="6Zc-hS-F7O"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="carouselView" destination="llP-rU-Mqa" id="T3d-3M-YCP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJM-M5-XSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -23,7 +23,9 @@ class ViewController: UIViewController, CategoryRowDelegate {
         
         
     }
+    
 }
+
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
