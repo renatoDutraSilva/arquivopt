@@ -14,6 +14,8 @@ class ViewController: UIViewController, CategoryRowDelegate {
     
     @IBOutlet weak var mainTableView: UITableView!
     
+    let impact = UIImpactFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -62,6 +64,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         vc.siteId = site.id
         vc.siteCategory = site.category
         navigationController?.pushViewController(vc, animated: true)
+        
+        impact.impactOccurred()
+//        selection.selectionChanged()
     }
     
 }

@@ -57,6 +57,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletView.backgroundColor = Theme.chicletBackground
         chicletView.addSubview(siteCardBackgroundView)
         chicletView.addSubview(siteNameView)
+        
     }
 }
 

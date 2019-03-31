@@ -46,6 +46,7 @@ class CustomTableViewCell: UITableViewCell {
 }
 
 extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+//    , UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sites.count
@@ -73,6 +74,7 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
             
         }*/
         
+
         cell.site = sites[indexPath.row]
         cell.siteCardBackgroundView.image = UIImage(contentsOfFile: sites[indexPath.row].cardImage )
         cell.siteNameLabel.text = sites[indexPath.row].siteName
@@ -81,9 +83,17 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil {
             delegate?.cellTapped(site: sites[indexPath.row])
         }
+        
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        let cell = collectionView.cellForItem(at: indexPath)
+//        return CGSize(width: (cell?.frame.size.width)! * 0.4, height: (cell?.frame.size.height)! * 0.4);
+//    }
 }

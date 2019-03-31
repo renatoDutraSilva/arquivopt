@@ -19,6 +19,7 @@ class TimeMachineViewController: UIViewController {
     @IBOutlet var carouselView: iCarousel!
     
     var images = [UIImage]()
+    let selection = UISelectionFeedbackGenerator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,8 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     }
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
-        AudioServicesPlaySystemSound(SystemSoundID(1105))
+//        AudioServicesPlaySystemSound(SystemSoundID(1105))
+        selection.selectionChanged()
     }
     
     
