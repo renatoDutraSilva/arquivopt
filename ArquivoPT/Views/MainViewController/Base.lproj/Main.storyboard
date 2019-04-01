@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Arquivo PT-->
+        <!--Arquivo.PT-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ArquivoPT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Arquivo.PT" id="BYZ-38-t0r" customClass="ViewController" customModule="ArquivoPT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9iD-jo-nbd"/>
+                    <tabBarItem key="tabBarItem" springLoaded="YES" systemItem="search" id="9iD-jo-nbd">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Arquivo PT" id="9pF-Cq-gtA"/>
                     <connections>
                         <outlet property="mainTableView" destination="vuZ-Ko-Yth" id="Dm6-UX-1uq"/>
@@ -138,7 +140,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1868.1159420289857" y="20.758928571428569"/>
+            <point key="canvasLocation" x="1914" y="-40"/>
+        </scene>
+        <!--FavoritesViewController-->
+        <scene sceneID="FaY-NT-cX9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoritesViewController" id="TIL-2H-tpW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="QaV-FM-RMQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7H-cd-1kF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="-154"/>
         </scene>
         <!--Arquivo PT-->
         <scene sceneID="Gck-BT-w1C">
@@ -164,12 +176,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6fI-H9-esK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.97101449275374" y="20.758928571428569"/>
+            <point key="canvasLocation" x="814" y="-40"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Arquivo.PT-->
         <scene sceneID="tS6-h3-fXj">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g4n-3k-Tuu" sceneMemberID="viewController">
+                <tabBarController title="Arquivo.PT" automaticallyAdjustsScrollViewInsets="NO" id="g4n-3k-Tuu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="fu5-lO-hLc">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -177,18 +189,26 @@
                     </tabBar>
                     <connections>
                         <segue destination="rhj-mJ-efH" kind="relationship" relationship="viewControllers" id="dwN-5O-4Ml"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wgp-jx-PIY"/>
+                        <segue destination="TIL-2H-tpW" kind="relationship" relationship="viewControllers" id="Mgj-BJ-DPn"/>
+                        <segue destination="jlz-tp-VPJ" kind="relationship" relationship="viewControllers" id="mI5-jG-A69"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbl-aE-1q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+            <point key="canvasLocation" x="-274" y="-39"/>
+        </scene>
+        <!--SettingsViewController-->
+        <scene sceneID="ai2-mY-NL1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsViewController" id="jlz-tp-VPJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="fhq-90-Gg8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWT-la-yYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="56"/>
         </scene>
     </scenes>
     <resources>
         <image name="dnLogo.png" width="108" height="60"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="APQ-qh-cWk"/>
-    </inferredMetricsTieBreakers>
 </document>
