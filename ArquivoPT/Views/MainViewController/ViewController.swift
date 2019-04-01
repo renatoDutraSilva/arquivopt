@@ -35,8 +35,6 @@ extension ViewController: CategoryRowDelegate {
         //        selection.selectionChanged()
     }
 }
-
-
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,14 +50,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
+       
         cell.delegate = self
         
         cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
+        
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 19.0)
-        //print("\(Category.getRawValueFromIndex(index: indexPath.row))")
+
         cell.sites = Data.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
-//        print(Category.getRawValueFromIndex(index: indexPath.row))
+        
+        print(Category.getRawValueFromIndex(index: indexPath.row))
+        
         return cell
         
     }

@@ -48,11 +48,8 @@ class TimeMachineViewController: UIViewController {
         
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
-        
 
     }
-
-
 }
 
 extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
