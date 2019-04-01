@@ -60,8 +60,8 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.site = sites[indexPath.row]
         cell.siteCardBackgroundView.image = UIImage(contentsOfFile: sites[indexPath.row].cardImage )
         cell.siteNameLabel.text = sites[indexPath.row].siteName
-        print(cell.site?.siteName)
-        print(sites[indexPath.row].siteName)
+        // print(cell.site?.siteName)
+        // print(sites[indexPath.row].siteName)
         
         return cell
         
