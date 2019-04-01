@@ -28,7 +28,7 @@ class CustomTableViewCell: UITableViewCell {
         
         sectionLabel.textColor = Theme.accent
         
-        layout.itemSize = CGSize(width: 160, height: 160)
+        layout.itemSize = CGSize(width: 140, height: 140)
         layout.scrollDirection = .horizontal
         layout.sectionHeadersPinToVisibleBounds = true
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)

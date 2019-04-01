@@ -46,7 +46,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 230
+        return 200
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +57,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
         
-        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 19.0)
+        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
         cell.sites = Data.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
         

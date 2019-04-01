@@ -58,17 +58,18 @@ class CustomCollectionViewCell: UICollectionViewCell {
         siteCardBackgroundView.bounds = chicletView.layer.bounds
         
         siteNameView.addBlurEffect()
-        siteNameView.frame = CGRect(x: 0 , y: chicletView.frame.maxY - 40 , width: chicletView.frame.maxX, height: 40)
+        siteNameView.frame = CGRect(x: 0 , y: chicletView.frame.maxY - 10 , width: chicletView.frame.maxX + 28, height: 40)
         siteNameView.clipsToBounds = true
         
         siteNameLabel.textColor = UIColor.white
-        siteNameLabel.frame = CGRect(x: 0, y: 0, width: siteNameView.bounds.width, height: siteNameView.bounds.height)
+        siteNameLabel.frame = CGRect(x: 8, y: 0, width: siteNameView.bounds.width, height: siteNameView.bounds.height)
         siteNameLabel.font = UIFont.systemFont(ofSize: 14)
         siteNameLabel.text = site?.siteName
         
         siteNameView.addSubview(siteNameLabel)
         
         chicletView.addShadowAndRoundedCorners()
+        chicletView.frame = CGRect(x: 0, y: 0, width: 140, height: 140)
         chicletView.backgroundColor = Theme.chicletBackground
         chicletView.addSubview(siteCardBackgroundView)
         chicletView.addSubview(siteNameView)
