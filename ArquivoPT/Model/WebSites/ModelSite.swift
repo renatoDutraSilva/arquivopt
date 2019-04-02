@@ -25,9 +25,7 @@ class ModelSite {
         self.siteName = siteName
         self.versions = versions ?? [("0","0")]
         self.category = category
-        
-        // Inittializer definition
-        // Which Branch!?????
+
     }
     
 }

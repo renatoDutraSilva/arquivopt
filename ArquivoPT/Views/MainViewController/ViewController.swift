@@ -44,8 +44,9 @@ extension ViewController: CategoryRowDelegate {
         
         let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
-        vc.siteId = site.id
-        vc.siteCategory = site.category
+        //vc.siteId = site.id
+        //vc.siteCategory = site.category
+        vc.site = site
         navigationController?.pushViewController(vc, animated: true)
         
         //        selection.selectionChanged()

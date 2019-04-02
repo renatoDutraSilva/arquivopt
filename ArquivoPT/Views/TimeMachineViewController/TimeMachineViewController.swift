@@ -27,8 +27,11 @@ class TimeMachineViewController: UIViewController {
         super.viewDidLoad()
         
         applyTheme()
+        guard let unwrappedSite = site else {return}
+        updateView(with: unwrappedSite)
         
-        SiteFunctions.readSite(by: siteId, category: siteCategory) { [weak self] (modelSite) in
+        
+        /*SiteFunctions.readSite(by: siteId, category: siteCategory) { [weak self] (modelSite) in
             guard let self = self else { return }//if self is nil then terminate the function (for example, user left this page before the function ended)
             self.site = modelSite
             
@@ -36,9 +39,7 @@ class TimeMachineViewController: UIViewController {
             if case modelSite.siteName = modelSite.siteName{
                 self.title = modelSite.siteName
             } else {print("Error")}
-            
-            
-        }
+        }*/
         
         let LinkID = ["19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739"]
         
@@ -51,6 +52,11 @@ class TimeMachineViewController: UIViewController {
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
 
+    }
+    
+    func updateView(with site: ModelSite){
+        self.title = site.siteName
+        self.site = site
     }
     
     override func viewWillAppear(_ animated: Bool) {
