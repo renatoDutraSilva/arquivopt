@@ -35,6 +35,8 @@
 		8CDBF34A2252D327001EF727 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF3492252D327001EF727 /* ThemeProtocol.swift */; };
 		8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34B2252D467001EF727 /* LightTheme.swift */; };
 		8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34D2252D75C001EF727 /* DarkTheme.swift */; };
+		8CDBF35122530858001EF727 /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF35022530858001EF727 /* WebViewController.storyboard */; };
+		8CDBF3532253086A001EF727 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF3522253086A001EF727 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		8CDBF3492252D327001EF727 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		8CDBF34B2252D467001EF727 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		8CDBF34D2252D75C001EF727 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
+		8CDBF35022530858001EF727 /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
+		8CDBF3522253086A001EF727 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F786A2B5AEDD18A6C418F9B1 /* Pods-ArquivoPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArquivoPT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArquivoPT/Pods-ArquivoPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,7 @@
 				8C0A0A9D224EFB2700DD4C5C /* MainViewController */,
 				8C0A0A9F224F000300DD4C5C /* TimeMachineViewController */,
 				8C0A0AA9224FB19500DD4C5C /* FavoritesViewController */,
+				8CDBF34F22530830001EF727 /* WebViewController */,
 				8C0A0AB0224FB25900DD4C5C /* SettingsViewController */,
 			);
 			path = Views;
@@ -234,6 +239,15 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		8CDBF34F22530830001EF727 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8CDBF35022530858001EF727 /* WebViewController.storyboard */,
+				8CDBF3522253086A001EF727 /* WebViewController.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
 		BD0FA77AE52733FF498638BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +319,7 @@
 				8CDBF33D225023E9001EF727 /* Colors.xcassets in Resources */,
 				8C0A0AB2224FB27C00DD4C5C /* SettingsViewController.storyboard in Resources */,
 				889C21FF224CFEE6003C8D23 /* dnLogo.png in Resources */,
+				8CDBF35122530858001EF727 /* WebViewController.storyboard in Resources */,
 				8C0A0AAB224FB1BA00DD4C5C /* FavoritesViewController.storyboard in Resources */,
 				889C21EF224C1416003C8D23 /* LaunchScreen.storyboard in Resources */,
 				8C0A0AA1224F003B00DD4C5C /* TimeMachineViewController.storyboard in Resources */,
@@ -370,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CDBF34A2252D327001EF727 /* ThemeProtocol.swift in Sources */,
+				8CDBF3532253086A001EF727 /* WebViewController.swift in Sources */,
 				889C21F7224C16D5003C8D23 /* CustomTableViewCell.swift in Sources */,
 				8CDBF34222512B39001EF727 /* ExternalData.swift in Sources */,
 				8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */,
