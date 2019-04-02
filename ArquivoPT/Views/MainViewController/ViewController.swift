@@ -18,9 +18,11 @@ class ViewController: UIViewController{
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        mainTableView.canCancelContentTouches = true
         SiteFunctions.readSites(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,14 +46,26 @@ extension ViewController: CategoryRowDelegate {
         
         let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
-        //vc.siteId = site.id
-        //vc.siteCategory = site.category
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
         
         //        selection.selectionChanged()
     }
 }
+
+extension ViewController: CustomCollectionViewCellDelegate {
+    
+    func chicletButtonTapped(sender: CustomCollectionViewCell, site: ModelSite) {
+        
+        print("Got to delegate")
+        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
+        vc.site = site
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+}
+
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
     func numberOfSections(in tableView: UITableView) -> Int {
