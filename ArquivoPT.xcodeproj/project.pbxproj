@@ -32,6 +32,9 @@
 		8CDBF33D225023E9001EF727 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF33C225023E9001EF727 /* Colors.xcassets */; };
 		8CDBF34022512AB3001EF727 /* Links.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF33F22512AB3001EF727 /* Links.xcassets */; };
 		8CDBF34222512B39001EF727 /* ExternalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34122512B39001EF727 /* ExternalData.swift */; };
+		8CDBF34A2252D327001EF727 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF3492252D327001EF727 /* ThemeProtocol.swift */; };
+		8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34B2252D467001EF727 /* LightTheme.swift */; };
+		8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34D2252D75C001EF727 /* DarkTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,9 @@
 		8CDBF33C225023E9001EF727 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		8CDBF33F22512AB3001EF727 /* Links.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Links.xcassets; sourceTree = "<group>"; };
 		8CDBF34122512B39001EF727 /* ExternalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalData.swift; sourceTree = "<group>"; };
+		8CDBF3492252D327001EF727 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		8CDBF34B2252D467001EF727 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
+		8CDBF34D2252D75C001EF727 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		F786A2B5AEDD18A6C418F9B1 /* Pods-ArquivoPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArquivoPT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArquivoPT/Pods-ArquivoPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,7 +208,7 @@
 		8CDBF3392250205D001EF727 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8CDBF33A22502305001EF727 /* Theme.swift */,
+				8CDBF3482252D30B001EF727 /* Theme */,
 				8CDBF33C225023E9001EF727 /* Colors.xcassets */,
 			);
 			path = Resources;
@@ -215,6 +221,17 @@
 				8CDBF33F22512AB3001EF727 /* Links.xcassets */,
 			);
 			path = ResourceData;
+			sourceTree = "<group>";
+		};
+		8CDBF3482252D30B001EF727 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8CDBF33A22502305001EF727 /* Theme.swift */,
+				8CDBF3492252D327001EF727 /* ThemeProtocol.swift */,
+				8CDBF34B2252D467001EF727 /* LightTheme.swift */,
+				8CDBF34D2252D75C001EF727 /* DarkTheme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		BD0FA77AE52733FF498638BF /* Frameworks */ = {
@@ -352,11 +369,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CDBF34A2252D327001EF727 /* ThemeProtocol.swift in Sources */,
 				889C21F7224C16D5003C8D23 /* CustomTableViewCell.swift in Sources */,
 				8CDBF34222512B39001EF727 /* ExternalData.swift in Sources */,
+				8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */,
 				889C21FB224C1F11003C8D23 /* Category.swift in Sources */,
 				8C0A0AB4224FB29900DD4C5C /* SettingsViewController.swift in Sources */,
 				8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */,
+				8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */,
 				8CDBF33B22502305001EF727 /* Theme.swift in Sources */,
 				889C21E7224C1414003C8D23 /* ViewController.swift in Sources */,
 				8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */,
@@ -513,13 +533,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8H82X8G4XN;
+				DEVELOPMENT_TEAM = A5BUCZ3K4T;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -532,13 +552,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8H82X8G4XN;
+				DEVELOPMENT_TEAM = A5BUCZ3K4T;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

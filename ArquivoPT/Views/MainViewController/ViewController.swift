@@ -15,11 +15,27 @@ class ViewController: UIViewController{
     @IBOutlet weak var mainTableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         SiteFunctions.readSites(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyTheme()
+        mainTableView.reloadData()
+    }
+    
+    fileprivate func applyTheme() {
+        view.backgroundColor = Theme.current.background
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.accent]
+        UINavigationBar.appearance().barTintColor = Theme.current.navigationBackground
+        //        UINavigationBar.appearance().tintColor = Theme.current.accent (Altera a cor dos botões de navegação)
+        //        UITabBar.appearance().tintColor = Theme.current.navigationBackground (Altera a core de selecção dos icons)
+        UITabBar.appearance().backgroundColor = Theme.current.navigationBackground
     }
 }
 
@@ -54,7 +70,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
        
         cell.delegate = self
-        
+        cell.backgroundColor = Theme.current.background
         cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
         
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)

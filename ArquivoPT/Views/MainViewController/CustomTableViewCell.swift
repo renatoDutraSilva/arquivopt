@@ -26,13 +26,15 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        sectionLabel.textColor = Theme.accent
+        sectionLabel.textColor = Theme.current.accent
+//        sectionLabel.backgroundColor = Theme.current.background
         
         layout.itemSize = CGSize(width: 140, height: 140)
         layout.scrollDirection = .horizontal
         layout.sectionHeadersPinToVisibleBounds = true
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         
+        collectionView.backgroundColor = Theme.current.background
         collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -60,8 +62,6 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.site = sites[indexPath.row]
         cell.siteCardBackgroundView.image = UIImage(contentsOfFile: sites[indexPath.row].cardImage )
         cell.siteNameLabel.text = sites[indexPath.row].siteName
-        // print(cell.site?.siteName)
-        // print(sites[indexPath.row].siteName)
         
         return cell
         
@@ -73,27 +73,5 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
             delegate?.cellTapped(site: sites[indexPath.row])
         }
         impact.impactOccurred()
-        
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        
-//        UIView.animate(withDuration: 0.5,
-//                       animations: {
-//                        //Fade-out
-//                        cell?.alpha = 0.1
-//                        cell?.contentView.frame = CGRect(x: 3, y: 14, width: 100, height: 100)
-//        }) { (completed) in
-//            UIView.animate(withDuration: 0.5,
-//                           animations: {
-//                            //Fade-out
-//                            cell?.alpha = 1
-//            })
-//        }
     }
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        return CGSize(width: (cell?.frame.size.width)! * 0.4, height: (cell?.frame.size.height)! * 0.4);
-//    }
 }

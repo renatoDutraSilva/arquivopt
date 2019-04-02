@@ -26,25 +26,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         generateChiclet()
 
-        //siteCardImageView.image = UIImage(contentsOfFile: "dnLogo.png")
-        //self.backgroundColor = UIColor(displayP3Red: 55, green: 55, blue: 55, alpha: 100)
 
     }
-    
-    
-//    override var isHighlighted: Bool {
-//        didSet {
-//            if isHighlighted {
-//                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-//                    // animate highlight
-//                }, completion: nil)
-//            } else {
-//                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-//                    // animate unHighligh
-//                }, completion: nil)
-//            }
-//        }
-//    }
     
     
     
@@ -70,12 +53,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         chicletView.addShadowAndRoundedCorners()
         chicletView.frame = CGRect(x: 0, y: 0, width: 140, height: 140)
-        chicletView.backgroundColor = Theme.chicletBackground
+        chicletView.backgroundColor = Theme.current.chicletBackground
         chicletView.addSubview(siteCardBackgroundView)
         chicletView.addSubview(siteNameView)
     }
 }
 
-protocol CategoryRowDelegate:class {
+protocol CategoryRowDelegate: class {
     func cellTapped(site: ModelSite)
 }

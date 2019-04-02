@@ -21,8 +21,12 @@ class TimeMachineViewController: UIViewController {
     var images = [UIImage]()
     let selection = UISelectionFeedbackGenerator()
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        applyTheme()
         
         SiteFunctions.readSite(by: siteId, category: siteCategory) { [weak self] (modelSite) in
             guard let self = self else { return }//if self is nil then terminate the function (for example, user left this page before the function ended)
@@ -36,8 +40,6 @@ class TimeMachineViewController: UIViewController {
             
         }
         
-        carouselView.backgroundColor = Theme.background
-        
         let LinkID = ["19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739"]
         
         for id in LinkID{
@@ -50,6 +52,21 @@ class TimeMachineViewController: UIViewController {
         carouselView.reloadData()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyTheme()
+    }
+    
+    fileprivate func applyTheme() {
+        view.backgroundColor = Theme.current.background
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.accent]
+        UINavigationBar.appearance().barTintColor = Theme.current.navigationBackground
+        //        UINavigationBar.appearance().tintColor = Theme.current.accent (Altera a cor dos botões de navegação)
+        //        UITabBar.appearance().tintColor = Theme.current.navigationBackground (Altera a core de selecção dos icons)
+        UITabBar.appearance().backgroundColor = Theme.current.navigationBackground
+    }
+    
 }
 
 extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
