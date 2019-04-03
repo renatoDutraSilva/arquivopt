@@ -47,7 +47,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletButton.layer.masksToBounds = true
         chicletButton.layer.cornerRadius = 14.0
         
-        siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 16, height: chicletButton.frame.height/3)
+        siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 32, height: chicletButton.frame.height/3)
         siteNameLabel.textAlignment = NSTextAlignment.left
         siteNameLabel.textColor = UIColor.white
         

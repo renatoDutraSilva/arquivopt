@@ -24,7 +24,7 @@ class SiteFunctions {
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Correio da Manhã", versions: nil, category: .jornais),
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Sol", versions: nil, category: .jornais),
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Destak", versions: nil, category: .jornais),
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "DN", versions: nil, category: .jornais)
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Jornal Nacional", versions: nil, category: .jornais)
                 ],
             
                 .artesECultura: [
