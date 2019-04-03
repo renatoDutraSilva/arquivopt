@@ -15,4 +15,8 @@ class LightTheme: ThemeProtocol {
     var navigationBackground: UIColor = UIColor(named: "LightNavigationBackground")!
     var chicletBackground: UIColor = UIColor(named: "LightChicletBackground")!
     
+    // Cell Gradients
+    var cellGradientLight: UIColor = UIColor(named: "CellGradientLight")!
+    var cellGradientDark: UIColor = UIColor(named: "CellGradientDark")!
+    
 }

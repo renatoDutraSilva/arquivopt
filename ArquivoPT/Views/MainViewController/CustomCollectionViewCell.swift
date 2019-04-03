@@ -23,6 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var chicletButton = UIButton()
     var delegate: CustomCollectionViewCellDelegate?
     var site: ModelSite? = nil
+    let logoImageView = UIImageView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,14 +34,19 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func generateChiclet(){
     
         chicletButton.frame = CGRect(x: 0, y: 0, width: self.frame.width + 32, height: self.frame.height + 32)
-        chicletButton.setBackgroundImage(UIImage(named: siteLogoFilename ?? "publico.png"), for: .normal)
+        //chicletButton.setBackgroundImage(UIImage(named: siteLogoFilename ?? "publico.png"), for: .normal)
         //chicletButton.layer.backgroundColor = UIColor.white.cgColor
-        chicletButton.layer.borderWidth = 0.5
+        //chicletButton.layer.borderWidth = 0.5
         //chicletButton.layer.borderColor = UIColor.white.cgColor
         
+        
+        //logoImageView.layer.borderWidth = 1
+        let logoImage = UIImage(named: siteLogoFilename ?? "publico.png")!
+        logoImageView.frame = CGRect(x: 16, y: 16, width: logoImage.size.width, height: logoImage.size.height)
+        logoImageView.image = logoImage
         chicletButton.addShadowAndRoundedCorners()
         
-        //self.chicletButton.applyGradient(colours: [UIColor.white, UIColor.black])
+        self.chicletButton.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
         
         chicletButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 100).cgColor
         chicletButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
@@ -50,10 +56,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletButton.layer.cornerRadius = 14.0
         
         siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 32, height: chicletButton.frame.height/3)
+        siteNameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         siteNameLabel.textAlignment = NSTextAlignment.left
         siteNameLabel.textColor = UIColor.white
         
         chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
+        chicletButton.addSubview(logoImageView)
         chicletButton.addSubview(siteNameLabel)
         
         self.addSubview(chicletButton)

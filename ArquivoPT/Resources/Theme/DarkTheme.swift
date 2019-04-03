@@ -15,4 +15,8 @@ class DarkTheme: ThemeProtocol {
     var background: UIColor =  UIColor(named: "Background")!
     var navigationBackground: UIColor =  UIColor(named: "NavigationBackground")!
     var chicletBackground: UIColor =  UIColor(named: "ChicletBackground")!
+    
+    // Cell Gradients
+    var cellGradientLight: UIColor = UIColor(named: "CellGradientLight")!
+    var cellGradientDark: UIColor = UIColor(named: "CellGradientDark")!
 }
