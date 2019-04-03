@@ -37,11 +37,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
         //chicletButton.layer.borderWidth = 1
         chicletButton.backgroundColor = UIColor(red: 55, green: 55, blue: 55, alpha: 100)
         
-        siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 32, height: chicletButton.frame.height/3)
+        siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 16, height: chicletButton.frame.height/3)
         //siteNameLabel.layer.borderWidth = 1
         siteNameLabel.textAlignment = NSTextAlignment.left
         
-        //chicletButton.addShadowAndRoundedCorners()
+        chicletButton.addShadowAndRoundedCorners()
         
         chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
         chicletButton.addSubview(siteNameLabel)
