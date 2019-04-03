@@ -62,7 +62,9 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         
         cell.delegate = self
         cell.site = sites[indexPath.row]
+        // Uncomment the following line after "cleaning" existing logos
         //cell.chicletButton.setBackgroundImage(UIImage(named: sites[indexPath.row].siteLogo ), for: .normal)
+        
         //print("\(sites[indexPath.row].siteLogo)")
         cell.siteNameLabel.text = sites[indexPath.row].siteName
         
