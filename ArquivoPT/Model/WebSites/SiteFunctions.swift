@@ -19,8 +19,8 @@ class SiteFunctions {
         DispatchQueue.global(qos: .userInteractive).async {
             Data.mainSiteArray = [
                 .jornais: [
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Diário de Notícias", versions: nil, category: .jornais),
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Público", versions: nil, category: .jornais),
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "diarionoticias.png", siteName: "Diário de Notícias", versions: nil, category: .jornais),
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "publico.png", siteName: "Público", versions: nil, category: .jornais),
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Correio da Manhã", versions: nil, category: .jornais),
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Sol", versions: nil, category: .jornais),
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Destak", versions: nil, category: .jornais),
@@ -28,19 +28,19 @@ class SiteFunctions {
                 ],
             
                 .artesECultura: [
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Gulbenkian", versions: nil, category: .artesECultura)
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "gulbenkian.png", siteName: "Gulbenkian", versions: nil, category: .artesECultura)
                 ],
                 .desporto: [
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "A Bola", versions: nil, category: .desporto)
                 ],
                 .radioETV: [
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "SIC", versions: nil, category: .radioETV)
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "sic.png", siteName: "SIC", versions: nil, category: .radioETV)
                 ],
                 .organismosSociais: [
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "FCT", versions: nil, category: .organismosSociais)
                 ],
                 .organismosGovernamentais: [
-                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Presidencia", versions: nil, category: .organismosGovernamentais)
+                    ModelSite(cardImage: "siteCardBackground.png", siteLogo: "presidencia.png", siteName: "Presidencia", versions: nil, category: .organismosGovernamentais)
                 ],
                 .universidades: [
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "Universidade de Lisboa", versions: nil, category: .universidades)

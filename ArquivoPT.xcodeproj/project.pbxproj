@@ -18,7 +18,6 @@
 		889C21F9224C1C95003C8D23 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21F8224C1C95003C8D23 /* CustomCollectionViewCell.swift */; };
 		889C21FB224C1F11003C8D23 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21FA224C1F11003C8D23 /* Category.swift */; };
 		889C21FD224C1F82003C8D23 /* ModelSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21FC224C1F82003C8D23 /* ModelSite.swift */; };
-		889C21FF224CFEE6003C8D23 /* dnLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 889C21FE224CFEE6003C8D23 /* dnLogo.png */; };
 		8C0A0AA1224F003B00DD4C5C /* TimeMachineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */; };
 		8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */; };
 		8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */; };
@@ -54,7 +53,6 @@
 		889C21F8224C1C95003C8D23 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		889C21FA224C1F11003C8D23 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		889C21FC224C1F82003C8D23 /* ModelSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSite.swift; sourceTree = "<group>"; };
-		889C21FE224CFEE6003C8D23 /* dnLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dnLogo.png; sourceTree = SOURCE_ROOT; };
 		8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeMachineViewController.storyboard; sourceTree = "<group>"; };
 		8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachineViewController.swift; sourceTree = "<group>"; };
 		8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteFunctions.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				8C0A0A9C224EFB1500DD4C5C /* Views */,
 				889C21E4224C1414003C8D23 /* AppDelegate.swift */,
 				889C21EB224C1416003C8D23 /* Assets.xcassets */,
-				889C21FE224CFEE6003C8D23 /* dnLogo.png */,
 				88724641224E5EAB00719437 /* siteCardBackground.png */,
 				889C21ED224C1416003C8D23 /* LaunchScreen.storyboard */,
 				889C21F0224C1416003C8D23 /* Info.plist */,
@@ -318,7 +315,6 @@
 			files = (
 				8CDBF33D225023E9001EF727 /* Colors.xcassets in Resources */,
 				8C0A0AB2224FB27C00DD4C5C /* SettingsViewController.storyboard in Resources */,
-				889C21FF224CFEE6003C8D23 /* dnLogo.png in Resources */,
 				8CDBF35122530858001EF727 /* WebViewController.storyboard in Resources */,
 				8C0A0AAB224FB1BA00DD4C5C /* FavoritesViewController.storyboard in Resources */,
 				889C21EF224C1416003C8D23 /* LaunchScreen.storyboard in Resources */,

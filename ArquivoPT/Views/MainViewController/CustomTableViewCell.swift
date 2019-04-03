@@ -62,7 +62,8 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         
         cell.delegate = self
         cell.site = sites[indexPath.row]
-        //cell.chicletButton.setImage(UIImage(contentsOfFile: sites[indexPath.row].cardImage ), for: .normal)
+        cell.chicletButton.setBackgroundImage(UIImage(named: sites[indexPath.row].siteLogo ), for: .normal)
+        print("\(sites[indexPath.row].siteLogo)")
         cell.siteNameLabel.text = sites[indexPath.row].siteName
         
         return cell
