@@ -39,7 +39,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
         //chicletButton.layer.borderColor = UIColor.white.cgColor
         
         chicletButton.addShadowAndRoundedCorners()
-
+        
+        //self.chicletButton.applyGradient(colours: [UIColor.white, UIColor.black])
+        
         chicletButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 100).cgColor
         chicletButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         chicletButton.layer.shadowOpacity = 0.25
