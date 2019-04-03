@@ -22,6 +22,7 @@ class ViewController: UIViewController{
         SiteFunctions.readSites(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
+        mainTableView.canCancelContentTouches = true
         
     }
     
@@ -51,19 +52,6 @@ extension ViewController: CategoryRowDelegate {
 
     }
 }
-
-//extension ViewController: CustomCollectionViewCellDelegate {
-//
-//    func chicletButtonTapped(site: ModelSite) {
-//
-//        print("Got to delegate")
-//        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
-//        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
-//        vc.site = site
-//        navigationController?.pushViewController(vc, animated: true)
-//
-//    }
-//}
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
@@ -96,5 +84,4 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         return cell
         
     }
-    
 }

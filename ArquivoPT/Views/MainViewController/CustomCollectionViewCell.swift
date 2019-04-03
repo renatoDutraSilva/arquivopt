@@ -19,24 +19,16 @@ protocol CustomCollectionViewCellDelegate: class {
 class CustomCollectionViewCell: UICollectionViewCell {
     
     let siteLogo = UIImage(contentsOfFile: "dnLogo.png")
-    
+    let siteNameLabel = UILabel()
     var chicletButton = UIButton()
     var delegate: CustomCollectionViewCellDelegate?
-    
     var site: ModelSite? = nil
-    
-    let siteNameLabel = UILabel()
 
-    /* Ao desativar a propriedade "Delay Content Touch" no storyboard ou definindo em código como "false", a
-     chiclet responde muito mais rapido e de forma natural.
-     Contudo, com esta propriedade em False, nao é possivel iniciar o scroll a partir de uma célula pois o primeiro trigger de animação
-     é sempre o cell "resize"
-     Para já, a propriedade ficou ativa
-    */
     override func awakeFromNib() {
         super.awakeFromNib()
         generateChiclet()
         chicletButton.startAnimatingPressActions()
+        
     }
     
     func generateChiclet(){
@@ -67,7 +59,6 @@ extension UIButton {
     func startAnimatingPressActions() {
         addTarget(self, action: #selector(animateDown), for: [.touchDown, .touchDragEnter])
         addTarget(self, action: #selector(animateUp), for: [.touchDragExit, .touchCancel, .touchUpInside, .touchUpOutside])
-        
     }
     
     @objc private func animateDown(sender: UIButton) {
@@ -89,4 +80,26 @@ extension UIButton {
         }, completion: nil)
     }
     
+}
+
+extension UITableView {
+    
+    override open func touchesShouldCancel(in view: UIView) -> Bool {
+        
+        if view is UIControl {
+            return true
+        }
+        return super.touchesShouldCancel(in: view)
+    }
+}
+
+extension UICollectionView {
+    
+    override open func touchesShouldCancel(in view: UIView) -> Bool {
+        
+        if view is UIControl {
+            return true
+        }
+        return super.touchesShouldCancel(in: view)
+    }
 }

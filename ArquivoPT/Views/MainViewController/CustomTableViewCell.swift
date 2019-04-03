@@ -27,6 +27,7 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        collectionView.canCancelContentTouches = true
         sectionLabel.textColor = Theme.current.accent
 //        sectionLabel.backgroundColor = Theme.current.background
         
@@ -50,9 +51,7 @@ class CustomTableViewCell: UITableViewCell {
     
 }
 
-
 extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
-//    , UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sites.count
@@ -68,7 +67,6 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         
         return cell
     }
-    
 }
 
 extension CustomTableViewCell: CustomCollectionViewCellDelegate{
