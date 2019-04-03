@@ -43,28 +43,27 @@ class ViewController: UIViewController{
 
 extension ViewController: CategoryRowDelegate {
     func cellTapped(site: ModelSite){
-        
+
         let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
-        
-        //        selection.selectionChanged()
+
     }
 }
 
-extension ViewController: CustomCollectionViewCellDelegate {
-    
-    func chicletButtonTapped(sender: CustomCollectionViewCell, site: ModelSite) {
-        
-        print("Got to delegate")
-        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
-        vc.site = site
-        navigationController?.pushViewController(vc, animated: true)
-        
-    }
-}
+//extension ViewController: CustomCollectionViewCellDelegate {
+//
+//    func chicletButtonTapped(site: ModelSite) {
+//
+//        print("Got to delegate")
+//        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
+//        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
+//        vc.site = site
+//        navigationController?.pushViewController(vc, animated: true)
+//
+//    }
+//}
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 

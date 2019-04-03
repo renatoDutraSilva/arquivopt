@@ -8,6 +8,14 @@
 
 import UIKit
 
+protocol CategoryRowDelegate: class {
+    func cellTapped(site: ModelSite)
+}
+
+protocol CustomCollectionViewCellDelegate: class {
+    func chicletButtonTapped(site: ModelSite)
+}
+
 class CustomCollectionViewCell: UICollectionViewCell {
     
     let siteLogo = UIImage(contentsOfFile: "dnLogo.png")
@@ -50,17 +58,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         guard let unwrappedSite = self.site else {return}
         print("Got past guard")
-        delegate?.chicletButtonTapped(sender: self, site: unwrappedSite)
+        delegate?.chicletButtonTapped(site: unwrappedSite)
     }
-}
-
-protocol CategoryRowDelegate: class {
-    func cellTapped(site: ModelSite)
-}
-
-protocol CustomCollectionViewCellDelegate: class {
-    
-    func chicletButtonTapped(sender: CustomCollectionViewCell, site: ModelSite)
 }
 
 extension UIButton {

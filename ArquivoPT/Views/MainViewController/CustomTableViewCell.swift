@@ -11,7 +11,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     
     weak var delegate: CategoryRowDelegate?
-    weak var CollectionViewDelegate: CustomCollectionViewCellDelegate?
+
     let impact = UIImpactFeedbackGenerator()
     
     @IBOutlet weak var sectionLabel: UILabel!
@@ -50,6 +50,7 @@ class CustomTableViewCell: UITableViewCell {
     
 }
 
+
 extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
 //    , UICollectionViewDelegateFlowLayout
     
@@ -59,7 +60,8 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
-
+        
+        cell.delegate = self
         cell.site = sites[indexPath.row]
         cell.chicletButton.setImage(UIImage(contentsOfFile: sites[indexPath.row].cardImage ), for: .normal)
         //cell.siteNameLabel.text = sites[indexPath.row].siteName
@@ -67,11 +69,16 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+}
+
+extension CustomTableViewCell: CustomCollectionViewCellDelegate{
+    func chicletButtonTapped(site: ModelSite) {
+
         if delegate != nil {
-            delegate?.cellTapped(site: sites[indexPath.row])
+            delegate?.cellTapped(site: site)
         }
         impact.impactOccurred()
     }
+    
+    
 }
