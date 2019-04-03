@@ -35,14 +35,20 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
         chicletButton.setImage(UIImage(contentsOfFile: site?.siteLogo ?? "dnLogo.png"), for: .normal)
         chicletButton.frame = CGRect(x: 0, y: 0, width: self.frame.width + 32, height: self.frame.height + 32)
-        chicletButton.titleLabel!.text = site?.siteName
-        chicletButton.tintColor = UIColor.white
-        chicletButton.backgroundColor = UIColor.black
+        chicletButton.layer.borderWidth = 1
+        chicletButton.backgroundColor = UIColor.white
         
-        chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
+        siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width, height: chicletButton.frame.height/3)
+        //siteNameLabel.layer.borderWidth = 1
+        siteNameLabel.textAlignment = NSTextAlignment.left
         
         chicletButton.addShadowAndRoundedCorners()
+        
+        
+        chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
+        chicletButton.addSubview(siteNameLabel)
         self.addSubview(chicletButton)
+        
 
     }
     

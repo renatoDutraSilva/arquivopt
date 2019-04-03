@@ -62,8 +62,8 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         
         cell.delegate = self
         cell.site = sites[indexPath.row]
-        cell.chicletButton.setImage(UIImage(contentsOfFile: sites[indexPath.row].cardImage ), for: .normal)
-        //cell.siteNameLabel.text = sites[indexPath.row].siteName
+        //cell.chicletButton.setImage(UIImage(contentsOfFile: sites[indexPath.row].cardImage ), for: .normal)
+        cell.siteNameLabel.text = sites[indexPath.row].siteName
         
         return cell
     }
