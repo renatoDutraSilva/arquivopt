@@ -58,8 +58,7 @@ class TimeMachineViewController: UIViewController {
         carouselView.reloadData()
 
     }
-    
-    //      -> Esta implementação funciona, contudo o render das células fica baralhado!
+    // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
         self.site?.isFavorite = !self.site!.isFavorite
     }
