@@ -18,15 +18,14 @@ protocol CustomCollectionViewCellDelegate: class {
 
 class CustomCollectionViewCell: UICollectionViewCell {
     
-   
     let siteNameLabel = UILabel()
     let labelBlurView = PassthroughView()
-    var logoImage: UIImage?
     var chicletButton = UIButton()
     var delegate: CustomCollectionViewCellDelegate?
     var site: ModelSite?
     let logoImageView = UIImageView()
-
+    var logoImage: UIImage?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         generateChiclet()
@@ -39,10 +38,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletButton.addShadowAndRoundedCorners()
         chicletButton.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
         chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
-        
-        let logoImage = UIImage(named: site?.siteLogo ?? "publico.png")!
-        logoImageView.frame = CGRect(x: 16, y: 16, width: logoImage.size.width, height: logoImage.size.height)
-        logoImageView.image = logoImage
 
         siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 32, height: chicletButton.frame.height/3)
         siteNameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
