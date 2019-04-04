@@ -18,11 +18,13 @@ protocol CustomCollectionViewCellDelegate: class {
 
 class CustomCollectionViewCell: UICollectionViewCell {
     
-    var siteLogoFilename: String?
+   
     let siteNameLabel = UILabel()
+    let labelBlurView = PassthroughView()
+    var logoImage: UIImage?
     var chicletButton = UIButton()
     var delegate: CustomCollectionViewCellDelegate?
-    var site: ModelSite? = nil
+    var site: ModelSite?
     let logoImageView = UIImageView()
 
     override func awakeFromNib() {
@@ -34,34 +36,25 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func generateChiclet(){
     
         chicletButton.frame = CGRect(x: 0, y: 0, width: self.frame.width + 32, height: self.frame.height + 32)
-        //chicletButton.setBackgroundImage(UIImage(named: siteLogoFilename ?? "publico.png"), for: .normal)
-        //chicletButton.layer.backgroundColor = UIColor.white.cgColor
-        //chicletButton.layer.borderWidth = 0.5
-        //chicletButton.layer.borderColor = UIColor.white.cgColor
+        chicletButton.addShadowAndRoundedCorners()
+        chicletButton.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
+        chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
         
-        
-        //logoImageView.layer.borderWidth = 1
-        let logoImage = UIImage(named: siteLogoFilename ?? "publico.png")!
+        let logoImage = UIImage(named: site?.siteLogo ?? "publico.png")!
         logoImageView.frame = CGRect(x: 16, y: 16, width: logoImage.size.width, height: logoImage.size.height)
         logoImageView.image = logoImage
-        chicletButton.addShadowAndRoundedCorners()
-        
-        self.chicletButton.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
-        
-        chicletButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 100).cgColor
-        chicletButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
-        chicletButton.layer.shadowOpacity = 0.25
-        chicletButton.layer.shadowRadius = 7
-        chicletButton.layer.masksToBounds = true
-        chicletButton.layer.cornerRadius = 14.0
-        
+
         siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 32, height: chicletButton.frame.height/3)
         siteNameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         siteNameLabel.textAlignment = NSTextAlignment.left
+        siteNameLabel.numberOfLines = 0
         siteNameLabel.textColor = UIColor.white
         
-        chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
+        labelBlurView.frame = CGRect(x: 0, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width, height: chicletButton.frame.height/3)
+        labelBlurView.addBlurEffect()
+        
         chicletButton.addSubview(logoImageView)
+        chicletButton.addSubview(labelBlurView)
         chicletButton.addSubview(siteNameLabel)
         
         self.addSubview(chicletButton)
@@ -102,6 +95,14 @@ extension UIButton {
         }, completion: nil)
     }
     
+}
+
+// override HitTest method for BlurView
+class PassthroughView: UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        return view == self ? view : nil
+    }
 }
 
 extension UITableView {
