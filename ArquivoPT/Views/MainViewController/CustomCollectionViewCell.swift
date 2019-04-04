@@ -20,7 +20,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     let siteNameLabel = UILabel()
     let labelBlurView = PassthroughView()
-    var chicletButton = UIButton()
+    let chicletButton = UIButton()
     var delegate: CustomCollectionViewCellDelegate?
     var site: ModelSite?
     let logoImageView = UIImageView()

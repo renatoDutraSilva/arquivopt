@@ -29,7 +29,7 @@ class CustomTableViewCell: UITableViewCell {
         
         collectionView.canCancelContentTouches = true
         sectionLabel.textColor = Theme.current.accent
-//        sectionLabel.backgroundColor = Theme.current.background
+        //sectionLabel.backgroundColor = Theme.current.background
         
         layout.itemSize = CGSize(width: 150, height: 150)
         layout.scrollDirection = .horizontal
