@@ -67,10 +67,8 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
         cell.logoImageView.image = cell.logoImage
         cell.siteNameLabel.text = sites[indexPath.row].siteName
+        cell.isFavorite = sites[indexPath.row].isFavorite
         
-        // Uncomment the following line after "cleaning" existing logos
-        //cell.chicletButton.setBackgroundImage(UIImage(named: sites[indexPath.row].siteLogo ), for: .normal)
-        //print("\(sites[indexPath.row].siteLogo)")
         return cell
     }
 }

@@ -16,6 +16,7 @@ class ModelSite {
     let siteName: String
     let versions: [(String,String)]?
     let category: Category
+    var isFavorite: Bool = false
     
     init(cardImage: String, siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category ){
         
@@ -25,7 +26,6 @@ class ModelSite {
         self.siteName = siteName
         self.versions = versions ?? [("0","0")]
         self.category = category
-
     }
     
 }

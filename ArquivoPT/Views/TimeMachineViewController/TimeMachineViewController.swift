@@ -21,10 +21,13 @@ class TimeMachineViewController: UIViewController {
     var images = [UIImage]()
     let selection = UISelectionFeedbackGenerator()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+        
+        
+        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
         
         applyTheme()
         guard let unwrappedSite = site else {return}
@@ -54,6 +57,11 @@ class TimeMachineViewController: UIViewController {
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
 
+    }
+    
+    //      -> Esta implementação funciona, contudo o render das células fica baralhado!
+    @objc func toggleFavorite(_ sender: UIBarButtonItem) {
+        self.site?.isFavorite = !self.site!.isFavorite
     }
     
     func updateView(with site: ModelSite){

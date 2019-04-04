@@ -54,8 +54,8 @@ class SiteFunctions {
                 .personalidades: [
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "José Saramago", versions: nil, category: .personalidades)
                 ]
-                
             ]
+            
             DispatchQueue.main.async {
                 completion()
             }

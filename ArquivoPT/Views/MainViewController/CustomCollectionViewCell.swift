@@ -25,6 +25,16 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var site: ModelSite?
     let logoImageView = UIImageView()
     var logoImage: UIImage?
+    var isFavorite: Bool = false {
+        didSet{
+            if isFavorite{
+                favoriteIndicator.frame = CGRect(x: chicletButton.frame.width - 40, y: 16, width: 26, height: 22)
+                favoriteIndicator.image = UIImage(named:"favoriteIconSelected.png")
+                chicletButton.addSubview(favoriteIndicator)
+            }
+        }
+    }
+    var favoriteIndicator = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +57,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         labelBlurView.frame = CGRect(x: 0, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width, height: chicletButton.frame.height/3)
         labelBlurView.addBlurEffect()
-        
+
         chicletButton.addSubview(logoImageView)
         chicletButton.addSubview(labelBlurView)
         chicletButton.addSubview(siteNameLabel)
