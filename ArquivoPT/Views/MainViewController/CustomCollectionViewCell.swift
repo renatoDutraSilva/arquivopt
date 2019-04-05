@@ -25,6 +25,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var site: ModelSite?
     let logoImageView = UIImageView()
     var logoImage: UIImage?
+    var favoriteIndicator = UIImageView()
     var isFavorite: Bool = false {
         didSet{
             if isFavorite{
@@ -34,7 +35,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    var favoriteIndicator = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()

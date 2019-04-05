@@ -22,7 +22,10 @@ class TimeMachineViewController: UIViewController {
     let selection = UISelectionFeedbackGenerator()
     
     override func viewDidLoad() {
+        guard let unwrappedSite = site else {return}
         super.viewDidLoad()
+        updateView(with: unwrappedSite)
+        print(unwrappedSite.linkData)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         
@@ -30,22 +33,7 @@ class TimeMachineViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
         
         applyTheme()
-        guard let unwrappedSite = site else {return}
-        updateView(with: unwrappedSite)
-        print(unwrappedSite.linkData)
-        
-        /*SiteFunctions.readSite(by: siteId, category: siteCategory) { [weak self] (modelSite) in
-            guard let self = self else { return }//if self is nil then terminate the function (for example, user left this page before the function ended)
-            self.site = modelSite
-            
-            guard let modelSite = modelSite else {return}//if model is nil then terminate the function (for example, user lost connection to the data base)
-            if case modelSite.siteName = modelSite.siteName{
-                self.title = modelSite.siteName
-            } else {print("Error")}
-        }*/
-        
-        
-        
+
         let LinkID = ["19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739"]
         
         for id in LinkID{

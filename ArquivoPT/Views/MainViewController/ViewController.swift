@@ -10,19 +10,41 @@
 
 import UIKit
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, UISearchResultsUpdating{
+    
     
     @IBOutlet weak var mainTableView: UITableView!
-    
+    var searchController: UISearchController!
+    var filteredData: [Category: [ModelSite]]!
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        mainTableView.canCancelContentTouches = true
         SiteFunctions.readSites(completion: { [weak self] in
             self?.mainTableView.reloadData()
         })
+        
         mainTableView.canCancelContentTouches = true
+        
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        
+        searchController.searchBar.tintColor = Theme.current.accent
+        searchController.searchBar.barTintColor = Theme.current.navigationBackground
+        
+        // If we are using this same view controller to present the results
+        // dimming it out wouldn't make sense. Should probably only set
+        // this to yes if using another controller to display the search results.
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.sizeToFit()
+        mainTableView.tableHeaderView = searchController.searchBar
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
         
     }
     
@@ -31,6 +53,24 @@ class ViewController: UIViewController{
         applyTheme()
         mainTableView.reloadData()
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : GlobalData.mainSiteArray.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
+                //return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+                
+                //return true
+                
+                return modelSiteArray.contains(where: { (modelSite) -> Bool in
+                    modelSite.siteName.contains(searchText)
+                })
+            })
+            
+            mainTableView.reloadData()
+        }
+    }
+    
+    
     
     fileprivate func applyTheme() {
         view.backgroundColor = Theme.current.background
