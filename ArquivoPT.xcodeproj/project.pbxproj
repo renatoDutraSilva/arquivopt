@@ -21,7 +21,7 @@
 		8C0A0AA1224F003B00DD4C5C /* TimeMachineViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */; };
 		8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */; };
 		8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */; };
-		8C0A0AA8224FAC9A00DD4C5C /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA7224FAC9A00DD4C5C /* Data.swift */; };
+		8C0A0AA8224FAC9A00DD4C5C /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AA7224FAC9A00DD4C5C /* GlobalData.swift */; };
 		8C0A0AAB224FB1BA00DD4C5C /* FavoritesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A0AAA224FB1BA00DD4C5C /* FavoritesViewController.storyboard */; };
 		8C0A0AAF224FB21800DD4C5C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AAE224FB21800DD4C5C /* FavoritesViewController.swift */; };
 		8C0A0AB2224FB27C00DD4C5C /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A0AB1224FB27C00DD4C5C /* SettingsViewController.storyboard */; };
@@ -30,7 +30,6 @@
 		8CDBF33B22502305001EF727 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF33A22502305001EF727 /* Theme.swift */; };
 		8CDBF33D225023E9001EF727 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF33C225023E9001EF727 /* Colors.xcassets */; };
 		8CDBF34022512AB3001EF727 /* Links.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF33F22512AB3001EF727 /* Links.xcassets */; };
-		8CDBF34222512B39001EF727 /* ExternalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34122512B39001EF727 /* ExternalData.swift */; };
 		8CDBF34A2252D327001EF727 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF3492252D327001EF727 /* ThemeProtocol.swift */; };
 		8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34B2252D467001EF727 /* LightTheme.swift */; };
 		8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF34D2252D75C001EF727 /* DarkTheme.swift */; };
@@ -56,7 +55,7 @@
 		8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeMachineViewController.storyboard; sourceTree = "<group>"; };
 		8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachineViewController.swift; sourceTree = "<group>"; };
 		8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteFunctions.swift; sourceTree = "<group>"; };
-		8C0A0AA7224FAC9A00DD4C5C /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8C0A0AA7224FAC9A00DD4C5C /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		8C0A0AAA224FB1BA00DD4C5C /* FavoritesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoritesViewController.storyboard; sourceTree = "<group>"; };
 		8C0A0AAE224FB21800DD4C5C /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8C0A0AB1224FB27C00DD4C5C /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
@@ -65,7 +64,6 @@
 		8CDBF33A22502305001EF727 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8CDBF33C225023E9001EF727 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		8CDBF33F22512AB3001EF727 /* Links.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Links.xcassets; sourceTree = "<group>"; };
-		8CDBF34122512B39001EF727 /* ExternalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalData.swift; sourceTree = "<group>"; };
 		8CDBF3492252D327001EF727 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		8CDBF34B2252D467001EF727 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		8CDBF34D2252D75C001EF727 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 		889C21E3224C1414003C8D23 /* ArquivoPT */ = {
 			isa = PBXGroup;
 			children = (
-				8CDBF33E22512A79001EF727 /* ResourceData */,
 				8CDBF3392250205D001EF727 /* Resources */,
 				8CDBF336224FC138001EF727 /* Extensions */,
 				8C0A0A9E224EFB8400DD4C5C /* Model */,
@@ -156,7 +153,7 @@
 		8C0A0A9E224EFB8400DD4C5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8C0A0AA7224FAC9A00DD4C5C /* Data.swift */,
+				8C0A0AA7224FAC9A00DD4C5C /* GlobalData.swift */,
 				889C21FA224C1F11003C8D23 /* Category.swift */,
 				8C0A0AA4224FAA3F00DD4C5C /* WebSites */,
 			);
@@ -177,6 +174,7 @@
 			children = (
 				889C21FC224C1F82003C8D23 /* ModelSite.swift */,
 				8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */,
+				8CDBF33E22512A79001EF727 /* ResourceData */,
 			);
 			path = WebSites;
 			sourceTree = "<group>";
@@ -219,7 +217,6 @@
 		8CDBF33E22512A79001EF727 /* ResourceData */ = {
 			isa = PBXGroup;
 			children = (
-				8CDBF34122512B39001EF727 /* ExternalData.swift */,
 				8CDBF33F22512AB3001EF727 /* Links.xcassets */,
 			);
 			path = ResourceData;
@@ -383,7 +380,6 @@
 				8CDBF34A2252D327001EF727 /* ThemeProtocol.swift in Sources */,
 				8CDBF3532253086A001EF727 /* WebViewController.swift in Sources */,
 				889C21F7224C16D5003C8D23 /* CustomTableViewCell.swift in Sources */,
-				8CDBF34222512B39001EF727 /* ExternalData.swift in Sources */,
 				8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */,
 				889C21FB224C1F11003C8D23 /* Category.swift in Sources */,
 				8C0A0AB4224FB29900DD4C5C /* SettingsViewController.swift in Sources */,
@@ -394,7 +390,7 @@
 				8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */,
 				889C21E5224C1414003C8D23 /* AppDelegate.swift in Sources */,
 				889C21FD224C1F82003C8D23 /* ModelSite.swift in Sources */,
-				8C0A0AA8224FAC9A00DD4C5C /* Data.swift in Sources */,
+				8C0A0AA8224FAC9A00DD4C5C /* GlobalData.swift in Sources */,
 				8C0A0AAF224FB21800DD4C5C /* FavoritesViewController.swift in Sources */,
 				8CDBF338224FC291001EF727 /* UIViewExtensions.swift in Sources */,
 				889C21F9224C1C95003C8D23 /* CustomCollectionViewCell.swift in Sources */,
@@ -545,13 +541,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8H82X8G4XN;
+				DEVELOPMENT_TEAM = A5BUCZ3K4T;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -564,13 +560,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8H82X8G4XN;
+				DEVELOPMENT_TEAM = A5BUCZ3K4T;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

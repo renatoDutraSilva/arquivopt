@@ -9,6 +9,6 @@
 import Foundation
 
 
-class Data {
+class GlobalData {
     static var mainSiteArray = [Category: [ModelSite]]()
 }

@@ -18,7 +18,9 @@ class ModelSite {
     let category: Category
     var isFavorite: Bool = false
     
-    init(cardImage: String, siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category ){
+    var linkData: [String]
+    
+    init(cardImage: String, siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category, linkData: [String]){
         
         id = UUID()
         self.cardImage = cardImage
@@ -26,6 +28,8 @@ class ModelSite {
         self.siteName = siteName
         self.versions = versions ?? [("0","0")]
         self.category = category
+        
+        self.linkData = linkData
     }
     
 }

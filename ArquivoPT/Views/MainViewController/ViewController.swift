@@ -77,9 +77,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
-        cell.sites = Data.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
+        cell.sites = GlobalData.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
         
-        print(Category.getRawValueFromIndex(index: indexPath.row))
         
         return cell
         

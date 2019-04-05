@@ -32,7 +32,7 @@ class TimeMachineViewController: UIViewController {
         applyTheme()
         guard let unwrappedSite = site else {return}
         updateView(with: unwrappedSite)
-        
+        print(unwrappedSite.linkData[0])
         
         /*SiteFunctions.readSite(by: siteId, category: siteCategory) { [weak self] (modelSite) in
             guard let self = self else { return }//if self is nil then terminate the function (for example, user left this page before the function ended)
