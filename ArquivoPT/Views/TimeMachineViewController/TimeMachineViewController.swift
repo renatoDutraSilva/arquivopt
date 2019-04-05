@@ -32,7 +32,7 @@ class TimeMachineViewController: UIViewController {
         applyTheme()
         guard let unwrappedSite = site else {return}
         updateView(with: unwrappedSite)
-        print(unwrappedSite.linkData[0])
+        print(unwrappedSite.linkData)
         
         /*SiteFunctions.readSite(by: siteId, category: siteCategory) { [weak self] (modelSite) in
             guard let self = self else { return }//if self is nil then terminate the function (for example, user left this page before the function ended)
@@ -117,6 +117,14 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
         selection.selectionChanged()
+    }
+    
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        
+        let storyboard = UIStoryboard(name: String(describing: WebViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! WebViewController
+        vc.siteWebName = site?.linkData[index]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

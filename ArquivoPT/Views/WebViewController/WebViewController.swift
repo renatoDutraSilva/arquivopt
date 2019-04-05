@@ -13,9 +13,12 @@ class WebViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
     
+    var siteWebName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        webView.load(URLRequest(url: URL(string: (siteWebName)!)!))
         // Do any additional setup after loading the view.
     }
     
