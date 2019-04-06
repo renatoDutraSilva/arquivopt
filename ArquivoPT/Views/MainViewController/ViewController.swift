@@ -70,13 +70,12 @@ class ViewController: UIViewController, UISearchResultsUpdating{
             filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
                 
                 return modelSiteArray.contains(where: { (modelSite) -> Bool in
-                    modelSite.siteName.lowercased().contains(searchText.lowercased()) && modelSite.category == category
+                    modelSite.siteName.lowercased().contains(searchText.lowercased())
                 })
                 
             })
             
             print(filteredData)
-            
             mainTableView.reloadData()
         }
     }
