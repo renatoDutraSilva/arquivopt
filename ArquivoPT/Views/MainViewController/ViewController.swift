@@ -75,7 +75,7 @@ class ViewController: UIViewController, UISearchResultsUpdating{
                // return
                 
                 return modelSiteArray.contains(where: { (modelSite) -> Bool in
-                    modelSite.siteName.contains(searchText) && modelSite.category == category
+                    modelSite.siteName.lowercased().contains(searchText.lowercased()) && modelSite.category == category
                 })
                 
             })
@@ -141,3 +141,4 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
     }
 }
+
