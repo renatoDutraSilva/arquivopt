@@ -36,7 +36,6 @@ class CustomTableViewCell: UITableViewCell {
         layout.sectionHeadersPinToVisibleBounds = true
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         
-        collectionView.backgroundColor = Theme.current.background
         collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -68,6 +67,7 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.logoImageView.image = cell.logoImage
         cell.siteNameLabel.text = sites[indexPath.row].siteName
         cell.isFavorite = sites[indexPath.row].isFavorite
+        
         
         return cell
     }

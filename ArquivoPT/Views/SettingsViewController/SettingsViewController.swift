@@ -11,30 +11,33 @@ import UIKit
 class SettingsViewController: UIViewController {
 
 
+    @IBOutlet weak var themeLable: UILabel!
+    @IBOutlet weak var themeSwitch: UISwitch!
+    
+    let themeKey = "LightTheme"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ThemeFunctions.applyTheme(view: view)
+        themeLable.textColor = Theme.current.accent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        applyTheme()
+        if let themeMode = UserDefaults.standard.value(forKey: themeKey){
+            themeSwitch.isOn = themeMode as! Bool 
+        }
+    }
+    
 
-    }
-    
-    fileprivate func applyTheme() {
-        view.backgroundColor = Theme.current.background
-        themeLable.textColor = Theme.current.accent
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.accent]
-        UINavigationBar.appearance().barTintColor = Theme.current.navigationBackground
-        //        UINavigationBar.appearance().tintColor = Theme.current.accent (Altera a cor dos botões de navegação)
-        //        UITabBar.appearance().tintColor = Theme.current.navigationBackground (Altera a core de selecção dos icons)
-        UITabBar.appearance().backgroundColor = Theme.current.navigationBackground
-    }
-    
-    @IBOutlet weak var themeLable: UILabel!
-    
     @IBAction func themeChange(_ sender: UISwitch) {
         Theme.current = sender.isOn ? LightTheme() : DarkTheme()
         
-        UserDefaults.standard.set(sender.isOn, forKey: "LightTheme")
-        applyTheme()
+        UserDefaults.standard.set(sender.isOn, forKey: themeKey)
+        print("Theme Changed")
+        ThemeFunctions.applyTheme(view: view)
+        navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
     }
     
 

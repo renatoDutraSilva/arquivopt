@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchResultsUpdating{
+class ViewController: UIViewController, UISearchResultsUpdating {
     
     
     @IBOutlet weak var mainTableView: UITableView!
@@ -20,6 +20,15 @@ class ViewController: UIViewController, UISearchResultsUpdating{
             mainTableView.reloadData()
             
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ThemeFunctions.applyTheme(view: view)
+        mainTableView.reloadData()
+        searchController.searchBar.tintColor = Theme.current.accent
+        searchController.searchBar.barTintColor = Theme.current.navigationBackground
     }
 
     override func viewDidLoad() {
@@ -55,18 +64,10 @@ class ViewController: UIViewController, UISearchResultsUpdating{
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        applyTheme()
-        mainTableView.reloadData()
-    }
-    
     func updateSearchResults(for searchController: UISearchController) {
         
         if let searchText = searchController.searchBar.text {
-            
             // Swift Ternary operator -> Condition ? valueToReturnIfTrue : valueToReturnIfFalse
-            
             filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
                 
                 return modelSiteArray.contains(where: { (modelSite) -> Bool in
@@ -75,21 +76,13 @@ class ViewController: UIViewController, UISearchResultsUpdating{
                 
             })
             
-            print(filteredData)
+//            print(filteredData)
             mainTableView.reloadData()
+
         }
     }
     
-    
-    
-    fileprivate func applyTheme() {
-        view.backgroundColor = Theme.current.background
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.accent]
-        UINavigationBar.appearance().barTintColor = Theme.current.navigationBackground
-        //        UINavigationBar.appearance().tintColor = Theme.current.accent (Altera a cor dos botões de navegação)
-        //        UITabBar.appearance().tintColor = Theme.current.navigationBackground (Altera a core de selecção dos icons)
-        UITabBar.appearance().backgroundColor = Theme.current.navigationBackground
-    }
+
 }
 
 extension ViewController: CategoryRowDelegate {
@@ -131,6 +124,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
         cell.sites = filteredData[Array(self.filteredData.keys)[indexPath.row]]! //?? [ModelSite.placeHolder()]
+        cell.collectionView.backgroundColor = Theme.current.background
         
         
         return cell

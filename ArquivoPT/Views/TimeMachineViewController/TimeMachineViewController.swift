@@ -21,6 +21,11 @@ class TimeMachineViewController: UIViewController {
     var images = [UIImage]()
     let selection = UISelectionFeedbackGenerator()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ThemeFunctions.applyTheme(view: view)
+    }
+    
     override func viewDidLoad() {
         guard let unwrappedSite = site else {return}
         super.viewDidLoad()
@@ -29,10 +34,7 @@ class TimeMachineViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         
-        
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
-        
-        applyTheme()
 
         let LinkID = ["19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739"]
         
@@ -54,20 +56,6 @@ class TimeMachineViewController: UIViewController {
     func updateView(with site: ModelSite){
         self.title = site.siteName
         self.site = site
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        applyTheme()
-    }
-    
-    fileprivate func applyTheme() {
-        view.backgroundColor = Theme.current.background
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.accent]
-        UINavigationBar.appearance().barTintColor = Theme.current.navigationBackground
-        //        UINavigationBar.appearance().tintColor = Theme.current.accent (Altera a cor dos botões de navegação)
-        //        UITabBar.appearance().tintColor = Theme.current.navigationBackground (Altera a core de selecção dos icons)
-        UITabBar.appearance().backgroundColor = Theme.current.navigationBackground
     }
     
 }

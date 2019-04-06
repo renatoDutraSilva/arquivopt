@@ -47,6 +47,7 @@
                     <navigationItem key="navigationItem" title="Opções" id="01W-cj-8cj"/>
                     <connections>
                         <outlet property="themeLable" destination="lOd-30-TJH" id="f0M-cA-VCt"/>
+                        <outlet property="themeSwitch" destination="z9h-uK-pAX" id="lG4-Z2-wDF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9i-Uz-QRc" userLabel="First Responder" sceneMemberID="firstResponder"/>

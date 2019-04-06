@@ -15,6 +15,11 @@ class WebViewController: UIViewController {
     
     var siteWebName: String?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ThemeFunctions.applyTheme(view: view)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
