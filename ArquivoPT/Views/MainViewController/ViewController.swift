@@ -15,7 +15,7 @@ class ViewController: UIViewController, UISearchResultsUpdating{
     
     @IBOutlet weak var mainTableView: UITableView!
     var searchController: UISearchController!
-    var filteredData: [Category: [ModelSite]] = [.semCategoria: [ModelSite.placeHolder()]] {
+    var filteredData: [Category: [ModelSite]]! = [.semCategoria: [ModelSite.placeHolder()]] {
         didSet{
             mainTableView.reloadData()
             
@@ -68,11 +68,6 @@ class ViewController: UIViewController, UISearchResultsUpdating{
             // Swift Ternary operator -> Condition ? valueToReturnIfTrue : valueToReturnIfFalse
             
             filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
-                //return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
-                
-                //return true
-                
-               // return
                 
                 return modelSiteArray.contains(where: { (modelSite) -> Bool in
                     modelSite.siteName.lowercased().contains(searchText.lowercased()) && modelSite.category == category
@@ -133,7 +128,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
-        
         cell.sites = filteredData[Array(self.filteredData.keys)[indexPath.row]]! //?? [ModelSite.placeHolder()]
         
         
