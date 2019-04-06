@@ -15,7 +15,7 @@ class SiteFunctions {
         
     }
     
-    static func readSites(completion: @escaping (/*_ filteredData: [Category: [ModelSite]]*/) -> () ){
+    static func readSites(completion: @escaping (_ filteredData: [Category: [ModelSite]]) -> () ){
         
         DispatchQueue.global(qos: .userInteractive).async {
             
@@ -59,10 +59,10 @@ class SiteFunctions {
                     ModelSite(cardImage: "siteCardBackground.png", siteLogo: "dn.Logo", siteName: "José Saramago", versions: nil, category: .personalidades, linkData: linkData)
                 ]
             ]
-            //
-            //let filteredData = GlobalData.mainSiteArray
+            
+            let filteredData = GlobalData.mainSiteArray
             DispatchQueue.main.async {
-                completion(/*filteredData*/)
+                completion(filteredData)
             }
         }
     }

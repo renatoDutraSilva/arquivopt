@@ -15,14 +15,21 @@ class ViewController: UIViewController, UISearchResultsUpdating{
     
     @IBOutlet weak var mainTableView: UITableView!
     var searchController: UISearchController!
-    var filteredData: [Category: [ModelSite]]!
+    var filteredData: [Category: [ModelSite]] = [.semCategoria: [ModelSite.placeHolder()]] {
+        didSet{
+            mainTableView.reloadData()
+            
+        }
+    }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        SiteFunctions.readSites(completion: { [weak self] in
-            self?.mainTableView.reloadData()
+        SiteFunctions.readSites(completion: { [weak self] (filteredData: [Category: [ModelSite]]) in
+            
+            self!.filteredData = filteredData
+            //self!.mainTableView.reloadData()
         })
         
         mainTableView.canCancelContentTouches = true
@@ -55,16 +62,25 @@ class ViewController: UIViewController, UISearchResultsUpdating{
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        
         if let searchText = searchController.searchBar.text {
-            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : GlobalData.mainSiteArray.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
+            
+            // Swift Ternary operator -> Condition ? valueToReturnIfTrue : valueToReturnIfFalse
+            
+            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
                 //return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
                 
                 //return true
                 
+               // return
+                
                 return modelSiteArray.contains(where: { (modelSite) -> Bool in
-                    modelSite.siteName.contains(searchText)
+                    modelSite.siteName.contains(searchText) && modelSite.category == category
                 })
+                
             })
+            
+            print(filteredData)
             
             mainTableView.reloadData()
         }
@@ -100,7 +116,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Category.allCases.count - 1
+        return filteredData.keys.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -117,7 +133,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
-        cell.sites = GlobalData.mainSiteArray[Category.getRawValueFromIndex(index: indexPath.row)]!
+        
+        cell.sites = filteredData[Array(self.filteredData.keys)[indexPath.row]]! //?? [ModelSite.placeHolder()]
         
         
         return cell

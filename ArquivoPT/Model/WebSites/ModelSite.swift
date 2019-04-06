@@ -20,6 +20,10 @@ class ModelSite {
     
     var linkData: [String]
     
+    static func placeHolder() -> ModelSite {
+        return ModelSite(cardImage: "N/A", siteLogo: "default.png", siteName: "Default", versions: nil, category: Category.semCategoria, linkData: ["N/A"])
+    }
+    
     init(cardImage: String, siteLogo: String, siteName: String, versions: [(String,String)]?, category: Category, linkData: [String]){
         
         id = UUID()
