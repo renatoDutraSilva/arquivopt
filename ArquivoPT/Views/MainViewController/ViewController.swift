@@ -124,7 +124,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
        
         cell.delegate = self
         cell.backgroundColor = Theme.current.background
-        cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
+        
+        // Array(self.filteredData.keys) returns an array, instead of a collection of only the dictionary keys.
+        // As such, we can then access each key with an Integer Subscript [0] or [indexPath.row]
+        cell.sectionLabel.text = Array(self.filteredData.keys)[indexPath.row].rawValue
         
         cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
