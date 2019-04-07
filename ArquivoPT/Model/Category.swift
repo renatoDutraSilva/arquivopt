@@ -36,4 +36,9 @@ enum Category: String, CaseIterable {
             default: return .semCategoria
         }
     }
+    
+    static func total() -> Int{ // Total number of categories
+        return 8
+    }
+    
 }

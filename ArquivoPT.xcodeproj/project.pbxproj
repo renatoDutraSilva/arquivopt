@@ -26,6 +26,7 @@
 		8C0A0AAF224FB21800DD4C5C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AAE224FB21800DD4C5C /* FavoritesViewController.swift */; };
 		8C0A0AB2224FB27C00DD4C5C /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C0A0AB1224FB27C00DD4C5C /* SettingsViewController.storyboard */; };
 		8C0A0AB4224FB29900DD4C5C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A0AB3224FB29900DD4C5C /* SettingsViewController.swift */; };
+		8C14C3812259682800BFF12B /* Structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C14C3802259682800BFF12B /* Structure.swift */; };
 		8C21C562225934FF0012DD40 /* ThemeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21C561225934FF0012DD40 /* ThemeFunctions.swift */; };
 		8CDBF338224FC291001EF727 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF337224FC291001EF727 /* UIViewExtensions.swift */; };
 		8CDBF33B22502305001EF727 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF33A22502305001EF727 /* Theme.swift */; };
@@ -61,6 +62,7 @@
 		8C0A0AAE224FB21800DD4C5C /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8C0A0AB1224FB27C00DD4C5C /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		8C0A0AB3224FB29900DD4C5C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8C14C3802259682800BFF12B /* Structure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structure.swift; sourceTree = "<group>"; };
 		8C21C561225934FF0012DD40 /* ThemeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFunctions.swift; sourceTree = "<group>"; };
 		8CDBF337224FC291001EF727 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		8CDBF33A22502305001EF727 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		8C0A0AA4224FAA3F00DD4C5C /* WebSites */ = {
 			isa = PBXGroup;
 			children = (
+				8C14C3802259682800BFF12B /* Structure.swift */,
 				889C21FC224C1F82003C8D23 /* ModelSite.swift */,
 				8C0A0AA5224FAAEA00DD4C5C /* SiteFunctions.swift */,
 				8CDBF33E22512A79001EF727 /* ResourceData */,
@@ -392,6 +395,7 @@
 				8CDBF33B22502305001EF727 /* Theme.swift in Sources */,
 				889C21E7224C1414003C8D23 /* ViewController.swift in Sources */,
 				8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */,
+				8C14C3812259682800BFF12B /* Structure.swift in Sources */,
 				889C21E5224C1414003C8D23 /* AppDelegate.swift in Sources */,
 				889C21FD224C1F82003C8D23 /* ModelSite.swift in Sources */,
 				8C0A0AA8224FAC9A00DD4C5C /* GlobalData.swift in Sources */,

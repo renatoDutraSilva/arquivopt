@@ -11,4 +11,5 @@ import Foundation
 
 class GlobalData {
     static var mainSiteArray = [Category: [ModelSite]]()
+    static var structureSiteArray = [Category: [Structure]]()
 }

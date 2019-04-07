@@ -30,7 +30,6 @@ class TimeMachineViewController: UIViewController {
         guard let unwrappedSite = site else {return}
         super.viewDidLoad()
         updateView(with: unwrappedSite)
-        print(unwrappedSite.linkData)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         
