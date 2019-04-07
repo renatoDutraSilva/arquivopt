@@ -37,17 +37,30 @@ class TimeMachineViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
-
+        
         if let LinkID = site?.linkDataID{
             for id in LinkID{
-                if let imagem = UIImage(named: id + ".png"){
+                if let imagem = UIImage(named: "gulbenkian_" + id + ".png"){
                     images.append(imagem)
                 }
             }
         }
         
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        let width: CGFloat = screenWidth * 0.1
+        let height: CGFloat = screenHeight * 0.4
+        
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
+        
+//        --- carouselView Options ---
+//        carouselView.perspective = -0.005
+        
+        print(screenHeight/screenWidth)
+        carouselView.viewpointOffset = CGSize(width: width, height: 0)
 
     }
     // Toggle site.isFavorite
@@ -69,17 +82,22 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
-        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
         
-        let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        let width: CGFloat = screenWidth * 0.4
+        let height: CGFloat = screenHeight * 0.4
+        
+        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        let frame = CGRect(x: 0, y: 0, width: width, height: height)
         let imageView = UIImageView()
         
         imageView.frame = frame
         imageView.contentMode = .scaleAspectFit
         imageView.image = images[index]
         //        imageView.isHighlighted = true
-        let width: CGFloat = 200
-        let height: CGFloat = 200
         
         let shadowSize: CGFloat = 20
         let shadowDistance: CGFloat = 0
@@ -96,7 +114,6 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
-        print(carousel.currentItemIndex)
         if carousel.currentItemIndex != -1{
             if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
                 let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
@@ -116,6 +133,10 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         vc.siteWebName = site?.linkData[index]
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+//        <#code#>
+//    }
     
     func extractWebsiteDate(siteLinkID: String) -> [String]{
         
