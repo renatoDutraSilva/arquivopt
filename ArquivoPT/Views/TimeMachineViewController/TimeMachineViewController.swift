@@ -16,6 +16,9 @@ class TimeMachineViewController: UIViewController {
     var siteCategory: Category!
     var site: ModelSite?
     
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet var carouselView: iCarousel!
     
     var images = [UIImage]()
@@ -35,11 +38,11 @@ class TimeMachineViewController: UIViewController {
         
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
 
-        let LinkID = ["19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739", "19991129051739"]
-        
-        for id in LinkID{
-            if let imagem = UIImage(named: id + ".png"){
-                images.append(imagem)
+        if let LinkID = site?.linkDataID{
+            for id in LinkID{
+                if let imagem = UIImage(named: id + ".png"){
+                    images.append(imagem)
+                }
             }
         }
         
@@ -65,6 +68,7 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        
         let tempView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         
         let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
@@ -89,8 +93,19 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         return tempView
     }
     
+    
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
+        print(carousel.currentItemIndex)
+        if carousel.currentItemIndex != -1{
+            if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
+                let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
+                dayLabel.text = "dia: " + websiteDate[0]
+                monthLabel.text = "mês: " + websiteDate[1]
+                yearLabel.text = websiteDate[2]
+            }
+        }
+
         selection.selectionChanged()
     }
     
@@ -102,5 +117,24 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func extractWebsiteDate(siteLinkID: String) -> [String]{
+        
+        var result: [String]
+        result = []
+        
+        let year = String(siteLinkID.prefix(4))
+        
+        let indexMonth = siteLinkID.index(siteLinkID.endIndex, offsetBy: -8)
+        let month = String(String(siteLinkID[..<indexMonth]).suffix(2))
+        
+        let indexDay = siteLinkID.index(siteLinkID.endIndex, offsetBy: -6)
+        let day = String(String(siteLinkID[..<indexDay]).suffix(2))
+        
+        result.append(day)
+        result.append(month)
+        result.append(year)
+        
+        return result
+    }
     
 }

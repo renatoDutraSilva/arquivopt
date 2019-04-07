@@ -19,7 +19,6 @@ class SiteFunctions {
         
         DispatchQueue.global(qos: .userInteractive).async {
             
-            
             generateStructure()
             initiateMainSiteArray()
 
