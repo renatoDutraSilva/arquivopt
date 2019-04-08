@@ -93,7 +93,7 @@ class TimeMachineViewController: UIViewController {
             label.layer.cornerRadius = 7
             label.textColor = UIColor.white
             label.font = UIFont.boldSystemFont(ofSize: 19)
-            label.textAlignment = NSTextAlignment.center
+            label.textAlignment = .center
             //label.frame = CGRect(x: 0, y: 0, width: 80, height: 32)
         }
     }
@@ -101,18 +101,30 @@ class TimeMachineViewController: UIViewController {
     func showFavoriteAlert() {
         
         alertView.frame = CGRect(x: (self.view.bounds.width / 2) - 112, y: (self.view.bounds.width / 2) + 112, width: 224, height: 224)
-        
         alertView.layer.cornerRadius = 14
         alertView.layer.masksToBounds = true
-        
         alertView.alpha = 0
         
+        let descriptionLabel = UILabel(frame: CGRect(x: 16, y: alertView.frame.height / 1.5, width: alertView.frame.width - 32
+            , height: alertView.frame.height / 3))
+        descriptionLabel.text = "\(site!.siteName) adicionado aos Favoritos"
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
+        descriptionLabel.textColor = UIColor.white
+        //descriptionLabel.layer.borderWidth = 1
+        
+        let favoriteIcon = UIImageView(image: UIImage(named: "favoriteIconSelected"))
+        favoriteIcon.frame = CGRect(x: (alertView.frame.width / 2) - 42, y: alertView.frame.height / 4, width: 84, height: 74)
+        
+        alertView.addSubview(favoriteIcon)
+        alertView.addSubview(descriptionLabel)
         self.view.addSubview(alertView)
 
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0.2, options: [.curveEaseInOut], animations: {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0.2, options: [.curveEaseInOut], animations: {
             self.alertView.alpha = 1
         }, completion: { _ in
-            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 1, options: [.curveEaseInOut], animations: {
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 1.5, options: [.curveEaseInOut], animations: {
                 self.alertView.alpha = 0
                 self.view.willRemoveSubview(self.alertView)
             })
