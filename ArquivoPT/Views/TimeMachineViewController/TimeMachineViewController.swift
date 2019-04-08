@@ -37,10 +37,10 @@ class TimeMachineViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
-        
+
         if let LinkID = site?.linkDataID{
             for id in LinkID{
-                if let imagem = UIImage(named: "gulbenkian_" + id + ".png"){
+                if let imagem = UIImage(named: unwrappedSite.siteFileId + "_" + id + ".png"){
                     images.append(imagem)
                 }
             }
@@ -58,9 +58,7 @@ class TimeMachineViewController: UIViewController {
         
 //        --- carouselView Options ---
 //        carouselView.perspective = -0.005
-        
-        print(screenHeight/screenWidth)
-        carouselView.viewpointOffset = CGSize(width: width, height: 0)
+        carouselView.viewpointOffset = CGSize(width: 0, height: 0)
 
     }
     // Toggle site.isFavorite

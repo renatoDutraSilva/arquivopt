@@ -29,6 +29,7 @@ class SiteFunctions {
                     for j in 0 ... numberOfSites - 1{
                         let nameOfLogo = temp[0].websiteFileId[j] + ".png"
                         let nameOfSite = temp[0].websiteName[j]
+                        let fileId = temp[0].websiteFileId[j]
                         let category = Category.getRawValueFromIndex(index: i)
                         let linkData = loadLinks(fileName: temp[0].websiteFileId[j] + "_Links")
                         let linkDataID = loadLinks(fileName: temp[0].websiteFileId[j] + "_LinksID")
@@ -36,6 +37,7 @@ class SiteFunctions {
                         GlobalData.mainSiteArray[Category.getRawValueFromIndex(index: i)]?.append(
                             ModelSite(siteLogo: nameOfLogo,
                                       siteName: nameOfSite,
+                                      siteFileId: fileId,
                                       versions: nil,
                                       category: category,
                                       linkData: linkData,
