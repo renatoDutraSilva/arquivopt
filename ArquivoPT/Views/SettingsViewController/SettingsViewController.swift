@@ -37,8 +37,11 @@ class SettingsViewController: UIViewController {
         
         setUpPickers()
         creatToolbar()
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
+        
+        
         
         if let themeMode = UserDefaults.standard.value(forKey: themeKey){
             themeSwitch.isOn = themeMode as! Bool 
@@ -60,8 +63,11 @@ class SettingsViewController: UIViewController {
     
     func setUpPickers() {
         
+        
+        
         initialDatePicker = UIDatePicker()
         initialDatePicker?.datePickerMode = .date
+//        initialDatePicker?.minimumDate = Date(from: "01/01/1996")
         
         finalDatePicker = UIDatePicker()
         finalDatePicker?.datePickerMode = .date
@@ -115,7 +121,4 @@ class SettingsViewController: UIViewController {
         finalDateTextField.text = dateFormatter.string(from: datePicker.date)
     }
     
-
-
-
 }
