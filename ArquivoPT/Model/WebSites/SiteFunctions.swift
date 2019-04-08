@@ -22,7 +22,7 @@ class SiteFunctions {
             generateStructure()
             initiateMainSiteArray()
 
-            for i in 0 ... Category.total(){
+            for i in 0 ... Category.allCases.count - 1{
                 if let temp = GlobalData.structureSiteArray[Category.getRawValueFromIndex(index: i)]{
                     let numberOfSites = temp[0].websiteName.count
                     

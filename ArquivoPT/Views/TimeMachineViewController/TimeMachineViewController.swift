@@ -20,6 +20,7 @@ class TimeMachineViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet var carouselView: iCarousel!
+    var dateFormatter = DateFormatter()
     
     var images = [UIImage]()
     let selection = UISelectionFeedbackGenerator()
@@ -45,7 +46,11 @@ class TimeMachineViewController: UIViewController {
                 }
             }
         }
-        
+        //dateFormatter.dateStyle = .medium
+        //dateFormatter.dateFormat = "LLLL"
+    
+        customizeLabels([monthLabel, dayLabel, yearLabel])
+
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
 
@@ -58,6 +63,27 @@ class TimeMachineViewController: UIViewController {
     func updateView(with site: ModelSite){
         self.title = site.siteName
         self.site = site
+    }
+    
+    func getDayOfWeek(_ today:String) -> Int? {
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let todayDate = dateFormatter.date(from: today) else { return nil }
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: todayDate)
+        return weekDay - 1
+    }
+    
+    func customizeLabels(_ labels: [UILabel]){
+       
+        for label in labels {
+            label.layer.backgroundColor = Theme.current.accent.cgColor
+            label.layer.cornerRadius = 7
+            label.textColor = UIColor.white
+            label.font = UIFont.boldSystemFont(ofSize: 19)
+            label.textAlignment = NSTextAlignment.center
+            //label.frame = CGRect(x: 0, y: 0, width: 80, height: 32)
+        }
     }
     
 }
@@ -100,8 +126,14 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         if carousel.currentItemIndex != -1{
             if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
                 let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
-                dayLabel.text = "dia: " + websiteDate[0]
-                monthLabel.text = "mês: " + websiteDate[1]
+                //dayLabel.text = "dia: " + websiteDate[0]
+                ////dateFormatter.weekdaySymbols?[Int(websiteDate[0]) ?? 1]
+                let fullDate = websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0]
+                dayLabel.text = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
+                
+                
+                print("\(websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0])")
+                monthLabel.text = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
                 yearLabel.text = websiteDate[2]
             }
         }
@@ -119,8 +151,8 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     func extractWebsiteDate(siteLinkID: String) -> [String]{
         
-        var result: [String]
-        result = []
+        var result = [String]()
+        //result = []
         
         let year = String(siteLinkID.prefix(4))
         
