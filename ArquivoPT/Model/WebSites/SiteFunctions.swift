@@ -38,7 +38,6 @@ class SiteFunctions {
                             ModelSite(siteLogo: nameOfLogo,
                                       siteName: nameOfSite,
                                       siteFileId: fileId,
-                                      versions: nil,
                                       category: category,
                                       linkData: linkData,
                                       linkDataID: linkDataID))

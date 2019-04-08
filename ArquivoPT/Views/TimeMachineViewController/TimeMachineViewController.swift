@@ -16,6 +16,8 @@ class TimeMachineViewController: UIViewController {
     var siteCategory: Category!
     var site: ModelSite?
     
+    let alertView = UIView()
+    
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -47,6 +49,8 @@ class TimeMachineViewController: UIViewController {
             }
         }
         
+        customizeLabels([monthLabel, dayLabel, yearLabel])
+        alertView.addBlurEffect()
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
@@ -64,6 +68,7 @@ class TimeMachineViewController: UIViewController {
     }
     // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
+        showFavoriteAlert()
         self.site?.isFavorite = !self.site!.isFavorite
     }
     
@@ -91,6 +96,27 @@ class TimeMachineViewController: UIViewController {
             label.textAlignment = NSTextAlignment.center
             //label.frame = CGRect(x: 0, y: 0, width: 80, height: 32)
         }
+    }
+    
+    func showFavoriteAlert() {
+        
+        alertView.frame = CGRect(x: (self.view.bounds.width / 2) - 112, y: (self.view.bounds.width / 2) + 112, width: 224, height: 224)
+        
+        alertView.layer.cornerRadius = 14
+        alertView.layer.masksToBounds = true
+        
+        alertView.alpha = 0
+        
+        self.view.addSubview(alertView)
+
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0.2, options: [.curveEaseInOut], animations: {
+            self.alertView.alpha = 1
+        }, completion: { _ in
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 1, options: [.curveEaseInOut], animations: {
+                self.alertView.alpha = 0
+                self.view.willRemoveSubview(self.alertView)
+            })
+        })
     }
     
 }
@@ -141,8 +167,7 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
                 ////dateFormatter.weekdaySymbols?[Int(websiteDate[0]) ?? 1]
                 let fullDate = websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0]
                 dayLabel.text = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
-                
-                
+
                 print("\(websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0])")
                 monthLabel.text = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
                 yearLabel.text = websiteDate[2]

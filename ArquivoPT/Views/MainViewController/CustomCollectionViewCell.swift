@@ -69,7 +69,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBAction func chicletButtonTouchUpInside(_ sender: UIButton) {
         
         guard let unwrappedSite = self.site else {return}
-        print("Got past guard")
+        //print("Got past guard")
         delegate?.chicletButtonTapped(site: unwrappedSite)
     }
 }
