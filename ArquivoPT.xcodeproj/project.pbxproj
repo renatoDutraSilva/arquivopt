@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		625CB48D1D0C49F1BD0ABFAD /* Pods_ArquivoPT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2342127E6F9F7BC5960087 /* Pods_ArquivoPT.framework */; };
+		88407B05225CBF4300EDBD2D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88407B04225CBF4300EDBD2D /* FavoritesTableViewCell.swift */; };
 		88724642224E5EAC00719437 /* siteCardBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 88724641224E5EAB00719437 /* siteCardBackground.png */; };
 		889C21E5224C1414003C8D23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21E4224C1414003C8D23 /* AppDelegate.swift */; };
 		889C21E7224C1414003C8D23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C21E6224C1414003C8D23 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		5F2342127E6F9F7BC5960087 /* Pods_ArquivoPT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArquivoPT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D739D4E01C5E41AB2532D6 /* Pods-ArquivoPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArquivoPT.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArquivoPT/Pods-ArquivoPT.release.xcconfig"; sourceTree = "<group>"; };
+		88407B04225CBF4300EDBD2D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		88724641224E5EAB00719437 /* siteCardBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = siteCardBackground.png; sourceTree = SOURCE_ROOT; };
 		889C21E1224C1414003C8D23 /* ArquivoPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArquivoPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889C21E4224C1414003C8D23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				8C0A0AAA224FB1BA00DD4C5C /* FavoritesViewController.storyboard */,
+				88407B04225CBF4300EDBD2D /* FavoritesTableViewCell.swift */,
 				8C0A0AAE224FB21800DD4C5C /* FavoritesViewController.swift */,
 			);
 			path = FavoritesViewController;
@@ -388,6 +391,7 @@
 				8CDBF3532253086A001EF727 /* WebViewController.swift in Sources */,
 				889C21F7224C16D5003C8D23 /* CustomTableViewCell.swift in Sources */,
 				8CDBF34E2252D75C001EF727 /* DarkTheme.swift in Sources */,
+				88407B05225CBF4300EDBD2D /* FavoritesTableViewCell.swift in Sources */,
 				889C21FB224C1F11003C8D23 /* Category.swift in Sources */,
 				8C0A0AB4224FB29900DD4C5C /* SettingsViewController.swift in Sources */,
 				8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */,
@@ -549,13 +553,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A5BUCZ3K4T;
+				DEVELOPMENT_TEAM = 8H82X8G4XN;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,13 +572,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A5BUCZ3K4T;
+				DEVELOPMENT_TEAM = 8H82X8G4XN;
 				INFOPLIST_FILE = ArquivoPT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Renato-Silva.ArquivoPT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

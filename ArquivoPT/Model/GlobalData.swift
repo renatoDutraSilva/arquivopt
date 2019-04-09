@@ -12,4 +12,41 @@ import Foundation
 class GlobalData {
     static var mainSiteArray = [Category: [ModelSite]]()
     static var structureSiteArray = [Category: [Structure]]()
+    static var favoriteSiteArray = [ModelSite]()
+    
+    static func getFavoriteCategories() -> [Category]? {
+        
+        var favoriteCategories = [Category]()
+        
+        favoriteSiteArray.forEach { (site) in
+            favoriteCategories.append(site.category)
+        }
+        return favoriteCategories.removingDuplicates()
+    }
+    
+    static func getFavoriteSites(ofCategory category: Category) -> [ModelSite]{
+        
+        var favoriteSites = [ModelSite]()
+        
+        favoriteSiteArray.forEach { (site) in
+            if site.category == category {
+                favoriteSites.append(site)
+            }
+        }
+        return favoriteSites
+    }
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+        
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }
