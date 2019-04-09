@@ -13,12 +13,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var favoritesTableView: UITableView!
     var favoriteCategories = [Category]()
     let noFavoritesLabel = UILabel()
+    var favoriteSites = [ModelSite]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ThemeFunctions.applyTheme(view: view)
         if let unwrappedCategories = GlobalData.getFavoriteCategories() {
             favoriteCategories = unwrappedCategories
+            favoriteSites = GlobalData.favoriteSiteArray
         } else {
             // THIS CODE IS NOT WORKING
             noFavoritesLabel.frame = CGRect(x: (favoritesTableView.frame.width / 2) - 100, y: (favoritesTableView.frame.height / 2) - 22, width: 200, height: 44)
@@ -45,13 +47,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //else {return ""}
+
         return favoriteCategories[section].rawValue
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //guard let unwrappedCategories = GlobalData.getFavoriteCategories() else {return 0}
+
         return GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count
     }
     
@@ -62,8 +64,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoritesTableViewCell
         cell.selectionStyle = .none
-        cell.siteNameLabel.text = "Placeholder Site Name"
         
+        
+        cell.siteNameLabel.text = "Placeholder site name"
+
         cell.logoImage = UIImage(named: "gulbenkian.png")
         cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
         cell.logoImageView.image = cell.logoImage
