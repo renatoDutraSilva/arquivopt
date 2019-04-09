@@ -66,8 +66,9 @@ class TimeMachineViewController: UIViewController {
     }
     // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
-        self.site?.isFavorite = !self.site!.isFavorite
         showFavoriteAlert()
+        self.site?.isFavorite = !self.site!.isFavorite
+        
     }
     
     func updateView(with site: ModelSite){
