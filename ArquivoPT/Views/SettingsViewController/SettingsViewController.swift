@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
 
 
     @IBOutlet weak var themeLable: UILabel!
@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
     private var initialDatePicker: UIDatePicker?
     private var finalDatePicker: UIDatePicker?
     
-    let themeKey = "LightTheme"
+    let themeKey = "DarkTheme"
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,10 +53,9 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func themeChange(_ sender: UISwitch) {
-        Theme.current = sender.isOn ? LightTheme() : DarkTheme()
+        Theme.current = sender.isOn ? DarkTheme() : LightTheme()
         
         UserDefaults.standard.set(sender.isOn, forKey: themeKey)
-        print("Theme Changed")
         ThemeFunctions.applyTheme(view: view)
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
     }
