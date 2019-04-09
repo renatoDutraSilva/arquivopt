@@ -20,6 +20,10 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var initialDateTextField: UITextField!
     @IBOutlet weak var finalDateTextField: UITextField!
     
+    @IBOutlet weak var initialDateLabel: UILabel!
+    
+    @IBOutlet weak var initialDateCalendarPicker: UIDatePicker!
+    
     private var initialDatePicker: UIDatePicker?
     private var finalDatePicker: UIDatePicker?
     
@@ -34,6 +38,14 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        NEW FUNCTIONS
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        
+        datePickerChanged()
+        
+//        OLD FUNCTIONS
         
         setUpPickers()
         creatToolbar()
@@ -42,12 +54,12 @@ class SettingsViewController: UITableViewController {
         view.addGestureRecognizer(tapGesture)
         
         
-        
         if let themeMode = UserDefaults.standard.value(forKey: themeKey){
             themeSwitch.isOn = themeMode as! Bool 
         }
         
     }
+    
     
     @IBAction func timeIntervalSetChange(_ sender: UISwitch) {
     }
@@ -60,9 +72,52 @@ class SettingsViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
     }
     
+    
+    @IBAction func initialPickerChanged(_ sender: UIDatePicker) {
+        datePickerChanged()
+    }
+    
+    
+//    NEW METHODS
+    
+    func datePickerChanged () {
+        initialDateLabel.text = DateFormatter.localizedString(from: initialDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        if indexPath.section == 0 && indexPath.row == 0 {
+            toggleDatepicker()
+        }
+        print("OLA")
+    }
+    
+    var datePickerHidden = false
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
+            return 0
+        }
+        else {
+            //            return tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath as IndexPath)
+        }
+    }
+    
+    func toggleDatepicker() {
+        
+        datePickerHidden = !datePickerHidden
+        print("ola")
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+    }
+    
+    
+    
+//    OLD METHODS
+    
     func setUpPickers() {
-        
-        
         
         initialDatePicker = UIDatePicker()
         initialDatePicker?.datePickerMode = .date
