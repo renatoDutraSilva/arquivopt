@@ -16,8 +16,6 @@ class TimeMachineViewController: UIViewController {
     var siteCategory: Category!
     var site: ModelSite?
     
-    let alertView = UIView()
-    
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -50,7 +48,7 @@ class TimeMachineViewController: UIViewController {
         }
         
         customizeLabels([monthLabel, dayLabel, yearLabel])
-        alertView.addBlurEffect()
+        
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
@@ -68,8 +66,8 @@ class TimeMachineViewController: UIViewController {
     }
     // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
-        showFavoriteAlert()
         self.site?.isFavorite = !self.site!.isFavorite
+        showFavoriteAlert()
     }
     
     func updateView(with site: ModelSite){
@@ -94,39 +92,62 @@ class TimeMachineViewController: UIViewController {
             label.textColor = UIColor.white
             label.font = UIFont.boldSystemFont(ofSize: 19)
             label.textAlignment = .center
-            //label.frame = CGRect(x: 0, y: 0, width: 80, height: 32)
         }
     }
     
     func showFavoriteAlert() {
         
+        let alertView = UIView()
         alertView.frame = CGRect(x: (self.view.bounds.width / 2) - 112, y: (self.view.bounds.width / 2) + 112, width: 224, height: 224)
         alertView.layer.cornerRadius = 14
         alertView.layer.masksToBounds = true
+        alertView.addBlurEffect()
         alertView.alpha = 0
         
         let descriptionLabel = UILabel(frame: CGRect(x: 16, y: alertView.frame.height / 1.5, width: alertView.frame.width - 32
             , height: alertView.frame.height / 3))
-        descriptionLabel.text = "\(site!.siteName) adicionado aos Favoritos"
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = UIFont.systemFont(ofSize: 16)
         descriptionLabel.textColor = UIColor.white
-        //descriptionLabel.layer.borderWidth = 1
+        descriptionLabel.text = ""
         
-        let favoriteIcon = UIImageView(image: UIImage(named: "favoriteIconSelected"))
-        favoriteIcon.frame = CGRect(x: (alertView.frame.width / 2) - 42, y: alertView.frame.height / 4, width: 84, height: 74)
+        var favoriteIcon = UIImageView()
+        var iconWidth = 84.0
+        var iconHeight = 74.0
+
+        if site!.isFavorite {
+            descriptionLabel.text = "\(site!.siteName) removido dos Favoritos"
+            favoriteIcon = UIImageView(image: UIImage(named: "favoriteIconDeselected"))
+            iconWidth = 95.0
+            iconHeight = 73.0
+        } else {
+            descriptionLabel.text = "\(site!.siteName) adicionado aos Favoritos"
+            favoriteIcon = UIImageView(image: UIImage(named: "favoriteIconSelected"))
+        }
+        
+        favoriteIcon.frame = CGRect(x: (alertView.frame.width / 2) - CGFloat(iconWidth / 2), y: alertView.frame.height / 4, width: CGFloat(iconWidth), height: CGFloat(iconHeight))
+
+        
         
         alertView.addSubview(favoriteIcon)
         alertView.addSubview(descriptionLabel)
         self.view.addSubview(alertView)
 
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0.2, options: [.curveEaseInOut], animations: {
-            self.alertView.alpha = 1
+            alertView.alpha = 1
         }, completion: { _ in
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 1.5, options: [.curveEaseInOut], animations: {
-                self.alertView.alpha = 0
-                self.view.willRemoveSubview(self.alertView)
+                alertView.alpha = 0
+                
+                self.view.willRemoveSubview(alertView)
+                alertView.willRemoveSubview(favoriteIcon)
+                alertView.willRemoveSubview(descriptionLabel)
+
+            }, completion: { _ in
+                favoriteIcon.removeFromSuperview()
+                descriptionLabel.removeFromSuperview()
+                alertView.removeFromSuperview()
             })
         })
     }
