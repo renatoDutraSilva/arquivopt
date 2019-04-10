@@ -75,6 +75,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
         cell.logoImageView.image = cell.logoImage
         
+        cell.recordLabel.text = "2.031.102"
+        cell.yearLabel.text = "16 anos"
         //cell.siteNameLabel.text = "Placeholder site name"
         
         return cell
