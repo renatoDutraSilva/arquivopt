@@ -18,6 +18,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ThemeFunctions.applyTheme(view: view)
+        
         if let unwrappedCategories = GlobalData.getFavoriteCategories() {
             favoriteCategories = unwrappedCategories
             favoriteSites = GlobalData.favoriteSiteArray
@@ -63,14 +64,18 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoritesTableViewCell
+        let siteName = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].siteName
+        let siteLogo = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].siteLogo
+        
         cell.selectionStyle = .none
         
+        cell.siteNameLabel.text = siteName
         
-        cell.siteNameLabel.text = "Placeholder site name"
-
-        cell.logoImage = UIImage(named: "gulbenkian.png")
+        cell.logoImage = UIImage(named: siteLogo) ?? UIImage(named: "presidencia.png")
         cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
         cell.logoImageView.image = cell.logoImage
+        
+        //cell.siteNameLabel.text = "Placeholder site name"
         
         return cell
     }

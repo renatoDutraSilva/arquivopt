@@ -15,6 +15,12 @@ class FavoritesTableViewCell: UITableViewCell {
     let logoImageView = UIImageView()
     var logoImage: UIImage?
     let siteNameLabel = UILabel()
+    let yearNumberView = UIView()
+    let recordNumberView = UIView()
+    let recordLabel = UILabel()
+    let yearLabel = UILabel()
+    
+
 
     
     override func awakeFromNib() {
@@ -32,7 +38,7 @@ class FavoritesTableViewCell: UITableViewCell {
     
     func generateChiclet(){
         
-        self.chicletView.frame = CGRect(x: 16, y: 16, width: self.frame.width - 70 , height: 150)
+        self.chicletView.frame = CGRect(x: 16, y: 16, width: self.frame.width - 32 , height: 150)
         self.chicletView.layer.cornerRadius = 14
         self.chicletView.layer.masksToBounds = true
         self.chicletView.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
@@ -46,8 +52,16 @@ class FavoritesTableViewCell: UITableViewCell {
         siteNameLabel.numberOfLines = 0
         siteNameLabel.textColor = UIColor.white
         
+        yearNumberView.frame = CGRect(x: chicletView.frame.width / 2.5 , y: 16, width: chicletView.frame.width - chicletView.frame.width / 1.35, height: chicletView.frame.height/2.5)
+        yearNumberView.layer.borderWidth = 1
+        
+        recordNumberView.frame = CGRect(x: chicletView.frame.width / 1.5 , y: 16, width: chicletView.frame.width - chicletView.frame.width / 1.35, height: chicletView.frame.height/2.5)
+        recordNumberView.layer.borderWidth = 1
         
         
+        
+        self.chicletView.addSubview(yearNumberView)
+        self.chicletView.addSubview(recordNumberView)
         self.chicletView.addSubview(logoImageView)
 
         self.chicletView.addSubview(self.labelBlurView)
