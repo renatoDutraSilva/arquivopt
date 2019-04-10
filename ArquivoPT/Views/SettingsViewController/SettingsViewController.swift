@@ -146,12 +146,18 @@ class SettingsViewController: UITableViewController {
     
     func toggleInitialDatepicker() {
         initialDatePickerHidden = !initialDatePickerHidden
+        if finalDatePickerHidden == false {
+            finalDatePickerHidden = true
+        }
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleFinalDatepicker() {
         finalDatePickerHidden = !finalDatePickerHidden
+        if initialDatePickerHidden == false {
+            initialDatePickerHidden = true
+        }
         tableView.beginUpdates()
         tableView.endUpdates()
     }
