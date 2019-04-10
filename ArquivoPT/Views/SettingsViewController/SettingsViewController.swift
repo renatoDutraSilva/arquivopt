@@ -111,12 +111,23 @@ class SettingsViewController: UITableViewController {
     }
     
     func initialDatePickerChanged () {
-        initialDateLabel.text = DateFormatter.localizedString(from: initialDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
+        initialDateLabel.text = DateFormatter.localizedString(from: initialDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyy"
+        let minDateTime = formatter.date(from: initialDateLabel.text!)
+        finalDateCalendarPicker?.minimumDate = minDateTime
         // Colocar o código para restringir opções da segunda picker view aqui!
     }
     
     func finalDatePickerChanged () {
-        finalDateLabel.text = DateFormatter.localizedString(from: finalDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
+        finalDateLabel.text = DateFormatter.localizedString(from: finalDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyy"
+        let maxDateTime = formatter.date(from: finalDateLabel.text!)
+        initialDateCalendarPicker?.maximumDate = maxDateTime
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,21 +178,31 @@ class SettingsViewController: UITableViewController {
 //    ====================================================================
 //    ----------------------- OLD METHODS --------------------------------
 //    ====================================================================
-    func setUpPickers() {
+    func setUpPickers(){
         
-        initialDatePicker = UIDatePicker()
-        initialDatePicker?.datePickerMode = .date
+        initialDateCalendarPicker?.datePickerMode = .date
+        finalDateCalendarPicker?.datePickerMode = .date
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyy HH:mm"
+        let minDateTime = formatter.date(from: "01/01/1996 00:00")
+        
+        let currentDate = Date()
+        
+        initialDateCalendarPicker?.maximumDate = currentDate
+        finalDateCalendarPicker?.maximumDate = currentDate
+        
+        initialDateCalendarPicker?.minimumDate = minDateTime
+        finalDateCalendarPicker?.minimumDate = minDateTime
+        
+//        initialDateCalendarPicker = UIDatePicker()
+//        finalDatePicker = UIDatePicker()
 //        initialDatePicker?.minimumDate = Date(from: "01/01/1996")
+//        initialDateTextField.inputView = initialDatePicker
+//        initialDatePicker?.addTarget(self, action: #selector(SettingsViewController.initialDateChanged(datePicker:)), for: .valueChanged)
         
-        finalDatePicker = UIDatePicker()
-        finalDatePicker?.datePickerMode = .date
-        
-        
-        initialDateTextField.inputView = initialDatePicker
-        initialDatePicker?.addTarget(self, action: #selector(SettingsViewController.initialDateChanged(datePicker:)), for: .valueChanged)
-        
-        finalDateTextField.inputView = finalDatePicker
-        finalDatePicker?.addTarget(self, action: #selector(SettingsViewController.finalDateChanged(datePicker:)), for: .valueChanged)
+//        finalDateTextField.inputView = finalDatePicker
+//        finalDatePicker?.addTarget(self, action: #selector(SettingsViewController.finalDateChanged(datePicker:)), for: .valueChanged)
     }
     
     func creatToolbar(){
