@@ -8,6 +8,8 @@
 
 import UIKit
 
+var filterDateHiddden = true
+
 class SettingsViewController: UITableViewController {
 
 
@@ -21,13 +23,19 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var finalDateTextField: UITextField!
     
     @IBOutlet weak var initialDateLabel: UILabel!
+    @IBOutlet weak var finalDateLabel: UILabel!
     
     @IBOutlet weak var initialDateCalendarPicker: UIDatePicker!
+    @IBOutlet weak var finalDateCalendarPicker: UIDatePicker!
     
     private var initialDatePicker: UIDatePicker?
     private var finalDatePicker: UIDatePicker?
     
     let themeKey = "DarkTheme"
+    let dayFilterKey = "DayFilter"
+    
+    var initialDatePickerHidden = true
+    var finalDatePickerHidden = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,30 +47,28 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        NEW FUNCTIONS
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        
-        datePickerChanged()
+        initialDatePickerChanged()
+        finalDatePickerChanged()
         
 //        OLD FUNCTIONS
         
         setUpPickers()
         creatToolbar()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.viewTapped(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.viewTapped(gestureRecognizer:)))
+//        view.addGestureRecognizer(tapGesture)
         
         
         if let themeMode = UserDefaults.standard.value(forKey: themeKey){
             themeSwitch.isOn = themeMode as! Bool 
         }
         
+        if let filterDay = UserDefaults.standard.value(forKey: dayFilterKey){
+            timeIntervalSwitch.isOn = filterDay as! Bool
+        }
+        
     }
     
-    
-    @IBAction func timeIntervalSetChange(_ sender: UISwitch) {
-    }
     
     @IBAction func themeChange(_ sender: UISwitch) {
         Theme.current = sender.isOn ? DarkTheme() : LightTheme()
@@ -73,50 +79,88 @@ class SettingsViewController: UITableViewController {
     }
     
     
-    @IBAction func initialPickerChanged(_ sender: UIDatePicker) {
-        datePickerChanged()
+    //    ====================================================================
+    //    ------------------------- NEW METHODS ------------------------------
+    //    ====================================================================
+    
+    @IBAction func timeIntervalSetChange(_ sender: UISwitch) {
+        if sender.isOn {
+            filterDateHiddden = !filterDateHiddden
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        } else {
+            filterDateHiddden = !filterDateHiddden
+            if initialDatePickerHidden == false {
+                initialDatePickerHidden = true
+            }
+            if finalDatePickerHidden == false {
+                finalDatePickerHidden = true
+                
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+        UserDefaults.standard.set(sender.isOn, forKey: dayFilterKey)
     }
     
+    @IBAction func initialPickerChanged(_ sender: UIDatePicker) {
+        initialDatePickerChanged()
+    }
+    @IBAction func finalPickerChanged(_ sender: UIDatePicker) {
+        finalDatePickerChanged()
+    }
     
-//    NEW METHODS
-    
-    func datePickerChanged () {
+    func initialDatePickerChanged () {
         initialDateLabel.text = DateFormatter.localizedString(from: initialDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
+        // Colocar o código para restringir opções da segunda picker view aqui!
+    }
+    
+    func finalDatePickerChanged () {
+        finalDateLabel.text = DateFormatter.localizedString(from: finalDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        if indexPath.section == 0 && indexPath.row == 0 {
-            toggleDatepicker()
+        if indexPath.section == 1 && indexPath.row == 2 {
+            toggleInitialDatepicker()
         }
-        print("OLA")
+        if indexPath.section == 1 && indexPath.row == 4 {
+            toggleFinalDatepicker()
+        }
     }
-    
-    var datePickerHidden = false
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
+        if filterDateHiddden && indexPath.section == 1 && indexPath.row == 2{
             return 0
-        }
-        else {
-            //            return tableView(tableView, heightForRowAtIndexPath: indexPath)
-            return super.tableView(tableView, heightForRowAt: indexPath as IndexPath)
+        } else if filterDateHiddden && indexPath.section == 1 && indexPath.row == 4{
+            return 0
+        } else if indexPath.section == 1 && indexPath.row == 1 {
+            return 0
+        } else if initialDatePickerHidden && indexPath.section == 1 && indexPath.row == 3 {
+            return 0
+        } else if finalDatePickerHidden && indexPath.section == 1 && indexPath.row == 5{
+            return 0
+        } else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
-    func toggleDatepicker() {
-        
-        datePickerHidden = !datePickerHidden
-        print("ola")
+    func toggleInitialDatepicker() {
+        initialDatePickerHidden = !initialDatePickerHidden
         tableView.beginUpdates()
         tableView.endUpdates()
-        
+    }
+    
+    func toggleFinalDatepicker() {
+        finalDatePickerHidden = !finalDatePickerHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     
     
-//    OLD METHODS
-    
+//    ====================================================================
+//    ----------------------- OLD METHODS --------------------------------
+//    ====================================================================
     func setUpPickers() {
         
         initialDatePicker = UIDatePicker()

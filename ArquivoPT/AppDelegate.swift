@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Theme.current = UserDefaults.standard.bool(forKey: "DarkTheme") ? DarkTheme() : LightTheme()
         }
         
+        if UserDefaults.standard.object(forKey: "DayFilter") != nil {
+            filterDateHiddden = UserDefaults.standard.bool(forKey: "DayFilter") ? false : true
+        }
+        
         return true
     }
 
