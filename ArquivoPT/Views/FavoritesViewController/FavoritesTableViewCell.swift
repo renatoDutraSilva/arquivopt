@@ -99,7 +99,6 @@ class FavoritesTableViewCell: UITableViewCell {
         yearSeparator.applyGradient(colours: [Theme.current.textColor, UIColor(named: "LightAccent")!])
         yearSeparator.layer.opacity = 50
         
-        
         self.recordNumberView.addSubview(recordDescriptionLabel)
         self.recordNumberView.addSubview(recordLabel)
         self.recordNumberView.addSubview(recordSeparator)

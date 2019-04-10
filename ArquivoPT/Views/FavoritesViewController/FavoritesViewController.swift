@@ -19,26 +19,33 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         ThemeFunctions.applyTheme(view: view)
         
+        setFavoriteData()
+
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    func setFavoriteData() {
+        
         if let unwrappedCategories = GlobalData.getFavoriteCategories() {
-            favoriteCategories = unwrappedCategories
-            favoriteSites = GlobalData.favoriteSiteArray
-        } else {
+            self.favoriteCategories = unwrappedCategories
+            self.favoriteSites = GlobalData.favoriteSiteArray
+            print(favoriteCategories)
+            print(favoriteSites)
+        }
+        /*else {
             // THIS CODE IS NOT WORKING
             noFavoritesLabel.frame = CGRect(x: (favoritesTableView.frame.width / 2) - 100, y: (favoritesTableView.frame.height / 2) - 22, width: 200, height: 44)
             noFavoritesLabel.text = "Não existem arquivos favoritos"
             noFavoritesLabel.layer.borderWidth = 3
             self.favoritesTableView.isHidden = true
             self.view.addSubview(noFavoritesLabel)
-        }
-        
+        }*/
         favoritesTableView.reloadData()
 
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,11 +82,38 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
         cell.logoImageView.image = cell.logoImage
         
-        cell.recordLabel.text = "2.031.102"
-        cell.yearLabel.text = "16 anos"
-        //cell.siteNameLabel.text = "Placeholder site name"
+        cell.recordLabel.text = "N/A"
+        cell.yearLabel.text = "N/A" + " anos"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            
+            GlobalData.favoriteSiteArray[indexPath.row].isFavorite = false
+
+            GlobalData.favoriteSiteArray.removeAll { (site) -> Bool in
+                return site.siteName == favoriteSites[indexPath.row].siteName
+            }
+
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            favoriteSites.remove(at: indexPath.row)
+
+            /*
+            if let unwrappedCategories = GlobalData.getFavoriteCategories() {
+                favoriteCategories = unwrappedCategories
+                print (unwrappedCategories)
+            }*/
+            
+            //print(favoriteCategories)
+            //tableView.reloadData()*/
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
