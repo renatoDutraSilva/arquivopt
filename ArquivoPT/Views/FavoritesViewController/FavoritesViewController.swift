@@ -36,14 +36,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             print(favoriteCategories)
             print(favoriteSites)
         }
-        /*else {
-            // THIS CODE IS NOT WORKING
-            noFavoritesLabel.frame = CGRect(x: (favoritesTableView.frame.width / 2) - 100, y: (favoritesTableView.frame.height / 2) - 22, width: 200, height: 44)
-            noFavoritesLabel.text = "Não existem arquivos favoritos"
-            noFavoritesLabel.layer.borderWidth = 3
-            self.favoritesTableView.isHidden = true
-            self.view.addSubview(noFavoritesLabel)
-        }*/
         favoritesTableView.reloadData()
 
     }
@@ -62,7 +54,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count
+        if GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count == 0 {
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
+            emptyLabel.text = "No Data"
+            emptyLabel.textAlignment = NSTextAlignment.center
+            emptyLabel.textColor = Theme.current.accent
+            self.favoritesTableView.backgroundView = emptyLabel
+            self.favoritesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            return 0
+            
+        }else {
+            return GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,6 +123,19 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected row at row: \(indexPath)")
+        
+        cellTapped(site: favoriteSites[indexPath.row])
     }
     
+}
+
+extension FavoritesViewController: CategoryRowDelegate {
+    func cellTapped(site: ModelSite){
+        
+        let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
+        vc.site = site
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }

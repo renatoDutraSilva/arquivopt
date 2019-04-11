@@ -18,7 +18,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     var filteredData: [Category: [ModelSite]]! = [.semCategoria: [ModelSite.placeHolder()]] {
         didSet{
             mainTableView.reloadData()
-            
         }
     }
     

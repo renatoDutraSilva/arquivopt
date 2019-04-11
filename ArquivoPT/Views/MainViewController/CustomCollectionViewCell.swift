@@ -45,7 +45,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func generateChiclet(){
     
         chicletButton.frame = CGRect(x: 0, y: 0, width: self.frame.width + 32, height: self.frame.height + 32)
-        chicletButton.addShadowAndRoundedCorners()
+        
         chicletButton.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
         chicletButton.addTarget(self, action: #selector(chicletButtonTouchUpInside), for: [.touchUpInside])
 
@@ -62,7 +62,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletButton.addSubview(labelBlurView)
         chicletButton.addSubview(siteNameLabel)
         
+        chicletButton.addRoundedCorners()
+        self.layer.addShadow(followingPathOf: chicletButton)
+        
+    
+        
         self.addSubview(chicletButton)
+        
 
     }
     

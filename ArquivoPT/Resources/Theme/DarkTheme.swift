@@ -8,15 +8,16 @@
 
 import UIKit
 
-
 class DarkTheme: ThemeProtocol {
-    var accent: UIColor =  UIColor(named: "Accent")!
+    var accent: UIColor = UIColor(named: "Accent")!
     var textColor: UIColor = UIColor(named: "Accent")!
-    var background: UIColor =  UIColor(named: "Background")!
-    var navigationBackground: UIColor =  UIColor(named: "NavigationBackground")!
-    var chicletBackground: UIColor =  UIColor(named: "ChicletBackground")!
+    var background: UIColor = UIColor(named: "Background")!
+    var navigationBackground: UIColor = UIColor(named: "NavigationBackground")!
+    var chicletBackground: UIColor = UIColor(named: "ChicletBackground")!
     
     // Cell Gradients
     var cellGradientLight: UIColor = UIColor(named: "CellGradientLight")!
     var cellGradientDark: UIColor = UIColor(named: "CellGradientDark")!
+    
+    var blurEffectStyle = UIBlurEffect.Style.light
 }

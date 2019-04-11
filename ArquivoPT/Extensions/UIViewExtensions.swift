@@ -10,16 +10,16 @@ import UIKit
 
 extension UIView {
     
-    func addShadowAndRoundedCorners() {
-        layer.shadowOffset = CGSize(width: 1, height: 2)
-        layer.shadowRadius = 7.0
-        layer.shadowOpacity = 0.25
-        layer.masksToBounds = true
-        layer.cornerRadius = 14
+    func addRoundedCorners() {
+        
+        self.layer.cornerRadius = 14.0
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.masksToBounds = true
     }
     
     func addBlurEffect() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffect = UIBlurEffect(style: Theme.current.blurEffectStyle)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -40,4 +40,16 @@ extension UIView {
     }
     
     
+}
+
+extension CALayer {
+    func addShadow(followingPathOf contentView: UIView) {
+        self.shadowColor = Theme.current.cellGradientDark.cgColor //UIColor.lightGray.cgColor
+        self.shadowOffset = CGSize(width: 0.0, height: 2.5)
+        self.shadowRadius = 4
+        self.shadowOpacity = 1.0
+        self.masksToBounds = false
+        //self.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+        self.backgroundColor = UIColor.clear.cgColor
+    }
 }

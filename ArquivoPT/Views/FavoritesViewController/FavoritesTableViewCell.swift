@@ -39,7 +39,7 @@ class FavoritesTableViewCell: UITableViewCell {
         
         chicletView.layer.masksToBounds = true
         chicletView.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
-       
+        
 
         blurView.frame = CGRect(x: 0, y: chicletView.frame.height - chicletView.frame.height/3, width: chicletView.frame.width, height: chicletView.frame.height/3)
         blurView.addBlurEffect()
@@ -56,12 +56,15 @@ class FavoritesTableViewCell: UITableViewCell {
         yearLabel.font = UIFont.systemFont(ofSize: 20)
 
         recordDescriptionLabel.text = "REGISTOS"
-        recordDescriptionLabel.textColor = Theme.current.cellGradientLight
+        recordDescriptionLabel.textColor = Theme.current.cellGradientDark
         recordDescriptionLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         yearDescriptionLabel.text = "HISTÓRICO"
-        yearDescriptionLabel.textColor = Theme.current.cellGradientLight
+        yearDescriptionLabel.textColor = Theme.current.cellGradientDark
         yearDescriptionLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        chicletView.addRoundedCorners()
+        self.contentView.layer.addShadow(followingPathOf: chicletView)
         
  
     }

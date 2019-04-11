@@ -99,6 +99,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Arquivo PT" id="9pF-Cq-gtA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <connections>
                         <outlet property="mainTableView" destination="vuZ-Ko-Yth" id="Dm6-UX-1uq"/>
                     </connections>

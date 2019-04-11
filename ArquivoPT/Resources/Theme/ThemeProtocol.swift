@@ -18,4 +18,7 @@ protocol ThemeProtocol {
     // Cell Gradients
     var cellGradientLight: UIColor { get }
     var cellGradientDark: UIColor { get }
+    
+    var blurEffectStyle: UIBlurEffect.Style { get }
+
 }

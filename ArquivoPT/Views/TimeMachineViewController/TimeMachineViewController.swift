@@ -35,7 +35,16 @@ class TimeMachineViewController: UIViewController {
         super.viewDidLoad()
         updateView(with: unwrappedSite)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+        
+        
+        if site!.isFavorite {
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconDeselected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+        } else {
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+        }
+        
         
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
 
@@ -66,21 +75,26 @@ class TimeMachineViewController: UIViewController {
     }
     // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
+        
         showFavoriteAlert()
         self.site?.isFavorite = !self.site!.isFavorite
         
         if site!.isFavorite {
             
             GlobalData.favoriteSiteArray.append(self.site!)
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconDeselected")
             
         } else {
             
             GlobalData.favoriteSiteArray.removeAll(where: { (site) -> Bool in
                 return site.siteName == self.site?.siteName
             })
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconSelected")
+
         }
         
-        print(GlobalData.favoriteSiteArray)
+        //print(GlobalData.favoriteSiteArray)
+        
     }
     
     func updateView(with site: ModelSite){
