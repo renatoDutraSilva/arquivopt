@@ -22,7 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if UserDefaults.standard.object(forKey: "DayFilter") != nil {
-            filterDateHiddden = UserDefaults.standard.bool(forKey: "DayFilter") ? false : true
+            SettingsParams.filterDateHiddden = UserDefaults.standard.bool(forKey: "DayFilter") ? false : true
+        }
+        
+        if UserDefaults.standard.object(forKey: "initialFilter") != nil {
+            SettingsParams.initialFilterDate = UserDefaults.standard.object(forKey: "initialFilter") as! Date
+        }
+        
+        if UserDefaults.standard.object(forKey: "finalFilter") != nil {
+            SettingsParams.finalFilterDate = UserDefaults.standard.object(forKey: "finalFilter") as! Date
         }
         
         return true
