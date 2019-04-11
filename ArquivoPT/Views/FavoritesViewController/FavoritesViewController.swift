@@ -66,7 +66,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 182
+        return 180
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,9 +78,9 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.siteNameLabel.text = siteName
         
-        cell.logoImage = UIImage(named: siteLogo) ?? UIImage(named: "presidencia.png")
-        cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
-        cell.logoImageView.image = cell.logoImage
+        let logoImage = UIImage(named: siteLogo) ?? UIImage(named: "presidencia.png")
+        /*cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)*/
+        cell.logoImageView.image = logoImage
         
         cell.recordLabel.text = "N/A"
         cell.yearLabel.text = "N/A" + " anos"
