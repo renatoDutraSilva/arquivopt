@@ -110,10 +110,11 @@ class SettingsViewController: UITableViewController {
             SettingsParams.filterDateHiddden = !SettingsParams.filterDateHiddden
             if initialDatePickerHidden == false {
                 initialDatePickerHidden = true
+                initialDateLabel.textColor = .black
             }
             if finalDatePickerHidden == false {
                 finalDatePickerHidden = true
-                
+                finalDateLabel.textColor = .black
             }
             tableView.beginUpdates()
             tableView.endUpdates()
