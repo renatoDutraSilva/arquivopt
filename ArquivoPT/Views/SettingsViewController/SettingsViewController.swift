@@ -178,6 +178,10 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    func resetSelectorColor(){
+        
+    }
+    
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if SettingsParams.filterDateHiddden && indexPath.section == 1 && indexPath.row == 2{

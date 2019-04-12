@@ -181,6 +181,9 @@ class TimeMachineViewController: UIViewController {
     
 }
 
+
+
+
 extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
@@ -244,10 +247,6 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         vc.siteWebName = site?.linkData[index]
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-//    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-//        <#code#>
-//    }
     
     func extractWebsiteDate(siteLinkID: String) -> [String]{
         
