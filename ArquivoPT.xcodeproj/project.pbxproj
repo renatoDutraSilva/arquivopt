@@ -39,6 +39,7 @@
 		8CDBF35122530858001EF727 /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF35022530858001EF727 /* WebViewController.storyboard */; };
 		8CDBF3532253086A001EF727 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF3522253086A001EF727 /* WebViewController.swift */; };
 		8CF00A9A225EA84C00034408 /* SettingsParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF00A99225EA84C00034408 /* SettingsParams.swift */; };
+		8CF00AA022625BA800034408 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF00A9F22625BA800034408 /* PopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		8CDBF35022530858001EF727 /* WebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
 		8CDBF3522253086A001EF727 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		8CF00A99225EA84C00034408 /* SettingsParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsParams.swift; sourceTree = "<group>"; };
+		8CF00A9F22625BA800034408 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		F786A2B5AEDD18A6C418F9B1 /* Pods-ArquivoPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArquivoPT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArquivoPT/Pods-ArquivoPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			children = (
 				8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */,
 				8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */,
+				8CF00A9F22625BA800034408 /* PopupViewController.swift */,
 			);
 			path = TimeMachineViewController;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */,
 				8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */,
 				8CDBF33B22502305001EF727 /* Theme.swift in Sources */,
+				8CF00AA022625BA800034408 /* PopupViewController.swift in Sources */,
 				889C21E7224C1414003C8D23 /* ViewController.swift in Sources */,
 				8C0A0AA6224FAAEA00DD4C5C /* SiteFunctions.swift in Sources */,
 				8C14C3812259682800BFF12B /* Structure.swift in Sources */,

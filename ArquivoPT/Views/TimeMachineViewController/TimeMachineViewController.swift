@@ -16,10 +16,10 @@ class TimeMachineViewController: UIViewController {
     var siteCategory: Category!
     var site: ModelSite?
     
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet var carouselView: iCarousel!
+    
+    @IBOutlet weak var dateButton: UIButton!
+    
     var dateFormatter = DateFormatter()
     
     var images = [UIImage]()
@@ -35,16 +35,12 @@ class TimeMachineViewController: UIViewController {
         super.viewDidLoad()
         updateView(with: unwrappedSite)
         
-        
-        
         if site!.isFavorite {
-            
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconDeselected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         } else {
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         }
-        
         
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
 
@@ -56,14 +52,7 @@ class TimeMachineViewController: UIViewController {
             }
         }
         
-        customizeLabels([monthLabel, dayLabel, yearLabel])
-        
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        
-        let width: CGFloat = screenWidth * 0.1
-        let height: CGFloat = screenHeight * 0.4
+        customizeButtons([dateButton])
         
         carouselView.type = iCarouselType.invertedTimeMachine
         carouselView.reloadData()
@@ -73,6 +62,14 @@ class TimeMachineViewController: UIViewController {
         carouselView.viewpointOffset = CGSize(width: 0, height: 0)
 
     }
+    
+
+    
+//=================================================//
+//------------------- Favorires -------------------//
+//=================================================//
+    
+    
     // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
         
@@ -111,14 +108,14 @@ class TimeMachineViewController: UIViewController {
         return weekDay - 1
     }
     
-    func customizeLabels(_ labels: [UILabel]){
+    func customizeButtons(_ buttons: [UIButton]){
        
-        for label in labels {
-            label.layer.backgroundColor = Theme.current.accent.cgColor
-            label.layer.cornerRadius = 7
-            label.textColor = UIColor.white
-            label.font = UIFont.boldSystemFont(ofSize: 19)
-            label.textAlignment = .center
+        for button in buttons {
+            button.layer.backgroundColor = Theme.current.accent.cgColor
+            button.layer.cornerRadius = 7
+            button.titleLabel?.textColor = UIColor.white
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            button.titleLabel?.textAlignment = .center
         }
     }
     
@@ -181,8 +178,9 @@ class TimeMachineViewController: UIViewController {
     
 }
 
-
-
+//===========================================================//
+//------------------------ iCarousel ------------------------//
+//===========================================================//
 
 extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     func numberOfItems(in carousel: iCarousel) -> Int {
@@ -229,11 +227,12 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
                 //dayLabel.text = "dia: " + websiteDate[0]
                 ////dateFormatter.weekdaySymbols?[Int(websiteDate[0]) ?? 1]
                 let fullDate = websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0]
-                dayLabel.text = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
-
+//                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
+//                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
+//                let year  = websiteDate[2]
+                
+                dateButton.titleLabel?.text = fullDate
                 print("\(websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0])")
-                monthLabel.text = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
-                yearLabel.text = websiteDate[2]
             }
         }
 

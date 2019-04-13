@@ -108,14 +108,10 @@ class SettingsViewController: UITableViewController {
             tableView.endUpdates()
         } else {
             SettingsParams.filterDateHiddden = !SettingsParams.filterDateHiddden
-            if initialDatePickerHidden == false {
-                initialDatePickerHidden = true
-                initialDateLabel.textColor = .black
-            }
-            if finalDatePickerHidden == false {
-                finalDatePickerHidden = true
-                finalDateLabel.textColor = .black
-            }
+            initialDatePickerHidden = true
+            initialDateLabel.textColor = .black
+            finalDatePickerHidden = true
+            finalDateLabel.textColor = .black
             tableView.beginUpdates()
             tableView.endUpdates()
         }
@@ -162,9 +158,7 @@ class SettingsViewController: UITableViewController {
             } else{
                 initialDateLabel.textColor = .black
             }
-            if finalDateLabel.textColor == .red{
-                finalDateLabel.textColor = .black
-            }
+            finalDateLabel.textColor = .black
         }
         if indexPath.section == 1 && indexPath.row == 4 {
             toggleFinalDatepicker()
@@ -173,9 +167,7 @@ class SettingsViewController: UITableViewController {
             } else{
                 finalDateLabel.textColor = .black
             }
-            if initialDateLabel.textColor == .red{
-                initialDateLabel.textColor = .black
-            }
+            initialDateLabel.textColor = .black
         }
     }
     
