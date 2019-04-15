@@ -44,45 +44,6 @@ class SiteFunctions {
                     }
                 }
             }
-
-//            GlobalData.mainSiteArray = [
-//                .jornais: [
-//                    ModelSite(siteLogo: "dn.png", siteName: "Diário de Notícias", versions: nil, category: .jornais, linkData: linkData),
-//                    ModelSite(siteLogo: "publico.png", siteName: "Público", versions: nil, category: .jornais, linkData: linkData),
-//                    ModelSite(siteLogo: "jn.png", siteName: "Jornal de Notícias", versions: nil, category: .jornais, linkData: linkData),
-//                    ModelSite(siteLogo: "dnoticias.png", siteName: "Correio da Manhã", versions: nil, category: .jornais, linkData: linkData),
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "Sol", versions: nil, category: .jornais, linkData: linkData),
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "Destak", versions: nil, category: .jornais, linkData: linkData)
-//                ],
-//
-//                .artesECultura: [
-//                    ModelSite(siteLogo: "gulbenkian.png", siteName: "Gulbenkian", versions: nil, category: .artesECultura, linkData: linkData)
-//                ],
-//                .desporto: [
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "A Bola", versions: nil, category: .desporto, linkData: linkData)
-//                ],
-//                .radioETV: [
-//                    ModelSite(siteLogo: "sic.png", siteName: "SIC", versions: nil, category: .radioETV, linkData: linkData),
-//                    ModelSite(siteLogo: "tvi.png", siteName: "TVI", versions: nil, category: .radioETV, linkData: linkData),
-//                    ModelSite(siteLogo: "rtp.png", siteName: "RTP", versions: nil, category: .radioETV, linkData: linkData)
-//
-//                ],
-//                .organismosSociais: [
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "FCT", versions: nil, category: .organismosSociais, linkData: linkData)
-//                ],
-//                .organismosGovernamentais: [
-//                    ModelSite(siteLogo: "presidencia.png", siteName: "Presidencia", versions: nil, category: .organismosGovernamentais, linkData: linkData)
-//                ],
-//                .universidades: [
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "Universidade de Lisboa", versions: nil, category: .universidades, linkData: linkData)
-//                ],
-//                .eventos: [
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "Expo 98", versions: nil, category: .eventos, linkData: linkData)
-//                ],
-//                .personalidades: [
-//                    ModelSite(siteLogo: "dn.Logo", siteName: "José Saramago", versions: nil, category: .personalidades, linkData: linkData)
-//                ]
-//            ]
             
             let filteredData = GlobalData.mainSiteArray
             DispatchQueue.main.async {

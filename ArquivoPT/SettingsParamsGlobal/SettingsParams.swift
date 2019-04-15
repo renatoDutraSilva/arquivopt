@@ -12,6 +12,6 @@ import Foundation
 class SettingsParams {
     static var filterDateHiddden = true
     
-    static var initialFilterDate = Date()
+    static var initialFilterDate = Date() //É necessário definir uma data inicial aqui!
     static var finalFilterDate = Date()
 }

@@ -40,6 +40,7 @@
 		8CDBF3532253086A001EF727 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF3522253086A001EF727 /* WebViewController.swift */; };
 		8CF00A9A225EA84C00034408 /* SettingsParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF00A99225EA84C00034408 /* SettingsParams.swift */; };
 		8CF00AA022625BA800034408 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF00A9F22625BA800034408 /* PopupViewController.swift */; };
+		8CF00AA22264290700034408 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF00AA12264290700034408 /* NotificationNameExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		8CDBF3522253086A001EF727 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		8CF00A99225EA84C00034408 /* SettingsParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsParams.swift; sourceTree = "<group>"; };
 		8CF00A9F22625BA800034408 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		8CF00AA12264290700034408 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		F786A2B5AEDD18A6C418F9B1 /* Pods-ArquivoPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArquivoPT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArquivoPT/Pods-ArquivoPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 				8C0A0AA0224F003B00DD4C5C /* TimeMachineViewController.storyboard */,
 				8C0A0AA2224F005100DD4C5C /* TimeMachineViewController.swift */,
 				8CF00A9F22625BA800034408 /* PopupViewController.swift */,
+				8CF00AA12264290700034408 /* NotificationNameExtension.swift */,
 			);
 			path = TimeMachineViewController;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				889C21FB224C1F11003C8D23 /* Category.swift in Sources */,
 				8C0A0AB4224FB29900DD4C5C /* SettingsViewController.swift in Sources */,
 				8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */,
+				8CF00AA22264290700034408 /* NotificationNameExtension.swift in Sources */,
 				8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */,
 				8CDBF33B22502305001EF727 /* Theme.swift in Sources */,
 				8CF00AA022625BA800034408 /* PopupViewController.swift in Sources */,
