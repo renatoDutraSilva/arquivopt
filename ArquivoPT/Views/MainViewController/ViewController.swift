@@ -29,7 +29,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         searchController.searchBar.tintColor = Theme.current.accent
         searchController.searchBar.barTintColor = Theme.current.navigationBackground
     }
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

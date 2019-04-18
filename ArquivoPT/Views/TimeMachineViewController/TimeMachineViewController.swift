@@ -34,7 +34,7 @@ class TimeMachineViewController: UIViewController {
             setFilterLabels()
             if images.count == 0{
                 noImagesLabel.textColor = Theme.current.accent
-            }else{
+            } else {
                 noImagesLabel.textColor = .clear
             }
         }
@@ -93,7 +93,7 @@ class TimeMachineViewController: UIViewController {
             finalFilterDateLabel.text = format.string(from: SettingsParams.finalFilterDate)
             initialFilterDateLabel.textColor = .black
             finalFilterDateLabel.textColor = .black
-        }else{
+        } else{
             filterSetLabel.textColor = .clear
             initialFilterDateLabel.textColor = .clear
             finalFilterDateLabel.textColor = .clear
