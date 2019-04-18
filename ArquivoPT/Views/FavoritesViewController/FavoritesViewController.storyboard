@@ -188,7 +188,7 @@
         <scene sceneID="YR9-Rw-5ex">
             <objects>
                 <navigationController title="Favoritos" id="BNp-FS-Mkm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="szu-K3-fPd"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="starIcon" id="szu-K3-fPd"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dkP-Ul-pje">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -209,4 +209,7 @@
             <point key="canvasLocation" x="-278" y="-108"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="starIcon" width="50" height="50"/>
+    </resources>
 </document>

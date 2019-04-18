@@ -12,6 +12,6 @@ import Foundation
 class SettingsParams {
     static var filterDateHiddden = true
     
-    static var initialFilterDate = Date()
+    static var initialFilterDate = Date(timeIntervalSinceReferenceDate: -100000)
     static var finalFilterDate = Date()
 }

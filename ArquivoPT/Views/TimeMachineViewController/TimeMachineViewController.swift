@@ -12,21 +12,38 @@ import AudioToolbox
 
 class TimeMachineViewController: UIViewController {
     
-    var siteId: UUID!
     var siteCategory: Category!
     var site: ModelSite?
     
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet var carouselView: iCarousel!
-    var dateFormatter = DateFormatter()
+    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var noImagesLabel: UILabel!
+    @IBOutlet weak var filterSetLabel: UILabel!
+    @IBOutlet weak var initialFilterDateLabel: UILabel!
+    @IBOutlet weak var finalFilterDateLabel: UILabel!
     
-    var images = [UIImage]()
+    
+    
+    var dateFormatter = DateFormatter()
+    let impact = UIImpactFeedbackGenerator()
     let selection = UISelectionFeedbackGenerator()
+    
+    var images = [UIImage](){
+        didSet{
+            carouselView.reloadData()
+            setFilterLabels()
+            if images.count == 0{
+                noImagesLabel.textColor = Theme.current.accent
+            } else {
+                noImagesLabel.textColor = .clear
+            }
+        }
+    }
+    var validDates = [String]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadImages()
         ThemeFunctions.applyTheme(view: view)
     }
     
@@ -34,45 +51,92 @@ class TimeMachineViewController: UIViewController {
         guard let unwrappedSite = site else {return}
         super.viewDidLoad()
         updateView(with: unwrappedSite)
-        
-        
-        
-        if site!.isFavorite {
-            
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconDeselected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
-        } else {
-            
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
-        }
-        
-        
+        checkIsFavorite()
         navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
-
-        if let LinkID = site?.linkDataID{
-            for id in LinkID{
-                if let imagem = UIImage(named: unwrappedSite.siteFileId + "_" + id + ".png"){
-                    images.append(imagem)
-                }
-            }
+        filterSetLabel.text = "Filtro Definido"
+        noImagesLabel.text = "Não existem dados disponíveis"
+        
+        customizeButtons([dateButton])
+        NotificationCenter.default.addObserver(forName: .saveSelectedDate, object: nil, queue: OperationQueue.main) { (notification) in
+            let dateVC = notification.object as! PopupViewController
+            let currentPage = dateVC.selectedDate
+            self.carouselView.scrollToItem(at: currentPage, animated: true)
         }
-        
-        customizeLabels([monthLabel, dayLabel, yearLabel])
-        
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        
-        let width: CGFloat = screenWidth * 0.1
-        let height: CGFloat = screenHeight * 0.4
-        
         carouselView.type = iCarouselType.invertedTimeMachine
-        carouselView.reloadData()
+
         
 //        --- carouselView Options ---
 //        carouselView.perspective = -0.005
-        carouselView.viewpointOffset = CGSize(width: 0, height: 0)
+//        carouselView.viewpointOffset = CGSize(width: 0, height: 0)
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPopupViewControllerSegue"{
+            let popup = segue.destination as! PopupViewController
+            popup.validDates = validDates
+        }
+    }
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        impact.impactOccurred()
+        
+    }
+    
+    func setFilterLabels() {
+        let format = DateFormatter()
+        format.dateFormat = "dd-MM-yyyy"
+
+        if !SettingsParams.filterDateHiddden{
+            filterSetLabel.textColor = Theme.current.accent
+            initialFilterDateLabel.text = format.string(from: SettingsParams.initialFilterDate)
+            finalFilterDateLabel.text = format.string(from: SettingsParams.finalFilterDate)
+            initialFilterDateLabel.textColor = .black
+            finalFilterDateLabel.textColor = .black
+        } else{
+            filterSetLabel.textColor = .clear
+            initialFilterDateLabel.textColor = .clear
+            finalFilterDateLabel.textColor = .clear
+        }
+    }
+    
+
+    
+    func loadImages(){
+        let format = DateFormatter()
+        format.dateFormat = "yyyyMMdd"
+        
+        images.removeAll()
+        validDates.removeAll()
+        
+        if let LinkID = site?.linkDataID{
+            for id in LinkID{
+                if SettingsParams.filterDateHiddden {
+                    if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
+                        images.append(imagem)
+                    }
+                } else {
+                    let initialLinkdID = format.string(from: SettingsParams.initialFilterDate)
+                    let finalLinkdID = format.string(from: SettingsParams.finalFilterDate)
+                    if id > initialLinkdID && id < finalLinkdID{
+                        if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
+                            images.append(imagem)
+                            let websiteDate = extractWebsiteDate(siteLinkID: id)
+                            let fullDate = websiteDate[2]+" - "+websiteDate[1]+" - "+websiteDate[0]
+                            validDates.append(fullDate)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+//=================================================//
+//------------------- Favorires -------------------//
+//=================================================//
+    
+    
     // Toggle site.isFavorite
     @objc func toggleFavorite(_ sender: UIBarButtonItem) {
         
@@ -97,6 +161,14 @@ class TimeMachineViewController: UIViewController {
         
     }
     
+    func checkIsFavorite(){
+        if site!.isFavorite {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconDeselected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+        }
+    }
+    
     func updateView(with site: ModelSite){
         self.title = site.siteName
         self.site = site
@@ -111,14 +183,14 @@ class TimeMachineViewController: UIViewController {
         return weekDay - 1
     }
     
-    func customizeLabels(_ labels: [UILabel]){
+    func customizeButtons(_ buttons: [UIButton]){
        
-        for label in labels {
-            label.layer.backgroundColor = Theme.current.accent.cgColor
-            label.layer.cornerRadius = 7
-            label.textColor = UIColor.white
-            label.font = UIFont.boldSystemFont(ofSize: 19)
-            label.textAlignment = .center
+        for button in buttons {
+            button.layer.backgroundColor = Theme.current.accent.cgColor
+            button.layer.cornerRadius = 7
+            button.titleLabel?.textColor = UIColor.white
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            button.titleLabel?.textAlignment = .center
         }
     }
     
@@ -181,6 +253,10 @@ class TimeMachineViewController: UIViewController {
     
 }
 
+//===========================================================//
+//------------------------ iCarousel ------------------------//
+//===========================================================//
+
 extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
@@ -192,8 +268,8 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
-        let width: CGFloat = screenWidth * 0.4
-        let height: CGFloat = screenHeight * 0.4
+        let width: CGFloat = 0.5 * screenWidth
+        let height: CGFloat = 0.2 * screenHeight
         
         let tempView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
@@ -201,7 +277,8 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         let imageView = UIImageView()
         
         imageView.frame = frame
-        imageView.contentMode = .scaleAspectFit
+//        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.image = images[index]
         //        imageView.isHighlighted = true
         
@@ -212,6 +289,8 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         imageView.layer.shadowRadius = 5
         imageView.layer.shadowOpacity = 0.4
         
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor(red:0, green:0, blue:0, alpha: 1).cgColor
         tempView.addSubview(imageView)
         
         return tempView
@@ -223,14 +302,12 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         if carousel.currentItemIndex != -1{
             if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
                 let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
-                //dayLabel.text = "dia: " + websiteDate[0]
-                ////dateFormatter.weekdaySymbols?[Int(websiteDate[0]) ?? 1]
                 let fullDate = websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0]
-                dayLabel.text = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
-
+//                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
+//                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
+//                let year  = websiteDate[2]
+                dateButton.titleLabel?.text = fullDate
                 print("\(websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0])")
-                monthLabel.text = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
-                yearLabel.text = websiteDate[2]
             }
         }
 
@@ -244,10 +321,6 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         vc.siteWebName = site?.linkData[index]
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-//    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-//        <#code#>
-//    }
     
     func extractWebsiteDate(siteLinkID: String) -> [String]{
         

@@ -52,9 +52,10 @@ class SettingsViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyy HH:mm"
         let minDate = formatter.date(from: "01/01/1996 00:00")
-        
         let maxDate = Date()
-        
+        let loc = Locale(identifier: "pt")
+        self.initialDateCalendarPicker.locale = loc
+        self.finalDateCalendarPicker.locale = loc
         
         if let themeMode = UserDefaults.standard.value(forKey: themeKey){
             themeSwitch.isOn = themeMode as! Bool
@@ -89,10 +90,8 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func themeChange(_ sender: UISwitch) {
         Theme.current = sender.isOn ? DarkTheme() : LightTheme()
-        
         UserDefaults.standard.set(sender.isOn, forKey: themeKey)
         ThemeFunctions.applyTheme(view: view)
-        
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
     }
     
@@ -108,13 +107,10 @@ class SettingsViewController: UITableViewController {
             tableView.endUpdates()
         } else {
             SettingsParams.filterDateHiddden = !SettingsParams.filterDateHiddden
-            if initialDatePickerHidden == false {
-                initialDatePickerHidden = true
-            }
-            if finalDatePickerHidden == false {
-                finalDatePickerHidden = true
-                
-            }
+            initialDatePickerHidden = true
+            initialDateLabel.textColor = .black
+            finalDatePickerHidden = true
+            finalDateLabel.textColor = .black
             tableView.beginUpdates()
             tableView.endUpdates()
         }
@@ -161,9 +157,7 @@ class SettingsViewController: UITableViewController {
             } else{
                 initialDateLabel.textColor = .black
             }
-            if finalDateLabel.textColor == .red{
-                finalDateLabel.textColor = .black
-            }
+            finalDateLabel.textColor = .black
         }
         if indexPath.section == 1 && indexPath.row == 4 {
             toggleFinalDatepicker()
@@ -172,10 +166,12 @@ class SettingsViewController: UITableViewController {
             } else{
                 finalDateLabel.textColor = .black
             }
-            if initialDateLabel.textColor == .red{
-                initialDateLabel.textColor = .black
-            }
+            initialDateLabel.textColor = .black
         }
+    }
+    
+    func resetSelectorColor(){
+        
     }
     
 

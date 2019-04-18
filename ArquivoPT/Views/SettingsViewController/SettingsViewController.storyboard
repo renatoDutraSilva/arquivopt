@@ -28,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-Qv-B0t">
-                                                    <rect key="frame" x="20" y="11" width="84" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="86" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="cLI-Qv-B0t" secondAttribute="height" multiplier="4:1" id="7qO-pQ-cuE"/>
                                                     </constraints>
@@ -50,6 +50,7 @@
                                                 <constraint firstItem="I4J-ob-F0q" firstAttribute="top" secondItem="LmM-b9-Fli" secondAttribute="top" constant="6" id="Rkb-Ug-Pfg"/>
                                                 <constraint firstItem="cLI-Qv-B0t" firstAttribute="leading" secondItem="LmM-b9-Fli" secondAttribute="leadingMargin" id="USB-nB-hNq"/>
                                                 <constraint firstAttribute="trailing" secondItem="I4J-ob-F0q" secondAttribute="trailing" constant="20" id="eBy-KK-Ckn"/>
+                                                <constraint firstItem="cLI-Qv-B0t" firstAttribute="centerY" secondItem="LmM-b9-Fli" secondAttribute="centerY" id="h32-Zy-YXY"/>
                                                 <constraint firstItem="cLI-Qv-B0t" firstAttribute="top" secondItem="LmM-b9-Fli" secondAttribute="topMargin" id="zGx-63-6Gl"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -231,7 +232,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versão" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-oF-ku8">
-                                                    <rect key="frame" x="20" y="11" width="53" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="53" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="pBY-oF-ku8" secondAttribute="height" multiplier="53:21" id="Dtc-ws-3n5"/>
                                                     </constraints>
@@ -240,7 +241,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScV-JQ-KP1">
-                                                    <rect key="frame" x="352" y="11" width="22" height="21"/>
+                                                    <rect key="frame" x="364" y="8" width="22" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ScV-JQ-KP1" secondAttribute="height" multiplier="22:21" id="M76-nb-VoF"/>
                                                     </constraints>
@@ -283,11 +284,11 @@
             </objects>
             <point key="canvasLocation" x="418.84057971014494" y="61.607142857142854"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Opções-->
         <scene sceneID="nee-qT-yzj">
             <objects>
                 <navigationController id="0hz-K8-PB3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Lrg-gL-euY"/>
+                    <tabBarItem key="tabBarItem" title="Opções" image="moreIcon" id="Lrg-gL-euY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="fvC-dz-XQH">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -308,4 +309,7 @@
             <point key="canvasLocation" x="-1042" y="67"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="moreIcon" width="26" height="26"/>
+    </resources>
 </document>

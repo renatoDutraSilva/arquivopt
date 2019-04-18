@@ -18,6 +18,8 @@ class ThemeFunctions{
         UINavigationBar.appearance().tintColor = Theme.current.accent //(Altera a cor dos botões de navegação)
         UITabBar.appearance().tintColor = Theme.current.accent //(Altera a core de selecção dos icons)
         UITabBar.appearance().backgroundColor = Theme.current.navigationBackground
+        // Pode ser implementado de uma forma mais correcta no futuro
+        UIApplication.shared.statusBarStyle = UserDefaults.standard.bool(forKey: "DarkTheme") ? .lightContent : .default
     }
     
 }
