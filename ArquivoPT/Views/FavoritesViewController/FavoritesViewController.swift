@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     var favoriteCategories = [Category]()
     let noFavoritesLabel = UILabel()
     var favoriteSites = [ModelSite]()
+    let emptyLabel = UILabel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,15 +36,37 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.favoriteSites = GlobalData.favoriteSiteArray
             print(favoriteCategories)
             print(favoriteSites)
+        }else {
+            favoriteCategories.removeAll()
         }
         favoritesTableView.reloadData()
 
     }
     
+    func shouldIndicateNoFavorites(_ shouldShow: Bool) {
+        if shouldShow {
+            emptyLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+            emptyLabel.text = "Sem Favoritos definidos."
+            emptyLabel.textAlignment = NSTextAlignment.center
+            emptyLabel.textColor = Theme.current.accent
+            self.favoritesTableView.backgroundView = emptyLabel
+            self.favoritesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+        } else {
+            emptyLabel.isHidden = true
+            self.favoritesTableView.backgroundView = nil
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return favoriteCategories.count
-        
+        if favoriteCategories.isEmpty {
+            shouldIndicateNoFavorites(true)
+            return 0
+        } else {
+            shouldIndicateNoFavorites(false)
+            return favoriteCategories.count
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -54,20 +77,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        if GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count == 0 {
-            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-            emptyLabel.text = "No Data"
-            emptyLabel.textAlignment = NSTextAlignment.center
-            emptyLabel.textColor = Theme.current.accent
-            self.favoritesTableView.backgroundView = emptyLabel
-            self.favoritesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-            return 0
-            
-        }else {
-            return GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count
-        }
-        
-        
+        return GlobalData.getFavoriteSites(ofCategory: favoriteCategories[section]).count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,24 +110,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             
-            GlobalData.favoriteSiteArray[indexPath.row].isFavorite = false
+            //print("REMOVED \(favoriteSites[indexPath.row].siteName) from \(favoriteCategories[indexPath.section])")
+            
+            let favoriteSite = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row]
+            
+            favoriteSite.isFavorite = false
 
             GlobalData.favoriteSiteArray.removeAll { (site) -> Bool in
-                return site.siteName == favoriteSites[indexPath.row].siteName
+                return site.siteName == favoriteSite.siteName
             }
 
-            
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            favoriteSites.remove(at: indexPath.row)
 
-            /*
-            if let unwrappedCategories = GlobalData.getFavoriteCategories() {
-                favoriteCategories = unwrappedCategories
-                print (unwrappedCategories)
-            }*/
+            setFavoriteData()
             
-            //print(favoriteCategories)
-            //tableView.reloadData()*/
         }
     }
     

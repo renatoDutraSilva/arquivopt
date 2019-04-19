@@ -21,7 +21,8 @@ class GlobalData {
         favoriteSiteArray.forEach { (site) in
             favoriteCategories.append(site.category)
         }
-        return favoriteCategories.removingDuplicates()
+        if favoriteCategories.isEmpty { return nil }
+        else { return favoriteCategories.removingDuplicates() }
     }
     
     static func getFavoriteSites(ofCategory category: Category) -> [ModelSite]{
