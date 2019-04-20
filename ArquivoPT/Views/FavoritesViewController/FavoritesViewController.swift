@@ -122,6 +122,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
             tableView.deleteRows(at: [indexPath], with: .automatic)
 
+           /* if GlobalData.getFavoriteSites(ofCategory: favoriteSite.category).isEmpty {
+                tableView.deleteSections([indexPath.section], with: .automatic)
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()*/
             setFavoriteData()
             
         }
