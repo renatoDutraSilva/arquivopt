@@ -61,7 +61,7 @@ class TimeMachineViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: .saveSelectedDate, object: nil, queue: OperationQueue.main) { (notification) in
             let dateVC = notification.object as! PopupViewController
             let currentPage = dateVC.selectedDate
-            self.carouselView.scrollToItem(at: currentPage, animated: true)
+            self.carouselView.scrollToItem(at: currentPage!, animated: true)
         }
         carouselView.type = iCarouselType.invertedTimeMachine
 
@@ -76,12 +76,12 @@ class TimeMachineViewController: UIViewController {
         if segue.identifier == "toPopupViewControllerSegue"{
             let popup = segue.destination as! PopupViewController
             popup.validDates = validDates
+            popup.selectedDate = carouselView.currentItemIndex
         }
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         impact.impactOccurred()
-        
     }
     
     func setFilterLabels() {
@@ -117,7 +117,7 @@ class TimeMachineViewController: UIViewController {
                     if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
                         images.append(imagem)
                         let websiteDate = extractWebsiteDate(siteLinkID: id)
-                        let fullDate = websiteDate[2]+" - "+websiteDate[1]+" - "+websiteDate[0]
+                        let fullDate = websiteDate[0]+" - "+websiteDate[1]+" - "+websiteDate[2]
                         validDates.append(fullDate)
                         if let link = site?.linkData[index]{
                             validLinks.append(link)
@@ -130,7 +130,7 @@ class TimeMachineViewController: UIViewController {
                         if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
                             images.append(imagem)
                             let websiteDate = extractWebsiteDate(siteLinkID: id)
-                            let fullDate = websiteDate[2]+" - "+websiteDate[1]+" - "+websiteDate[1]
+                            let fullDate = websiteDate[0]+" - "+websiteDate[1]+" - "+websiteDate[2]
                             validDates.append(fullDate)
                             if let link = site?.linkData[index]{
                                 validLinks.append(link)
@@ -167,9 +167,6 @@ class TimeMachineViewController: UIViewController {
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconSelected")
 
         }
-        
-        //print(GlobalData.favoriteSiteArray)
-        
     }
     
     func checkIsFavorite(){

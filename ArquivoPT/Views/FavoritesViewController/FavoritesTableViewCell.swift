@@ -38,6 +38,7 @@ class FavoritesTableViewCell: UITableViewCell {
     func generateChiclet(){
         
         chicletView.layer.masksToBounds = true
+
         chicletView.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
         
         blurView.frame = CGRect(x: 0, y: chicletView.frame.height - chicletView.frame.height/3, width: chicletView.frame.width, height: chicletView.frame.height/3)

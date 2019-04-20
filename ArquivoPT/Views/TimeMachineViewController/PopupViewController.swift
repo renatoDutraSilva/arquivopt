@@ -15,12 +15,12 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var datePicker: UIPickerView!
     
     var validDates = [String]()
-    var selectedDate = 0
+    var selectedDate: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.delegate = self
-        datePicker.selectRow(20, inComponent:0, animated:true)
+        datePicker.selectRow(selectedDate!, inComponent:0, animated:true)
     }
     @IBAction func closeButtonTaped(_ sender: UIButton) {
         NotificationCenter.default.post(name: .saveSelectedDate, object: self)
