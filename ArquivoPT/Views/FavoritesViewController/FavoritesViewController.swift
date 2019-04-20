@@ -88,6 +88,9 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoritesTableViewCell
         let siteName = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].siteName
         let siteLogo = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].siteLogo
+        let totalRecords = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].totalRecords
+        let firstRecordedYear = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].firstRecordedYear
+        let lastRecordedYear = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].lastRecordedYear
         
         cell.selectionStyle = .none
         
@@ -97,8 +100,15 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         /*cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)*/
         cell.logoImageView.image = logoImage
         
-        cell.recordLabel.text = "N/A"
-        cell.yearLabel.text = "N/A" + " anos"
+        cell.recordLabel.text = String(totalRecords)
+        cell.yearLabel.text = firstRecordedYear + " - " + lastRecordedYear
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        //let screenHeight = screenSize.height
+        
+        cell.chicletView.bounds = CGRect(x: 0, y: 0, width: screenWidth, height: 188)
+        cell.chicletView.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
         
         return cell
     }
