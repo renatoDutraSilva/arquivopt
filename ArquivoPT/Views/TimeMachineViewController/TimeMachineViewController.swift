@@ -21,7 +21,7 @@ class TimeMachineViewController: UIViewController {
     @IBOutlet weak var filterSetLabel: UILabel!
     @IBOutlet weak var initialFilterDateLabel: UILabel!
     @IBOutlet weak var finalFilterDateLabel: UILabel!
-    
+    @IBOutlet weak var dateLabel: UILabel!
     
     
     var dateFormatter = DateFormatter()
@@ -314,7 +314,7 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
 //                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
 //                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
 //                let year  = websiteDate[2]
-                dateButton.titleLabel?.text = fullDate
+                dateLabel.text = fullDate
                 print("\(websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2])")
             }
         }

@@ -19,6 +19,7 @@ class PopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         datePicker.delegate = self
         datePicker.selectRow(selectedDate!, inComponent:0, animated:true)
     }
