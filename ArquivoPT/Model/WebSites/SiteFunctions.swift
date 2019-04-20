@@ -33,6 +33,9 @@ class SiteFunctions {
                         let category = Category.getRawValueFromIndex(index: i)
                         let linkData = loadLinks(fileName: temp[0].websiteFileId[j] + "_Links")
                         let linkDataID = loadLinks(fileName: temp[0].websiteFileId[j] + "_LinksID")
+                        let totalRecords = linkData.count
+                        let firstRecordedYear = String(linkDataID[1].prefix(4))
+                        let lastRecordedYear = String(linkDataID[linkDataID.count - 1].prefix(4))
                         
                         GlobalData.mainSiteArray[Category.getRawValueFromIndex(index: i)]?.append(
                             ModelSite(siteLogo: nameOfLogo,
@@ -40,7 +43,10 @@ class SiteFunctions {
                                       siteFileId: fileId,
                                       category: category,
                                       linkData: linkData,
-                                      linkDataID: linkDataID))
+                                      linkDataID: linkDataID,
+                                      totalRecords: totalRecords,
+                                      firstRecordedYear: firstRecordedYear,
+                                      lastRecordedYear: lastRecordedYear))
                     }
                 }
             }
@@ -116,7 +122,7 @@ class SiteFunctions {
             .personalidades: [Structure(websiteName:
                 ["Fundação José Saramago"],
                                         websiteFileId:
-                ["josesaramago"])]
+                ["saramago"])]
         ]
     }
     
