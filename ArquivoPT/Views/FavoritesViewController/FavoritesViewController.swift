@@ -145,7 +145,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected row at row: \(indexPath)")
         
-        cellTapped(site: favoriteSites[indexPath.row])
+        cellTapped(site: GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row])
     }
     
 }
