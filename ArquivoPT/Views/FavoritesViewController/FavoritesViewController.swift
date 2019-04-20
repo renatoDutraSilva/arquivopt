@@ -93,7 +93,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.siteNameLabel.text = siteName
         
-        let logoImage = UIImage(named: siteLogo) ?? UIImage(named: "presidencia.png")
+        let logoImage = UIImage(named: siteLogo) ?? UIImage(named: "default.png")
         /*cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)*/
         cell.logoImageView.image = logoImage
         
