@@ -9,22 +9,35 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, WKNavigationDelegate{
 
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var websiteView: WKWebView!
     
     var siteWebName: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         ThemeFunctions.applyTheme(view: view)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        webView.load(URLRequest(url: URL(string: (siteWebName)!)!))
+        if let website = siteWebName{
+            if let url = URL(string: website){
+                websiteView.load(URLRequest(url: url))
+            }
+        }
+
+        websiteView.allowsBackForwardNavigationGestures = true
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
 }

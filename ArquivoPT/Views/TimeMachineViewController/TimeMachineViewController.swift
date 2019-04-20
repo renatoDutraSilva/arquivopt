@@ -40,6 +40,7 @@ class TimeMachineViewController: UIViewController {
         }
     }
     var validDates = [String]()
+    var validLinks = [String]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -108,12 +109,19 @@ class TimeMachineViewController: UIViewController {
         
         images.removeAll()
         validDates.removeAll()
+        validLinks.removeAll()
         
         if let LinkID = site?.linkDataID{
-            for id in LinkID{
+            for (index, id) in LinkID.enumerated(){
                 if SettingsParams.filterDateHiddden {
                     if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
                         images.append(imagem)
+                        let websiteDate = extractWebsiteDate(siteLinkID: id)
+                        let fullDate = websiteDate[2]+" - "+websiteDate[1]+" - "+websiteDate[0]
+                        validDates.append(fullDate)
+                        if let link = site?.linkData[index]{
+                            validLinks.append(link)
+                        }
                     }
                 } else {
                     let initialLinkdID = format.string(from: SettingsParams.initialFilterDate)
@@ -122,8 +130,11 @@ class TimeMachineViewController: UIViewController {
                         if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
                             images.append(imagem)
                             let websiteDate = extractWebsiteDate(siteLinkID: id)
-                            let fullDate = websiteDate[2]+" - "+websiteDate[1]+" - "+websiteDate[0]
+                            let fullDate = websiteDate[2]+" - "+websiteDate[1]+" - "+websiteDate[1]
                             validDates.append(fullDate)
+                            if let link = site?.linkData[index]{
+                                validLinks.append(link)
+                            }
                         }
                     }
                 }
@@ -302,12 +313,12 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         if carousel.currentItemIndex != -1{
             if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
                 let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
-                let fullDate = websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0]
+                let fullDate = websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2]
 //                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
 //                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
 //                let year  = websiteDate[2]
                 dateButton.titleLabel?.text = fullDate
-                print("\(websiteDate[2]+"/"+websiteDate[1]+"/"+websiteDate[0])")
+                print("\(websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2])")
             }
         }
 
@@ -318,7 +329,7 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         
         let storyboard = UIStoryboard(name: String(describing: WebViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! WebViewController
-        vc.siteWebName = site?.linkData[index]
+        vc.siteWebName = validLinks[index]
         navigationController?.pushViewController(vc, animated: true)
     }
     

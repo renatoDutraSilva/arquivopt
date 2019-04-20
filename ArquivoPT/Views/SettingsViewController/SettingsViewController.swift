@@ -26,9 +26,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var initialDateCalendarPicker: UIDatePicker!
     @IBOutlet weak var finalDateCalendarPicker: UIDatePicker!
     
-    private var initialDatePicker: UIDatePicker?
-    private var finalDatePicker: UIDatePicker?
-    
     let themeKey = "DarkTheme"
     let dayFilterKey = "DayFilter"
     
@@ -47,7 +44,6 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NEW FUNCTIONS
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyy HH:mm"
@@ -79,12 +75,6 @@ class SettingsViewController: UITableViewController {
             setUpInitialPicker(minDate: minDate!, maxDate: maxDate, currentDate: minDate!)
             setUpFinalPicker(minDate: minDate!, maxDate: maxDate, currentDate: maxDate)
         }
-        
-        //        OLD FUNCTIONS
-        //        creatToolbar()
-        
-        //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.viewTapped(gestureRecognizer:)))
-        //        view.addGestureRecognizer(tapGesture)
     }
     
     
@@ -97,7 +87,7 @@ class SettingsViewController: UITableViewController {
     
     
     //    ====================================================================
-    //    ------------------------- NEW METHODS ------------------------------
+    //    --------------------------- METHODS --------------------------------
     //    ====================================================================
     
     @IBAction func timeIntervalSetChange(_ sender: UISwitch) {
@@ -170,10 +160,6 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    func resetSelectorColor(){
-        
-    }
-    
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if SettingsParams.filterDateHiddden && indexPath.section == 1 && indexPath.row == 2{
@@ -232,50 +218,5 @@ class SettingsViewController: UITableViewController {
         finalDateCalendarPicker?.minimumDate = minDate
     }
     
-    
-//    ====================================================================
-//    ----------------------- OLD METHODS --------------------------------
-//    ====================================================================
-    
-    func creatToolbar(){
-        
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        
-        //Customization
-        toolBar.barTintColor = .darkGray
-        toolBar.tintColor = .white
-        
-        let doneButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(SettingsViewController.dismissKeyboard))
-        toolBar.setItems([doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        initialDateTextField.inputAccessoryView = toolBar
-        finalDateTextField.inputAccessoryView = toolBar
-        
-    }
-    
-    @objc func dismissKeyboard(){
-        view.endEditing(true)
-    }
-    
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer){
-        dismissKeyboard()
-    }
-    
-    @objc func initialDateChanged(datePicker: UIDatePicker){
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyy"
-        initialDateTextField.text = dateFormatter.string(from: datePicker.date)
-    }
-    
-    
-    @objc func finalDateChanged(datePicker: UIDatePicker){
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyy"
-        finalDateTextField.text = dateFormatter.string(from: datePicker.date)
-    }
     
 }
