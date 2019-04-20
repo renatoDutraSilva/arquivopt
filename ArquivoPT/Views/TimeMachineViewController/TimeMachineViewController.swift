@@ -34,12 +34,16 @@ class TimeMachineViewController: UIViewController {
             setFilterLabels()
             if images.count == 0{
                 noImagesLabel.textColor = Theme.current.accent
+                dateLabel.textColor = .clear
+                dateButton.isHidden = true
             } else {
                 noImagesLabel.textColor = .clear
+                dateLabel.textColor = .black
+                dateButton.isHidden = false
             }
         }
     }
-    var validDates = [String]()
+    var validDates = [String?]()
     var validLinks = [String]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -307,15 +311,9 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
-        if carousel.currentItemIndex != -1{
-            if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
-                let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
-                let fullDate = websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2]
-//                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
-//                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
-//                let year  = websiteDate[2]
-                dateLabel.text = fullDate
-                print("\(websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2])")
+        if carousel.currentItemIndex != -1 && validDates.count != 0{
+            if let date = validDates[carousel.currentItemIndex]{
+                dateLabel.text = date
             }
         }
 
