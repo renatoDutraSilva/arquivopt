@@ -37,6 +37,8 @@ class TimeMachineViewController: UIViewController {
                 dateLabel.textColor = .clear
                 dateButton.isHidden = true
             } else {
+                dateLabel.textColor = Theme.current.accent
+                dateButton.isHidden = false
                 noImagesLabel.textColor = .clear
                 dateLabel.textColor = .black
                 dateButton.isHidden = false
@@ -50,14 +52,15 @@ class TimeMachineViewController: UIViewController {
         super.viewWillAppear(animated)
         loadImages()
         ThemeFunctions.applyTheme(view: view)
+        checkIsFavorite()
+        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
     }
     
     override func viewDidLoad() {
         guard let unwrappedSite = site else {return}
         super.viewDidLoad()
         updateView(with: unwrappedSite)
-        checkIsFavorite()
-        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
+        
         filterSetLabel.text = "Filtro Definido"
         noImagesLabel.text = "Não existem dados disponíveis"
         
@@ -90,12 +93,14 @@ class TimeMachineViewController: UIViewController {
     
     func setFilterLabels() {
         let format = DateFormatter()
-        format.dateFormat = "dd-MM-yyyy"
+        format.dateFormat = "d-MMM-yyyy"
+        format.locale = Locale(identifier: "pt")
 
         if !SettingsParams.filterDateHiddden{
             filterSetLabel.textColor = Theme.current.accent
             initialFilterDateLabel.text = format.string(from: SettingsParams.initialFilterDate)
             finalFilterDateLabel.text = format.string(from: SettingsParams.finalFilterDate)
+            
             initialFilterDateLabel.textColor = .black
             finalFilterDateLabel.textColor = .black
         } else{
@@ -310,10 +315,19 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        dateFormatter.dateFormat = "dd, MMMM yyyy"
+        dateFormatter.locale = Locale(identifier: "pt")
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
-        if carousel.currentItemIndex != -1 && validDates.count != 0{
-            if let date = validDates[carousel.currentItemIndex]{
-                dateLabel.text = date
+        if carousel.currentItemIndex != -1{
+            if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
+                let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
+                //let fullDate = websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2]
+//                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
+                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
+//                let year  = websiteDate[2]
+                //let dateFromString = dateFormatter.date(from: fullDate) ?? Date()
+                dateLabel.text = "\(websiteDate[0]), \(month!) \(websiteDate[2])"
+                print("\(websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2])")
             }
         }
 
