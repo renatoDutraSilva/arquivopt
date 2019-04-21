@@ -77,6 +77,10 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+
+    //    ====================================================================
+    //    --------------------------- METHODS --------------------------------
+    //    ====================================================================
     
     @IBAction func themeChange(_ sender: UISwitch) {
         Theme.current = sender.isOn ? DarkTheme() : LightTheme()
@@ -84,11 +88,7 @@ class SettingsViewController: UITableViewController {
         ThemeFunctions.applyTheme(view: view)
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
     }
-    
-    
-    //    ====================================================================
-    //    --------------------------- METHODS --------------------------------
-    //    ====================================================================
+
     
     @IBAction func timeIntervalSetChange(_ sender: UISwitch) {
         if sender.isOn {
