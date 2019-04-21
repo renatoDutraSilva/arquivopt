@@ -34,7 +34,11 @@ class TimeMachineViewController: UIViewController {
             setFilterLabels()
             if images.count == 0{
                 noImagesLabel.textColor = Theme.current.accent
+                dateLabel.textColor = .clear
+                dateButton.isHidden = true
             } else {
+                dateLabel.textColor = Theme.current.accent
+                dateButton.isHidden = false
                 noImagesLabel.textColor = .clear
             }
         }
@@ -86,12 +90,14 @@ class TimeMachineViewController: UIViewController {
     
     func setFilterLabels() {
         let format = DateFormatter()
-        format.dateFormat = "dd-MM-yyyy"
+        format.dateFormat = "d-MMM-yyyy"
+        format.locale = Locale(identifier: "pt")
 
         if !SettingsParams.filterDateHiddden{
             filterSetLabel.textColor = Theme.current.accent
             initialFilterDateLabel.text = format.string(from: SettingsParams.initialFilterDate)
             finalFilterDateLabel.text = format.string(from: SettingsParams.finalFilterDate)
+            
             initialFilterDateLabel.textColor = .black
             finalFilterDateLabel.textColor = .black
         } else{
@@ -306,15 +312,18 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        dateFormatter.dateFormat = "dd, MMMM yyyy"
+        dateFormatter.locale = Locale(identifier: "pt")
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
         if carousel.currentItemIndex != -1{
             if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
                 let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
-                let fullDate = websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2]
+                //let fullDate = websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2]
 //                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
-//                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
+                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
 //                let year  = websiteDate[2]
-                dateLabel.text = fullDate
+                //let dateFromString = dateFormatter.date(from: fullDate) ?? Date()
+                dateLabel.text = "\(websiteDate[0]), \(month!) \(websiteDate[2])"
                 print("\(websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2])")
             }
         }
