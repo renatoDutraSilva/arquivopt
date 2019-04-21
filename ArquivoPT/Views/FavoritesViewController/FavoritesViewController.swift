@@ -53,7 +53,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.favoritesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             
         } else {
-            emptyLabel.isHidden = true
+            emptyLabel.isHidden = false
             self.favoritesTableView.backgroundView = nil
         }
     }
@@ -137,6 +137,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             tableView.beginUpdates()
             tableView.endUpdates()*/
+            
             setFavoriteData()
             
         }

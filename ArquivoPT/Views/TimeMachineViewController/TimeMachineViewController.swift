@@ -50,14 +50,15 @@ class TimeMachineViewController: UIViewController {
         super.viewWillAppear(animated)
         loadImages()
         ThemeFunctions.applyTheme(view: view)
+        checkIsFavorite()
+        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
     }
     
     override func viewDidLoad() {
         guard let unwrappedSite = site else {return}
         super.viewDidLoad()
         updateView(with: unwrappedSite)
-        checkIsFavorite()
-        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
+        
         filterSetLabel.text = "Filtro Definido"
         noImagesLabel.text = "Não existem dados disponíveis"
         
