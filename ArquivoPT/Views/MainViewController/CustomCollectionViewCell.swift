@@ -26,12 +26,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
     let logoImageView = UIImageView()
     var logoImage: UIImage?
     var favoriteIndicator = UIImageView()
-    var isFavorite: Bool = false {
+    var isFavorite: Bool = false{
         didSet{
             if isFavorite{
-                favoriteIndicator.frame = CGRect(x: chicletButton.frame.width - 40, y: 16, width: 26, height: 22)
-                favoriteIndicator.image = UIImage(named:"favoriteIconSelected.png")
-                chicletButton.addSubview(favoriteIndicator)
+                favoriteIndicator.isHidden = false
             }
         }
     }
@@ -40,6 +38,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         generateChiclet()
         chicletButton.startAnimatingPressActions()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        favoriteIndicator.isHidden = true
     }
     
     func generateChiclet(){
@@ -65,11 +68,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         chicletButton.addRoundedCorners()
         self.layer.addShadow(followingPathOf: chicletButton)
         
+        favoriteIndicator.frame = CGRect(x: chicletButton.frame.width - 40, y: 16, width: 26, height: 22)
+        favoriteIndicator.image = UIImage(named:"favoriteIconSelected.png")
+        favoriteIndicator.isHidden = true
+        chicletButton.addSubview(favoriteIndicator)
     
-        
         self.addSubview(chicletButton)
-        
-
     }
     
     @IBAction func chicletButtonTouchUpInside(_ sender: UIButton) {
