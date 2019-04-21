@@ -115,6 +115,7 @@ class TimeMachineViewController: UIViewController {
     func loadImages(){
         let format = DateFormatter()
         format.dateFormat = "yyyyMMdd"
+        format.locale = Locale(identifier: "pt")
         
         images.removeAll()
         validDates.removeAll()
@@ -139,7 +140,8 @@ class TimeMachineViewController: UIViewController {
                         if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
                             images.append(imagem)
                             let websiteDate = extractWebsiteDate(siteLinkID: id)
-                            let fullDate = websiteDate[0]+" - "+websiteDate[1]+" - "+websiteDate[2]
+                            let month = format.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
+                            let fullDate = websiteDate[0]+" - " + month! + " - "+websiteDate[2]
                             validDates.append(fullDate)
                             if let link = site?.linkData[index]{
                                 validLinks.append(link)
@@ -315,19 +317,10 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
-        dateFormatter.dateFormat = "dd, MMMM yyyy"
-        dateFormatter.locale = Locale(identifier: "pt")
 //        AudioServicesPlaySystemSound(SystemSoundID(1105))
-        if carousel.currentItemIndex != -1{
-            if let LinkID = site?.linkDataID[carousel.currentItemIndex]{
-                let websiteDate = extractWebsiteDate(siteLinkID: LinkID)
-                //let fullDate = websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2]
-//                let day = ((dateFormatter.shortStandaloneWeekdaySymbols?[ getDayOfWeek(fullDate) ?? 0]) ?? "N/A") + ", " + websiteDate[0]
-                let month = dateFormatter.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
-//                let year  = websiteDate[2]
-                //let dateFromString = dateFormatter.date(from: fullDate) ?? Date()
-                dateLabel.text = "\(websiteDate[0]), \(month!) \(websiteDate[2])"
-                print("\(websiteDate[0]+"/"+websiteDate[1]+"/"+websiteDate[2])")
+        if carousel.currentItemIndex != -1 &&  validDates.count != 0{
+            if let date = validDates[carousel.currentItemIndex]{
+                dateLabel.text = date
             }
         }
 
