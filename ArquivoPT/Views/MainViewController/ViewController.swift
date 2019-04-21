@@ -60,6 +60,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
+        print("Favorites: ")
+        print(GlobalData.favoriteSiteArray)
         
     }
     

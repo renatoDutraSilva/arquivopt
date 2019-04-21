@@ -68,8 +68,6 @@ class SettingsViewController: UITableViewController {
                 
                 setUpFinalPicker(minDate: SettingsParams.initialFilterDate, maxDate: maxDate, currentDate: SettingsParams.finalFilterDate)
                 setUpInitialPicker(minDate: minDate!, maxDate: SettingsParams.finalFilterDate, currentDate: SettingsParams.initialFilterDate)
-                print("Initial: ", SettingsParams.initialFilterDate)
-                print("Final: ", SettingsParams.finalFilterDate)
             }
         }else{
             setUpInitialPicker(minDate: minDate!, maxDate: maxDate, currentDate: minDate!)
