@@ -130,10 +130,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axa-Cy-g66">
-                                <rect key="frame" x="47" y="303" width="320" height="290"/>
+                                <rect key="frame" x="47" y="296" width="320" height="304"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-xy-4nM">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="304"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecionar data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oky-mx-juG">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -149,7 +149,10 @@
                                                 <rect key="frame" x="0.0" y="44" width="320" height="216"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-b9-6Zh">
-                                                <rect key="frame" x="0.0" y="260" width="320" height="30"/>
+                                                <rect key="frame" x="0.0" y="260" width="320" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="e8r-bs-MOK"/>
+                                                </constraints>
                                                 <state key="normal" title="Fechar">
                                                     <color key="titleShadowColor" white="0.75" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -180,6 +183,12 @@
                                     <constraint firstAttribute="trailing" secondItem="b4F-xy-4nM" secondAttribute="trailing" id="dj3-Zg-EYl"/>
                                     <constraint firstAttribute="bottom" secondItem="b4F-xy-4nM" secondAttribute="bottom" id="l8u-fQ-au3"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.75" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
