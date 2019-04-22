@@ -19,7 +19,7 @@ extension UIView {
     }
     
     func addBlurEffect() {
-        let blurEffect = UIBlurEffect(style: Theme.current.blurEffectStyle)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -38,8 +38,6 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
         
     }
-    
-    
 }
 
 extension CALayer {
