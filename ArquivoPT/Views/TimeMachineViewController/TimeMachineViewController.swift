@@ -216,7 +216,7 @@ class TimeMachineViewController: UIViewController {
     func showFavoriteAlert() {
         
         let alertView = UIView()
-        alertView.frame = CGRect(x: (self.view.bounds.width / 2) - 112, y: (self.view.bounds.width / 2) + 112, width: 224, height: 224)
+        alertView.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - 112, y: (UIScreen.main.bounds.height / 2) - 112, width: 224, height: 224)
         alertView.layer.cornerRadius = 14
         alertView.layer.masksToBounds = true
         alertView.addBlurEffect()

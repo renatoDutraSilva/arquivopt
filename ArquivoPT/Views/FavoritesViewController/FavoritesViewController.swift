@@ -86,29 +86,38 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoritesTableViewCell
+       
         let siteName = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].siteName
         let siteLogo = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].siteLogo
         let totalRecords = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].totalRecords
         let firstRecordedYear = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].firstRecordedYear
         let lastRecordedYear = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row].lastRecordedYear
         
+        cell.site = GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row]
         cell.selectionStyle = .none
-        
+        cell.delegate = self
         cell.siteNameLabel.text = siteName
         
         let logoImage = UIImage(named: siteLogo) ?? UIImage(named: "default.png")
         /*cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)*/
-        cell.logoImageView.image = logoImage
+        //cell.logoImageView.image = logoImage
+        
+        cell.logoImage = logoImage
+        cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
+        cell.logoImageView.image = cell.logoImage
+        //cell.logoImageView.frame = CGRect(x: 16, y: 16, width: self.logoImage!.size.width, height: self.logoImage!.size.height)
+        
         
         cell.recordLabel.text = String(totalRecords)
         cell.yearLabel.text = firstRecordedYear + " - " + lastRecordedYear
         
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
+        
+        //let screenSize = UIScreen.main.bounds
+        //let screenWidth = screenSize.width
         //let screenHeight = screenSize.height
         
-        cell.chicletView.bounds = CGRect(x: 0, y: 0, width: screenWidth, height: 188)
-        cell.chicletView.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
+        //cell.chicletButton.bounds = CGRect(x: 0, y: 0, width: screenWidth, height: 188)
+        //cell.chicletButton.applyGradient(colours: [Theme.current.cellGradientLight, Theme.current.cellGradientDark])
         
         return cell
     }
@@ -146,18 +155,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected row at row: \(indexPath)")
         
-        cellTapped(site: GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row])
+        //cellTapped(site: GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row])
     }
     
 }
 
-extension FavoritesViewController: CategoryRowDelegate {
-    func cellTapped(site: ModelSite){
-        
+extension FavoritesViewController: CustomFavoriteCellDelegate{
+    func chicletButtonTapped(site: ModelSite) {
+        print("CellTapped!")
         let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
-        
+        //impact.impactOccurred()
     }
+    
+    
 }
