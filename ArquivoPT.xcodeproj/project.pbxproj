@@ -30,6 +30,7 @@
 		8C14C3812259682800BFF12B /* Structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C14C3802259682800BFF12B /* Structure.swift */; };
 		8C21C562225934FF0012DD40 /* ThemeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21C561225934FF0012DD40 /* ThemeFunctions.swift */; };
 		8C5F4CC5226A9C6900008295 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5F4CC4226A9C6900008295 /* WebKit.framework */; };
+		8C859C5A226E550F00429BFC /* GlobalKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C859C59226E550F00429BFC /* GlobalKeys.swift */; };
 		8CDBF338224FC291001EF727 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF337224FC291001EF727 /* UIViewExtensions.swift */; };
 		8CDBF33B22502305001EF727 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDBF33A22502305001EF727 /* Theme.swift */; };
 		8CDBF33D225023E9001EF727 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDBF33C225023E9001EF727 /* Colors.xcassets */; };
@@ -71,6 +72,7 @@
 		8C14C3802259682800BFF12B /* Structure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structure.swift; sourceTree = "<group>"; };
 		8C21C561225934FF0012DD40 /* ThemeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFunctions.swift; sourceTree = "<group>"; };
 		8C5F4CC4226A9C6900008295 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8C859C59226E550F00429BFC /* GlobalKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeys.swift; sourceTree = "<group>"; };
 		8CDBF337224FC291001EF727 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		8CDBF33A22502305001EF727 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8CDBF33C225023E9001EF727 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		889C21E3224C1414003C8D23 /* ArquivoPT */ = {
 			isa = PBXGroup;
 			children = (
+				8C859C58226E54EA00429BFC /* GlobalKeys */,
 				8CF00A98225EA82700034408 /* SettingsParamsGlobal */,
 				8CDBF3392250205D001EF727 /* Resources */,
 				8CDBF336224FC138001EF727 /* Extensions */,
@@ -215,6 +218,14 @@
 				8C0A0AB3224FB29900DD4C5C /* SettingsViewController.swift */,
 			);
 			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		8C859C58226E54EA00429BFC /* GlobalKeys */ = {
+			isa = PBXGroup;
+			children = (
+				8C859C59226E550F00429BFC /* GlobalKeys.swift */,
+			);
+			path = GlobalKeys;
 			sourceTree = "<group>";
 		};
 		8CDBF336224FC138001EF727 /* Extensions */ = {
@@ -415,6 +426,7 @@
 				88407B05225CBF4300EDBD2D /* FavoritesTableViewCell.swift in Sources */,
 				889C21FB224C1F11003C8D23 /* Category.swift in Sources */,
 				8C0A0AB4224FB29900DD4C5C /* SettingsViewController.swift in Sources */,
+				8C859C5A226E550F00429BFC /* GlobalKeys.swift in Sources */,
 				8C0A0AA3224F005100DD4C5C /* TimeMachineViewController.swift in Sources */,
 				8CF00AA22264290700034408 /* NotificationNameExtension.swift in Sources */,
 				8CDBF34C2252D467001EF727 /* LightTheme.swift in Sources */,

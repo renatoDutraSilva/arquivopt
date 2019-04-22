@@ -164,23 +164,31 @@ class TimeMachineViewController: UIViewController {
         
         showFavoriteAlert()
         self.site?.isFavorite = !self.site!.isFavorite
-        
+
         if site!.isFavorite {
             
             GlobalData.favoriteSiteArray.append(self.site!)
+            GlobalData.favoriteID.append(site!.siteFileId)
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconDeselected")
+            UserDefaults.standard.set(GlobalData.favoriteID, forKey: GlobalKeys.favoriteKey)
             
         } else {
             
             GlobalData.favoriteSiteArray.removeAll(where: { (site) -> Bool in
                 return site.siteName == self.site?.siteName
             })
+            
+            if let index = GlobalData.favoriteID.firstIndex(of: site!.siteFileId) {
+                GlobalData.favoriteID.remove(at: index)
+            }
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconSelected")
-
+            UserDefaults.standard.set(GlobalData.favoriteID, forKey: GlobalKeys.favoriteKey)
         }
+        print(GlobalData.favoriteID)
     }
     
     func checkIsFavorite(){
+        
         if site!.isFavorite {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconDeselected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
         } else {

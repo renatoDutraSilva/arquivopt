@@ -9,10 +9,13 @@
 import Foundation
 
 
-class GlobalData {
+class GlobalData{
+    
     static var mainSiteArray = [Category: [ModelSite]]()
     static var structureSiteArray = [Category: [Structure]]()
     static var favoriteSiteArray = [ModelSite]()
+    static var favoriteID = [String]()
+    
     
     static func getFavoriteCategories() -> [Category]? {
         

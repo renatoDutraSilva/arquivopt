@@ -20,6 +20,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
             mainTableView.reloadData()
         }
     }
+    var categories = [Category]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,6 +39,17 @@ class ViewController: UIViewController, UISearchResultsUpdating {
             
             self!.filteredData = filteredData
             //self!.mainTableView.reloadData()
+            
+            for indexKey in 0 ... filteredData.keys.count - 1{
+                if let sites = filteredData[Category.getRawValueFromIndex(index: indexKey)]{
+                    for indexSite in 0 ... sites.count - 1{
+                        if sites[indexSite].isFavorite {
+                            GlobalData.favoriteSiteArray.append(sites[indexSite])
+                        }
+                    }
+                }
+            }
+            
         })
         
         mainTableView.canCancelContentTouches = true
@@ -60,8 +72,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
-        print("Favorites: ")
-        print(GlobalData.favoriteSiteArray)
         
     }
     
@@ -120,13 +130,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         // Array(self.filteredData.keys) returns an array, instead of a collection of only the dictionary keys.
         // As such, we can then access each key with an Integer Subscript [0] or [indexPath.row]
-        cell.sectionLabel.text = Array(self.filteredData.keys)[indexPath.row].rawValue
-        
-        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
 
-        cell.sites = filteredData[Array(self.filteredData.keys)[indexPath.row]]! //?? [ModelSite.placeHolder()]
+        cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
+        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
+        if let sites = filteredData[Category.getRawValueFromIndex(index: indexPath.row)]{
+            cell.sites = sites
+        }
         cell.collectionView.backgroundColor = Theme.current.background
-        
         
         return cell
         

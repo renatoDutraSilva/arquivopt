@@ -21,6 +21,11 @@ class SiteFunctions {
             
             generateStructure()
             initiateMainSiteArray()
+            
+            if let favoriteIdArray = UserDefaults.standard.value(forKey: GlobalKeys.favoriteKey){
+                GlobalData.favoriteID = favoriteIdArray as! [String]
+            }
+            
 
             for i in 0 ... Category.allCases.count - 1{
                 if let temp = GlobalData.structureSiteArray[Category.getRawValueFromIndex(index: i)]{
@@ -36,6 +41,10 @@ class SiteFunctions {
                         let totalRecords = linkData.count
                         let firstRecordedYear = String(linkDataID[1].prefix(4))
                         let lastRecordedYear = String(linkDataID[linkDataID.count - 1].prefix(4))
+                        var isFavorite = false
+                        if GlobalData.favoriteID.contains(fileId){
+                            isFavorite = true
+                        }
                         
                         GlobalData.mainSiteArray[Category.getRawValueFromIndex(index: i)]?.append(
                             ModelSite(siteLogo: nameOfLogo,
@@ -46,7 +55,8 @@ class SiteFunctions {
                                       linkDataID: linkDataID,
                                       totalRecords: totalRecords,
                                       firstRecordedYear: firstRecordedYear,
-                                      lastRecordedYear: lastRecordedYear))
+                                      lastRecordedYear: lastRecordedYear,
+                                      isFavorite: isFavorite))
                     }
                 }
             }

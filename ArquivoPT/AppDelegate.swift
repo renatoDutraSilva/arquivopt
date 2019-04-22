@@ -17,20 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if UserDefaults.standard.object(forKey: "DarkTheme") != nil {
-            Theme.current = UserDefaults.standard.bool(forKey: "DarkTheme") ? DarkTheme() : LightTheme()
+        if UserDefaults.standard.object(forKey: GlobalKeys.themeKey) != nil {
+            Theme.current = UserDefaults.standard.bool(forKey: GlobalKeys.themeKey) ? DarkTheme() : LightTheme()
         }
         
-        if UserDefaults.standard.object(forKey: "DayFilter") != nil {
-            SettingsParams.filterDateHiddden = UserDefaults.standard.bool(forKey: "DayFilter") ? false : true
+        if UserDefaults.standard.object(forKey: GlobalKeys.dayFilterKey) != nil {
+            SettingsParams.filterDateHiddden = UserDefaults.standard.bool(forKey: GlobalKeys.dayFilterKey) ? false : true
         }
         
-        if UserDefaults.standard.object(forKey: "initialFilter") != nil {
-            SettingsParams.initialFilterDate = UserDefaults.standard.object(forKey: "initialFilter") as! Date
+        if UserDefaults.standard.object(forKey: GlobalKeys.initialFilterDateKey) != nil {
+            SettingsParams.initialFilterDate = UserDefaults.standard.object(forKey: GlobalKeys.initialFilterDateKey) as! Date
         }
         
-        if UserDefaults.standard.object(forKey: "finalFilter") != nil {
-            SettingsParams.finalFilterDate = UserDefaults.standard.object(forKey: "finalFilter") as! Date
+        if UserDefaults.standard.object(forKey: GlobalKeys.finalFilterDateKey) != nil {
+            SettingsParams.finalFilterDate = UserDefaults.standard.object(forKey: GlobalKeys.finalFilterDateKey) as! Date
+        }
+        
+        if UserDefaults.standard.object(forKey: GlobalKeys.favoriteKey) != nil {
+            GlobalData.favoriteID = UserDefaults.standard.object(forKey: GlobalKeys.favoriteKey) as! [String]
+            
         }
         
         return true

@@ -25,12 +25,7 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var initialDateCalendarPicker: UIDatePicker!
     @IBOutlet weak var finalDateCalendarPicker: UIDatePicker!
-    
-    let themeKey = "DarkTheme"
-    let dayFilterKey = "DayFilter"
-    
-    let initialFilterDateKey = "initialFilter"
-    let finalFilterDateKey = "finalFilter"
+
     
     var initialDatePickerHidden = true
     var finalDatePickerHidden = true
@@ -53,16 +48,16 @@ class SettingsViewController: UITableViewController {
         self.initialDateCalendarPicker.locale = loc
         self.finalDateCalendarPicker.locale = loc
         
-        if let themeMode = UserDefaults.standard.value(forKey: themeKey){
+        if let themeMode = UserDefaults.standard.value(forKey: GlobalKeys.themeKey){
             themeSwitch.isOn = themeMode as! Bool
         }
         
-        if let filterDay = UserDefaults.standard.value(forKey: dayFilterKey){
+        if let filterDay = UserDefaults.standard.value(forKey: GlobalKeys.dayFilterKey){
             timeIntervalSwitch.isOn = filterDay as! Bool
         }
         
-        if let initialFilter = UserDefaults.standard.value(forKey: initialFilterDateKey){
-            if let finalFilter = UserDefaults.standard.value(forKey: finalFilterDateKey){
+        if let initialFilter = UserDefaults.standard.value(forKey: GlobalKeys.initialFilterDateKey){
+            if let finalFilter = UserDefaults.standard.value(forKey: GlobalKeys.finalFilterDateKey){
                 SettingsParams.initialFilterDate = initialFilter as! Date
                 SettingsParams.finalFilterDate = finalFilter as! Date
                 
@@ -82,7 +77,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func themeChange(_ sender: UISwitch) {
         Theme.current = sender.isOn ? DarkTheme() : LightTheme()
-        UserDefaults.standard.set(sender.isOn, forKey: themeKey)
+        UserDefaults.standard.set(sender.isOn, forKey: GlobalKeys.themeKey)
         ThemeFunctions.applyTheme(view: view)
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
     }
@@ -102,7 +97,7 @@ class SettingsViewController: UITableViewController {
             tableView.beginUpdates()
             tableView.endUpdates()
         }
-        UserDefaults.standard.set(sender.isOn, forKey: dayFilterKey)
+        UserDefaults.standard.set(sender.isOn, forKey: GlobalKeys.dayFilterKey)
     }
     
     @IBAction func initialPickerChanged(_ sender: UIDatePicker) {
@@ -115,7 +110,7 @@ class SettingsViewController: UITableViewController {
     func initialDatePickerChanged () {
         initialDateLabel.text = DateFormatter.localizedString(from: initialDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
         SettingsParams.initialFilterDate = initialDateCalendarPicker.date
-        UserDefaults.standard.set(SettingsParams.initialFilterDate, forKey: initialFilterDateKey)
+        UserDefaults.standard.set(SettingsParams.initialFilterDate, forKey: GlobalKeys.initialFilterDateKey)
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyy"
@@ -126,7 +121,7 @@ class SettingsViewController: UITableViewController {
     func finalDatePickerChanged () {
         finalDateLabel.text = DateFormatter.localizedString(from: finalDateCalendarPicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
         SettingsParams.finalFilterDate = finalDateCalendarPicker.date
-        UserDefaults.standard.set(SettingsParams.finalFilterDate, forKey: finalFilterDateKey)
+        UserDefaults.standard.set(SettingsParams.finalFilterDate, forKey: GlobalKeys.finalFilterDateKey)
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyy"

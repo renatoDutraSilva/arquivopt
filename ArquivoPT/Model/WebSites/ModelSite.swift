@@ -8,7 +8,8 @@
 
 import Foundation
 
-class ModelSite {
+class ModelSite{
+    
     
     let id: UUID
 
@@ -19,17 +20,16 @@ class ModelSite {
     let totalRecords: Int
     let firstRecordedYear: String
     let lastRecordedYear: String
-    var isFavorite: Bool = false
+    var isFavorite: Bool
 
-    
     var linkData: [String]
     var linkDataID: [String]
     
     static func placeHolder() -> ModelSite {
-        return ModelSite(siteLogo: "default.png", siteName: "Default", siteFileId: "default", category: Category.semCategoria, linkData: ["N/A"], linkDataID: ["N/A"], totalRecords: 0, firstRecordedYear: "N/A", lastRecordedYear: "N/A")
+        return ModelSite(siteLogo: "default.png", siteName: "Default", siteFileId: "default", category: Category.semCategoria, linkData: ["N/A"], linkDataID: ["N/A"], totalRecords: 0, firstRecordedYear: "N/A", lastRecordedYear: "N/A", isFavorite: false)
     }
     
-    init(siteLogo: String, siteName: String, siteFileId: String, category: Category, linkData: [String], linkDataID: [String], totalRecords: Int, firstRecordedYear: String, lastRecordedYear: String){
+    init(siteLogo: String, siteName: String, siteFileId: String, category: Category, linkData: [String], linkDataID: [String], totalRecords: Int, firstRecordedYear: String, lastRecordedYear: String, isFavorite: Bool){
         
         id = UUID()
 
@@ -43,6 +43,7 @@ class ModelSite {
         self.totalRecords = totalRecords
         self.firstRecordedYear = firstRecordedYear
         self.lastRecordedYear = lastRecordedYear
+        self.isFavorite = isFavorite
     }
     
 }

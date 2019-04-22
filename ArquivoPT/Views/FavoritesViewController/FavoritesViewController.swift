@@ -21,7 +21,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         ThemeFunctions.applyTheme(view: view)
         
         setFavoriteData()
-
     }
     
     override func viewDidLoad() {
@@ -129,7 +128,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             GlobalData.favoriteSiteArray.removeAll { (site) -> Bool in
                 return site.siteName == favoriteSite.siteName
             }
-
+            
+            if let index = GlobalData.favoriteID.firstIndex(of: favoriteSite.siteFileId) {
+                GlobalData.favoriteID.remove(at: index)
+            }
+            UserDefaults.standard.set(GlobalData.favoriteID, forKey: GlobalKeys.favoriteKey)
+            
             tableView.deleteRows(at: [indexPath], with: .automatic)
 
            /* if GlobalData.getFavoriteSites(ofCategory: favoriteSite.category).isEmpty {
@@ -145,7 +149,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected row at row: \(indexPath)")
-        
         cellTapped(site: GlobalData.getFavoriteSites(ofCategory: favoriteCategories[indexPath.section])[indexPath.row])
     }
     
