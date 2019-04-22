@@ -169,5 +169,5 @@ extension FavoritesViewController: CustomFavoriteCellDelegate{
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
         impact.impactOccurred()
-    }©
+    }
 }
