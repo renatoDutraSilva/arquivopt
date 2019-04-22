@@ -19,6 +19,6 @@ class LightTheme: ThemeProtocol {
     var cellGradientLight: UIColor = UIColor(named: "CellGradientLight")!
     var cellGradientDark: UIColor = UIColor(named: "CellGradientDark")!
     
-    var blurEffectStyle = UIBlurEffect.Style.dark
+    //var blurEffectStyle = UIBlurEffect.Style.dark
 }
 
