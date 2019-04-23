@@ -39,6 +39,7 @@ class SiteFunctions {
                         let linkData = loadLinks(fileName: temp[0].websiteFileId[j] + "_Links")
                         let linkDataID = loadLinks(fileName: temp[0].websiteFileId[j] + "_LinksID")
                         let totalRecords = linkData.count
+                        print(nameOfSite)
                         let firstRecordedYear = String(linkDataID[1].prefix(4))
                         let lastRecordedYear = String(linkDataID[linkDataID.count - 1].prefix(4))
                         var isFavorite = false
@@ -97,22 +98,10 @@ class SiteFunctions {
     
     static func generateStructure(){
         GlobalData.structureSiteArray = [
-            .jornais: [Structure(websiteName:
-                ["Diário de Notícias", "Público", "Jornal de Notícias", "Correio da Manhã", "Sol", "Destak"],
-                                 websiteFileId:
-                ["dn", "publico", "jn", "cm", "sol", "destak"])],
             .artesECultura: [Structure(websiteName:
-                ["Gulbenkian"],
+                ["Gulbenkian", "Instituto Camões", "Património Cultural"],
                                   websiteFileId:
-                ["gulbenkian"])],
-            .desporto: [Structure(websiteName:
-                ["A Bola"],
-                                  websiteFileId:
-                ["bola"])],
-            .radioETV: [Structure(websiteName:
-                ["SIC", "TVI", "RTP"],
-                                  websiteFileId:
-                ["sic", "tvi", "rtp"])],
+                ["gulbenkian", "institutocamoes", "patrimoniocultural"])],
             .organismosSociais: [Structure(websiteName:
                 ["FCT"],
                                            websiteFileId:
@@ -122,13 +111,13 @@ class SiteFunctions {
                                                   websiteFileId:
                 ["presidencia"])],
             .universidades: [Structure(websiteName:
-                ["Universidade de Lisboa"],
+                ["Uni. de Lisboa", "Uni. Nova de Lisboa", "IST"],
                                        websiteFileId:
-                ["ul"])],
+                ["ul", "universidadenova", "ist"])],
             .eventos: [Structure(websiteName:
-                ["Expo 98"],
+                ["Expo 98", "Euro 2004"],
                                  websiteFileId:
-                ["expo98"])],
+                ["expo98", "euro2004"])],
             .personalidades: [Structure(websiteName:
                 ["Fundação José Saramago"],
                                         websiteFileId:
@@ -138,10 +127,7 @@ class SiteFunctions {
     
     static func initiateMainSiteArray(){
         GlobalData.mainSiteArray = [
-            .jornais: [],
             .artesECultura: [],
-            .desporto: [],
-            .radioETV: [],
             .organismosSociais: [],
             .organismosGovernamentais: [],
             .universidades: [],
