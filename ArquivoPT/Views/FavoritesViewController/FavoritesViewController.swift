@@ -15,7 +15,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     let noFavoritesLabel = UILabel()
     var favoriteSites = [ModelSite]()
     let emptyLabel = UILabel()
-    
+    let impact = UIImpactFeedbackGenerator()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ThemeFunctions.applyTheme(view: view)
@@ -166,13 +167,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
 extension FavoritesViewController: CustomFavoriteCellDelegate{
     func chicletButtonTapped(site: ModelSite) {
-        print("CellTapped!")
+        //print("CellTapped!")
         let storyboard = UIStoryboard(name: String(describing: TimeMachineViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
-        //impact.impactOccurred()
+        impact.impactOccurred()
     }
-    
-    
 }
