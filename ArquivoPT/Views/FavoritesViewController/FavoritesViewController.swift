@@ -74,6 +74,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return favoriteCategories[section].rawValue
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = Theme.current.favoritesTableHeader
+
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = Theme.current.textColor
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -110,6 +117,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.recordLabel.text = String(totalRecords)
         cell.yearLabel.text = firstRecordedYear + " - " + lastRecordedYear
+        
         
         
         //let screenSize = UIScreen.main.bounds

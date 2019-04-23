@@ -19,5 +19,6 @@ class DarkTheme: ThemeProtocol {
     var cellGradientLight: UIColor = UIColor(named: "CellGradientLight")!
     var cellGradientDark: UIColor = UIColor(named: "CellGradientDark")!
     
+    var favoritesTableHeader: UIColor = UIColor(named: "NavigationBackground")!
     //var blurEffectStyle = UIBlurEffect.Style.light
 }
