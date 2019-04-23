@@ -278,14 +278,18 @@
                     <connections>
                         <outlet property="finalDateCalendarPicker" destination="OWb-FM-Did" id="Ci3-Qo-Tls"/>
                         <outlet property="finalDateLabel" destination="SH6-vF-tSF" id="QrA-uh-SSe"/>
+                        <outlet property="finalDateMainLabel" destination="nPe-nc-fSo" id="PHE-bb-vqR"/>
                         <outlet property="finalDateTextField" destination="Ix4-RB-iGl" id="klj-dR-17J"/>
                         <outlet property="initialDateCalendarPicker" destination="Ycj-RN-JcZ" id="Kwe-bz-OlE"/>
                         <outlet property="initialDateLabel" destination="I4e-Gx-vkd" id="ra9-mv-Zpi"/>
+                        <outlet property="initialDateMainLabel" destination="4WP-Qv-PfL" id="b8o-wV-r8S"/>
                         <outlet property="initialDateTextField" destination="0Pk-Do-gQX" id="xYM-Nm-9qt"/>
                         <outlet property="themeLable" destination="cLI-Qv-B0t" id="zaX-u8-5aH"/>
                         <outlet property="themeSwitch" destination="I4J-ob-F0q" id="7Ls-K2-bAV"/>
                         <outlet property="timeIntervalLabel" destination="crX-X5-192" id="aMY-vp-Ln3"/>
                         <outlet property="timeIntervalSwitch" destination="nRX-3d-1Ra" id="N2K-cT-Gv7"/>
+                        <outlet property="versionLabel" destination="ScV-JQ-KP1" id="abR-l3-taE"/>
+                        <outlet property="versionMainLabel" destination="pBY-oF-ku8" id="OdR-eZ-XVU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVh-d1-ILt" userLabel="First Responder" sceneMemberID="firstResponder"/>

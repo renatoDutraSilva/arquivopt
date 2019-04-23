@@ -37,10 +37,9 @@ class TimeMachineViewController: UIViewController {
                 dateLabel.textColor = .clear
                 dateButton.isHidden = true
             } else {
-                dateLabel.textColor = Theme.current.accent
                 dateButton.isHidden = false
                 noImagesLabel.textColor = .clear
-                dateLabel.textColor = .black
+                dateLabel.textColor = Theme.current.textColor
                 dateButton.isHidden = false
             }
         }
@@ -93,7 +92,7 @@ class TimeMachineViewController: UIViewController {
     
     func setFilterLabels() {
         let format = DateFormatter()
-        format.dateFormat = "d-MMM-yyyy"
+        format.dateFormat = "dd MMM yyyy"
         format.locale = Locale(identifier: "pt")
 
         if !SettingsParams.filterDateHiddden{
@@ -101,8 +100,8 @@ class TimeMachineViewController: UIViewController {
             initialFilterDateLabel.text = format.string(from: SettingsParams.initialFilterDate)
             finalFilterDateLabel.text = format.string(from: SettingsParams.finalFilterDate)
             
-            initialFilterDateLabel.textColor = .black
-            finalFilterDateLabel.textColor = .black
+            initialFilterDateLabel.textColor = Theme.current.textColor
+            finalFilterDateLabel.textColor = Theme.current.textColor
         } else{
             filterSetLabel.textColor = .clear
             initialFilterDateLabel.textColor = .clear
@@ -123,11 +122,13 @@ class TimeMachineViewController: UIViewController {
         
         if let LinkID = site?.linkDataID{
             for (index, id) in LinkID.enumerated(){
+
                 if SettingsParams.filterDateHiddden {
                     if let imagem = UIImage(named: site!.siteFileId + "_" + id + ".png"){
                         images.append(imagem)
                         let websiteDate = extractWebsiteDate(siteLinkID: id)
-                        let fullDate = websiteDate[0]+" - "+websiteDate[1]+" - "+websiteDate[2]
+                        let month = format.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
+                        let fullDate = websiteDate[0] + " " + month! + " " + websiteDate[2]
                         validDates.append(fullDate)
                         if let link = site?.linkData[index]{
                             validLinks.append(link)
@@ -141,7 +142,7 @@ class TimeMachineViewController: UIViewController {
                             images.append(imagem)
                             let websiteDate = extractWebsiteDate(siteLinkID: id)
                             let month = format.standaloneMonthSymbols?[Int(websiteDate[1])! - 1]
-                            let fullDate = websiteDate[0]+" - " + month! + " - "+websiteDate[2]
+                            let fullDate = websiteDate[0] + " " + month! + " " + websiteDate[2]
                             validDates.append(fullDate)
                             if let link = site?.linkData[index]{
                                 validLinks.append(link)

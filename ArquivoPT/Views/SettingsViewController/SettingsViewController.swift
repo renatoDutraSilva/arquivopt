@@ -23,6 +23,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var initialDateLabel: UILabel!
     @IBOutlet weak var finalDateLabel: UILabel!
     
+    @IBOutlet weak var initialDateMainLabel: UILabel!
+    @IBOutlet weak var finalDateMainLabel: UILabel!
+    
+    @IBOutlet weak var versionMainLabel: UILabel!
+    @IBOutlet weak var versionLabel: UILabel!
+    
     @IBOutlet weak var initialDateCalendarPicker: UIDatePicker!
     @IBOutlet weak var finalDateCalendarPicker: UIDatePicker!
 
@@ -33,8 +39,6 @@ class SettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ThemeFunctions.applyTheme(view: view)
-        themeLable.textColor = Theme.current.accent
-        timeIntervalLabel.textColor = Theme.current.accent
     }
     
     override func viewDidLoad() {
@@ -48,6 +52,20 @@ class SettingsViewController: UITableViewController {
         self.initialDateCalendarPicker.locale = loc
         self.finalDateCalendarPicker.locale = loc
         
+        //Set colors
+        initialDateLabel.textColor = Theme.current.textColor
+        finalDateLabel.textColor = Theme.current.textColor
+        
+        themeLable.textColor = Theme.current.textColor
+        timeIntervalLabel.textColor = Theme.current.textColor
+        
+        initialDateMainLabel.textColor = Theme.current.textColor
+        finalDateMainLabel.textColor = Theme.current.textColor
+        
+        versionMainLabel.textColor = Theme.current.textColor
+        versionLabel.textColor = Theme.current.textColor
+        
+        //Load data in memory
         if let themeMode = UserDefaults.standard.value(forKey: GlobalKeys.themeKey){
             themeSwitch.isOn = themeMode as! Bool
         }
@@ -80,6 +98,27 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(sender.isOn, forKey: GlobalKeys.themeKey)
         ThemeFunctions.applyTheme(view: view)
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBackground
+        
+        //Change colors
+        themeLable.textColor = Theme.current.textColor
+        timeIntervalLabel.textColor = Theme.current.textColor
+        
+        if initialDatePickerHidden {
+            initialDateLabel.textColor = Theme.current.textColor
+        }
+        if finalDatePickerHidden{
+           finalDateLabel.textColor = Theme.current.textColor
+        }
+        
+        initialDateMainLabel.textColor = Theme.current.textColor
+        finalDateMainLabel.textColor = Theme.current.textColor
+        
+        versionMainLabel.textColor = Theme.current.textColor
+        versionLabel.textColor = Theme.current.textColor
+        
+        initialDateCalendarPicker.setValue(Theme.current.textColor, forKeyPath: "textColor")
+        finalDateCalendarPicker.setValue(Theme.current.textColor, forKeyPath: "textColor")
+    
     }
 
     
@@ -91,9 +130,9 @@ class SettingsViewController: UITableViewController {
         } else {
             SettingsParams.filterDateHiddden = !SettingsParams.filterDateHiddden
             initialDatePickerHidden = true
-            initialDateLabel.textColor = .black
+            initialDateLabel.textColor = Theme.current.textColor
             finalDatePickerHidden = true
-            finalDateLabel.textColor = .black
+            finalDateLabel.textColor = Theme.current.textColor
             tableView.beginUpdates()
             tableView.endUpdates()
         }
@@ -135,21 +174,21 @@ class SettingsViewController: UITableViewController {
         
         if indexPath.section == 1 && indexPath.row == 2 {
             toggleInitialDatepicker()
-            if initialDateLabel.textColor == .black{
+            if initialDateLabel.textColor == Theme.current.textColor{
                 initialDateLabel.textColor = .red
             } else{
-                initialDateLabel.textColor = .black
+                initialDateLabel.textColor = Theme.current.textColor
             }
-            finalDateLabel.textColor = .black
+            finalDateLabel.textColor = Theme.current.textColor
         }
         if indexPath.section == 1 && indexPath.row == 4 {
             toggleFinalDatepicker()
-            if finalDateLabel.textColor == .black{
+            if finalDateLabel.textColor == Theme.current.textColor{
                 finalDateLabel.textColor = .red
             } else{
-                finalDateLabel.textColor = .black
+                finalDateLabel.textColor = Theme.current.textColor
             }
-            initialDateLabel.textColor = .black
+            initialDateLabel.textColor = Theme.current.textColor
         }
     }
     
@@ -192,12 +231,16 @@ class SettingsViewController: UITableViewController {
         
         initialDateLabel.text = DateFormatter.localizedString(from: currentDate, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
         
-        
         initialDateCalendarPicker?.datePickerMode = .date
         initialDateCalendarPicker.date = currentDate
         
         initialDateCalendarPicker?.maximumDate = maxDate
         initialDateCalendarPicker?.minimumDate = minDate
+        
+        initialDateCalendarPicker.setValue(false, forKeyPath: "highlightsToday")
+        initialDateCalendarPicker.setValue(Theme.current.textColor, forKeyPath: "textColor")
+        
+        
     }
     
     func setUpFinalPicker(minDate: Date, maxDate: Date, currentDate: Date){
@@ -209,6 +252,9 @@ class SettingsViewController: UITableViewController {
         
         finalDateCalendarPicker?.maximumDate = maxDate
         finalDateCalendarPicker?.minimumDate = minDate
+        
+        finalDateCalendarPicker.setValue(false, forKeyPath: "highlightsToday")
+        finalDateCalendarPicker.setValue(Theme.current.textColor, forKeyPath: "textColor")
     }
     
     

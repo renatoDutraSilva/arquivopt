@@ -10,7 +10,7 @@ import UIKit
 
 class LightTheme: ThemeProtocol {
     var accent: UIColor = UIColor(named: "LightAccent")!
-    var textColor: UIColor = UIColor(named: "Accent")!
+    var textColor: UIColor = .black
     var background: UIColor = UIColor(named: "LightBackground")!
     var navigationBackground: UIColor = UIColor(named: "LightNavigationBackground")!
     var chicletBackground: UIColor = UIColor(named: "LightChicletBackground")!

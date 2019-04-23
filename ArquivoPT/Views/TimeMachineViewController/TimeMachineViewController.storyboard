@@ -141,19 +141,21 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="F6P-xA-Bqj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                                 <color key="textColor" name="LightAccent"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-8Q-qIg">
                                                 <rect key="frame" x="0.0" y="44" width="320" height="216"/>
                                             </pickerView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-b9-6Zh">
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-b9-6Zh">
                                                 <rect key="frame" x="0.0" y="260" width="320" height="44"/>
+                                                <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="e8r-bs-MOK"/>
                                                 </constraints>
-                                                <state key="normal" title="Fechar">
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <state key="normal" title="Definir">
                                                     <color key="titleShadowColor" white="0.75" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
