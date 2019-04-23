@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        UIApplication.shared.statusBarStyle = UserDefaults.standard.bool(forKey: "DarkTheme") ? .lightContent : .default
+        
         if UserDefaults.standard.object(forKey: GlobalKeys.themeKey) != nil {
             Theme.current = UserDefaults.standard.bool(forKey: GlobalKeys.themeKey) ? DarkTheme() : LightTheme()
         }

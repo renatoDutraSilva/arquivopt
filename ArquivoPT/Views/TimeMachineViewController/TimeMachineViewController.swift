@@ -52,7 +52,8 @@ class TimeMachineViewController: UIViewController {
         loadImages()
         ThemeFunctions.applyTheme(view: view)
         checkIsFavorite()
-        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
+//        navigationItem.rightBarButtonItem?.tintColor = Theme.current.textColor
+        navigationItem.leftBarButtonItem?.tintColor = Theme.current.textColor
     }
     
     override func viewDidLoad() {
@@ -170,7 +171,9 @@ class TimeMachineViewController: UIViewController {
             
             GlobalData.favoriteSiteArray.append(self.site!)
             GlobalData.favoriteID.append(site!.siteFileId)
-            navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconDeselected")
+            navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconSelected")
+            navigationItem.leftBarButtonItem?.tintColor = Theme.current.textColor
+            navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
             UserDefaults.standard.set(GlobalData.favoriteID, forKey: GlobalKeys.favoriteKey)
             
         } else {
@@ -183,17 +186,22 @@ class TimeMachineViewController: UIViewController {
                 GlobalData.favoriteID.remove(at: index)
             }
             navigationItem.rightBarButtonItem?.image = UIImage(named: "favoriteIconSelected")
+            navigationItem.leftBarButtonItem?.tintColor = Theme.current.textColor
+            navigationItem.rightBarButtonItem?.tintColor = .lightGray
             UserDefaults.standard.set(GlobalData.favoriteID, forKey: GlobalKeys.favoriteKey)
         }
-        print(GlobalData.favoriteID)
     }
     
     func checkIsFavorite(){
         
         if site!.isFavorite {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconDeselected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+            navigationItem.leftBarButtonItem?.tintColor = Theme.current.textColor
+            navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoriteIconSelected"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(toggleFavorite(_:)))
+            navigationItem.leftBarButtonItem?.tintColor = Theme.current.textColor
+            navigationItem.rightBarButtonItem?.tintColor = .lightGray
         }
     }
     

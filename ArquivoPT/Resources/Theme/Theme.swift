@@ -10,5 +10,6 @@ import UIKit
 
 
 class Theme {
-    static var current: ThemeProtocol = DarkTheme()
+    static var current: ThemeProtocol = LightTheme()
+    
 }
