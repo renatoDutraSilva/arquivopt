@@ -11,6 +11,7 @@ import Foundation
 enum Category: String, CaseIterable {
     
     case artesECultura = "Artes e Cultura"
+    case bibliotecasEArquivos = "Bibliotecas e Arquivos"
     case organismosSociais = "Organismos Sociais"
     case organismosGovernamentais = "Organismos Governamentais"
     case universidades = "Universidades"
@@ -27,6 +28,7 @@ enum Category: String, CaseIterable {
             case 3: return .universidades
             case 4: return .eventos
             case 5: return .personalidades
+            case 6: return .bibliotecasEArquivos
             default: return .semCategoria
         }
     }
