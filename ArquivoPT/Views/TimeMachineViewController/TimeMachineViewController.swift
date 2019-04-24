@@ -13,9 +13,9 @@ import AudioToolbox
 class TimeMachineViewController: UIViewController {
     
     var siteCategory: Category!
-    var site: ModelSite?
+    weak var site: ModelSite?
     
-    @IBOutlet var carouselView: iCarousel!
+    @IBOutlet weak var carouselView: iCarousel!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var noImagesLabel: UILabel!
     @IBOutlet weak var filterSetLabel: UILabel!
@@ -44,6 +44,7 @@ class TimeMachineViewController: UIViewController {
             }
         }
     }
+    
     var validDates = [String?]()
     var validLinks = [String]()
     
