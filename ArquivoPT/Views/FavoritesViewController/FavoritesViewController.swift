@@ -117,9 +117,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.recordLabel.text = String(totalRecords)
         cell.yearLabel.text = firstRecordedYear + " - " + lastRecordedYear
-        print("OLA")
-        print(firstRecordedYear)
-        print(lastRecordedYear)
         
         
         
