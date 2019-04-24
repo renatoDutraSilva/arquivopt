@@ -48,6 +48,8 @@ class TimeMachineViewController: UIViewController {
     var validDates = [String?]()
     var validLinks = [String]()
     
+    var countReused = 0
+    var count = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -323,8 +325,13 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         
         if let view = view as? UIImageView {
             imageView = view
-            
+            countReused += 1
+            print("Reused cells:")
+            print(countReused)
         }else{
+            count += 1
+            print("New cells:")
+            print(count)
             imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             imageView.contentMode = .scaleToFill
             let shadowSize: CGFloat = 20
@@ -336,6 +343,7 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
             
             imageView.layer.borderWidth = 1
             imageView.layer.borderColor = UIColor(red:0, green:0, blue:0, alpha: 1).cgColor
+//            imageView.layer.cornerRadius = 14
         }
 
         imageView.image = images[index]
@@ -367,9 +375,11 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     
 //    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
 //        switch (option) {
-//            case .spacing:
-//            return 0.01;
-//            default:
+//        case .tilt:
+//            return 10;
+//        case .spacing:
+//            return 1.2
+//        default:
 //            return value;
 //        }
 //    }
