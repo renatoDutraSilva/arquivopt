@@ -122,7 +122,7 @@ class SiteFunctions {
                                  websiteFileId:
                 ["expo98", "euro2004"])],
             .personalidades: [Structure(websiteName:
-                ["Fundação José Saramago"],
+                ["José Saramago"],
                                         websiteFileId:
                 ["saramago"])]
         ]

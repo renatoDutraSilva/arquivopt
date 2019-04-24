@@ -69,6 +69,7 @@ class TimeMachineViewController: UIViewController {
             let dateVC = notification.object as! PopupViewController
             let currentPage = dateVC.selectedDate
             self.carouselView.scrollToItem(at: currentPage!, animated: true)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
         }
         carouselView.type = iCarouselType.invertedTimeMachine
 
@@ -80,6 +81,7 @@ class TimeMachineViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.tabBarController?.tabBar.isUserInteractionEnabled = false
         if segue.identifier == "toPopupViewControllerSegue"{
             let popup = segue.destination as! PopupViewController
             popup.validDates = validDates

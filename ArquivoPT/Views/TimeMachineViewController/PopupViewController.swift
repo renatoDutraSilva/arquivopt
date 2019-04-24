@@ -27,6 +27,7 @@ class PopupViewController: UIViewController {
         
     }
     @IBAction func closeButtonTaped(_ sender: UIButton) {
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
         NotificationCenter.default.post(name: .saveSelectedDate, object: self)
         dismiss(animated: true)
     }
