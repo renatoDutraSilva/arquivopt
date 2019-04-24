@@ -67,6 +67,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         chicletButton.addRoundedCorners()
         self.layer.addShadow(followingPathOf: chicletButton)
+        self.layer.shadowColor = UIColor.darkGray.cgColor
         
         favoriteIndicator.frame = CGRect(x: chicletButton.frame.width - 40, y: 16, width: 26, height: 22)
         favoriteIndicator.image = UIImage(named:"favoriteIconSelected.png")

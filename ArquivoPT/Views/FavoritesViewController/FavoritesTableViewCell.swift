@@ -54,6 +54,7 @@ class FavoritesTableViewCell: UITableViewCell {
         
         chicletButton.addRoundedCorners()
         self.layer.addShadow(followingPathOf: chicletButton)
+        self.layer.shadowColor = UIColor.darkGray.cgColor
         
         siteNameLabel.frame = CGRect(x: 16, y: chicletButton.frame.height - chicletButton.frame.height/3, width: chicletButton.frame.width - 32, height: chicletButton.frame.height/3)
         siteNameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
