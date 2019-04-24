@@ -61,6 +61,9 @@ class TimeMachineViewController: UIViewController {
         super.viewDidLoad()
         updateView(with: unwrappedSite)
         
+        loadImages()
+        dateLabel.text = validDates[0]
+        
         filterSetLabel.text = "Filtro Definido"
         noImagesLabel.text = "Não existem dados disponíveis"
         
