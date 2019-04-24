@@ -39,8 +39,8 @@ class SiteFunctions {
                         let linkData = loadLinks(fileName: temp[0].websiteFileId[j] + "_Links")
                         let linkDataID = loadLinks(fileName: temp[0].websiteFileId[j] + "_LinksID")
                         let totalRecords = linkData.count
-                        let firstRecordedYear = String(linkDataID[1].prefix(4))
-                        let lastRecordedYear = String(linkDataID[linkDataID.count - 1].prefix(4))
+                        let firstRecordedYear = String(linkDataID[linkDataID.count - 2].prefix(4))
+                        let lastRecordedYear = String(linkDataID[0].prefix(4))
                         var isFavorite = false
                         if GlobalData.favoriteID.contains(fileId){
                             isFavorite = true
