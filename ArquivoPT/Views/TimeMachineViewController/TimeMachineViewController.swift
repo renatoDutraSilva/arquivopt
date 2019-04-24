@@ -47,6 +47,7 @@ class TimeMachineViewController: UIViewController {
     var validDates = [String?]()
     var validLinks = [String]()
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadImages()
@@ -74,8 +75,8 @@ class TimeMachineViewController: UIViewController {
             self.carouselView.scrollToItem(at: currentPage!, animated: true)
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
         }
+        
         carouselView.type = iCarouselType.invertedTimeMachine
-
         
 //        --- carouselView Options ---
 //        carouselView.perspective = -0.005
@@ -299,6 +300,9 @@ class TimeMachineViewController: UIViewController {
 //===========================================================//
 
 extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
+    
+    
+    
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
     }
@@ -312,29 +316,32 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         let width: CGFloat = 0.5 * screenWidth
         let height: CGFloat = 0.2 * screenHeight
         
-        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        let tempView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+
+        var imageView: UIImageView
         
-        let frame = CGRect(x: 0, y: 0, width: width, height: height)
-        let imageView = UIImageView()
-        
-        imageView.frame = frame
-//        imageView.contentMode = .scaleAspectFit
-        imageView.contentMode = .scaleToFill
+        if let view = view as? UIImageView {
+            imageView = view
+            
+        }else{
+            imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            imageView.contentMode = .scaleToFill
+            let shadowSize: CGFloat = 20
+            let shadowDistance: CGFloat = 0
+            let contactRect = CGRect(x: -shadowSize, y: height - (shadowSize * 0.4) + shadowDistance, width: width + shadowSize * 2, height: shadowSize)
+            imageView.layer.shadowPath = UIBezierPath(ovalIn: contactRect).cgPath
+            imageView.layer.shadowRadius = 5
+            imageView.layer.shadowOpacity = 0.4
+            
+            imageView.layer.borderWidth = 1
+            imageView.layer.borderColor = UIColor(red:0, green:0, blue:0, alpha: 1).cgColor
+        }
+
         imageView.image = images[index]
-        //        imageView.isHighlighted = true
         
-        let shadowSize: CGFloat = 20
-        let shadowDistance: CGFloat = 0
-        let contactRect = CGRect(x: -shadowSize, y: height - (shadowSize * 0.4) + shadowDistance, width: width + shadowSize * 2, height: shadowSize)
-        imageView.layer.shadowPath = UIBezierPath(ovalIn: contactRect).cgPath
-        imageView.layer.shadowRadius = 5
-        imageView.layer.shadowOpacity = 0.4
+//        tempView.addSubview(imageView)
         
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor(red:0, green:0, blue:0, alpha: 1).cgColor
-        tempView.addSubview(imageView)
-        
-        return tempView
+        return imageView
     }
     
     
@@ -357,10 +364,18 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         navigationController?.pushViewController(vc, animated: true)
     }
     
+//    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+//        switch (option) {
+//            case .spacing:
+//            return 0.01;
+//            default:
+//            return value;
+//        }
+//    }
+    
     func extractWebsiteDate(siteLinkID: String) -> [String]{
         
         var result = [String]()
-        //result = []
         
         let year = String(siteLinkID.prefix(4))
         
