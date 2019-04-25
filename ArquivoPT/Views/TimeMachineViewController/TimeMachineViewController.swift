@@ -28,7 +28,7 @@ class TimeMachineViewController: UIViewController {
     let impact = UIImpactFeedbackGenerator()
     let selection = UISelectionFeedbackGenerator()
     
-    var images = [UIImage](){
+    var images = [UIImage?](){
         didSet{
             carouselView.reloadData()
             setFilterLabels()
@@ -43,6 +43,7 @@ class TimeMachineViewController: UIViewController {
                 dateButton.isHidden = false
             }
         }
+        
     }
     
     var validDates = [String?]()
@@ -85,6 +86,13 @@ class TimeMachineViewController: UIViewController {
 //        carouselView.perspective = -0.005
 //        carouselView.viewpointOffset = CGSize(width: 0, height: 0)
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        for index in 0 ... images.count - 1{
+            images[index] = nil
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -324,14 +332,17 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         var imageView: UIImageView
         
         if let view = view as? UIImageView {
+            
             imageView = view
             countReused += 1
             print("Reused cells:")
             print(countReused)
-        }else{
+            imageView.image = nil
+        } else{
             count += 1
             print("New cells:")
             print(count)
+            
             imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             imageView.contentMode = .scaleToFill
             let shadowSize: CGFloat = 20
@@ -347,7 +358,9 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         }
 
         imageView.image = images[index]
+        print(imageView.image)
         
+//        images[index]?.removeFromSuperview()
 //        tempView.addSubview(imageView)
         
         return imageView
@@ -373,16 +386,25 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         navigationController?.pushViewController(vc, animated: true)
     }
     
-//    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-//        switch (option) {
-//        case .tilt:
-//            return 10;
-//        case .spacing:
-//            return 1.2
-//        default:
-//            return value;
-//        }
+//    func numberOfPlaceholders(in carousel: iCarousel) -> Int {
+//        return 10
 //    }
+    
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        switch (option) {
+        case .visibleItems:
+            return 20;
+        case .tilt:
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 0.6
+            }else{
+                return 0.35
+            }
+            
+        default:
+            return value;
+        }
+    }
     
     func extractWebsiteDate(siteLinkID: String) -> [String]{
         
