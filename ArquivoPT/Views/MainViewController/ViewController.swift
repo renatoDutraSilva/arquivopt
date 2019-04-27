@@ -69,7 +69,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         searchController.searchBar.sizeToFit()
         mainTableView.tableHeaderView = searchController.searchBar
-        
+        searchController.searchBar.isTranslucent = true
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
         
