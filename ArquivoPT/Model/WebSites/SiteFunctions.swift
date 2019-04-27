@@ -106,9 +106,9 @@ class SiteFunctions {
                                                 websiteFileId:
                 ["bn", "tombo", "igeo"])],
             .fundacoes: [Structure(websiteName:
-                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago"],
+                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest"],
                                            websiteFileId:
-                ["gulbenkian", "fct", "fundsaramago"])],
+                ["gulbenkian", "fct", "fundsaramago", "culturgest"])],
             .organismosGovernamentais: [Structure(websiteName:
                 ["Presidencia"],
                                                   websiteFileId:
