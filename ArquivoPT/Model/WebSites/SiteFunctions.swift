@@ -118,9 +118,9 @@ class SiteFunctions {
                                        websiteFileId:
                 ["ul", "universidadenova", "ist", "lusofona", "iseg"])],
             .eventos: [Structure(websiteName:
-                ["Expo 98", "Euro 2004", "Porto 2001", "FIL"],
+                ["Expo 98", "Euro 2004", "Porto 2001", "FIL", "Web Summit"],
                                  websiteFileId:
-                ["expo98", "euro2004", "porto2001", "fil"])],
+                ["expo98", "euro2004", "porto2001", "fil", "websummit"])],
             .personalidades: [Structure(websiteName:
                 ["José Saramago"],
                                         websiteFileId:
