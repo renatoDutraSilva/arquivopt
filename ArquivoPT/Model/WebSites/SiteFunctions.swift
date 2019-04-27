@@ -98,21 +98,21 @@ class SiteFunctions {
     static func generateStructure(){
         GlobalData.structureSiteArray = [
             .artesECultura: [Structure(websiteName:
-                ["Instituto Camões", "Património Cultural", "Casa da Música", "C. Cultural de Belém"],
+                ["Instituto Camões", "Património Cultural", "Casa da Música", "C. Cultural de Belém", "Teatro D. Maria II"],
                                   websiteFileId:
-                ["institutocamoes", "patrimoniocultural", "casadamusica", "ccb"])],
+                ["institutocamoes", "patrimoniocultural", "casadamusica", "ccb", "tdm2"])],
             .bibliotecasEArquivos: [ Structure(websiteName:
                 ["Biblioteca Nacional", "Torre do Tombo", "iGEO"],
                                                 websiteFileId:
                 ["bn", "tombo", "igeo"])],
             .fundacoes: [Structure(websiteName:
-                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest"],
+                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest", "Fundação Gil"],
                                            websiteFileId:
-                ["gulbenkian", "fct", "fundsaramago", "culturgest"])],
+                ["gulbenkian", "fct", "fundsaramago", "culturgest", "gil"])],
             .organismosGovernamentais: [Structure(websiteName:
-                ["Presidencia"],
+                ["Presidencia", "Direcção Geral da Eduação"],
                                                   websiteFileId:
-                ["presidencia"])],
+                ["presidencia", "dge"])],
             .universidades: [Structure(websiteName:
                 ["Uni. de Lisboa", "Uni. Nova de Lisboa", "IST", "Uni. Lusófona", "ISEG"],
                                        websiteFileId:
