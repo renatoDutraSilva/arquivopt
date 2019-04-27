@@ -98,17 +98,17 @@ class SiteFunctions {
     static func generateStructure(){
         GlobalData.structureSiteArray = [
             .artesECultura: [Structure(websiteName:
-                ["Gulbenkian", "Instituto Camões", "Património Cultural", "Casa da Música", "Centro Cultural de Belém"],
+                ["Instituto Camões", "Património Cultural", "Casa da Música", "Centro Cultural de Belém"],
                                   websiteFileId:
-                ["gulbenkian", "institutocamoes", "patrimoniocultural", "casadamusica", "ccb"])],
+                ["institutocamoes", "patrimoniocultural", "casadamusica", "ccb"])],
             .bibliotecasEArquivos: [ Structure(websiteName:
                 ["Biblioteca Nacional", "Torre do Tombo", "iGEO"],
                                                 websiteFileId:
                 ["bn", "tombo", "igeo"])],
-            .organismosSociais: [Structure(websiteName:
-                ["FCT"],
+            .fundacoes: [Structure(websiteName:
+                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago"],
                                            websiteFileId:
-                ["fct"])],
+                ["gulbenkian", "fct", "fundsaramago"])],
             .organismosGovernamentais: [Structure(websiteName:
                 ["Presidencia"],
                                                   websiteFileId:
@@ -132,7 +132,7 @@ class SiteFunctions {
         GlobalData.mainSiteArray = [
             .artesECultura: [],
             .bibliotecasEArquivos: [],
-            .organismosSociais: [],
+            .fundacoes: [],
             .organismosGovernamentais: [],
             .universidades: [],
             .eventos: [],

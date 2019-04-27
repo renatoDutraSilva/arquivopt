@@ -12,7 +12,7 @@ enum Category: String, CaseIterable {
     
     case artesECultura = "Artes e Cultura"
     case bibliotecasEArquivos = "Bibliotecas e Arquivos"
-    case organismosSociais = "Organismos Sociais"
+    case fundacoes = "Fundações"
     case organismosGovernamentais = "Organismos Governamentais"
     case universidades = "Universidades"
     case eventos = "Eventos e Exposições"
@@ -23,7 +23,7 @@ enum Category: String, CaseIterable {
     static func getRawValueFromIndex(index: Int) -> Category {
         switch index {
             case 0: return .artesECultura
-            case 1: return .organismosSociais
+            case 1: return .fundacoes
             case 2: return .organismosGovernamentais
             case 3: return .universidades
             case 4: return .eventos
