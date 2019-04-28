@@ -32,4 +32,17 @@ enum Category: String, CaseIterable {
             default: return .semCategoria
         }
     }
+    
+    static func getIndexFromRawValue(rawValue: Category) -> Int {
+        switch rawValue {
+        case .artesECultura: return 0
+        case .fundacoes: return 1
+        case .organismosGovernamentais: return 2
+        case .universidades: return 3
+        case .eventos: return 4
+        case .personalidades: return 5
+        case .bibliotecasEArquivos: return 6
+        default: return 0
+        }
+    }
 }

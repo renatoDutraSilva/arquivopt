@@ -18,6 +18,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     var filteredData: [Category: [ModelSite]]! = [.semCategoria: [ModelSite.placeHolder()]] {
         didSet{
             mainTableView.reloadData()
+
         }
     }
     var categories = [Category]()
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         ThemeFunctions.applyTheme(view: view)
         mainTableView.reloadData()
+        
         searchController.searchBar.tintColor = Theme.current.accent
         searchController.searchBar.barTintColor = Theme.current.navigationBackground
     }
@@ -54,6 +56,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         mainTableView.canCancelContentTouches = true
         
+    
         // Initializing with searchResultsController set to nil means that
         // searchController will use this view controller to display the search results
         searchController = UISearchController(searchResultsController: nil)
@@ -79,16 +82,17 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         if let searchText = searchController.searchBar.text {
             // Swift Ternary operator -> Condition ? valueToReturnIfTrue : valueToReturnIfFalse
-            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
-                
+            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({
+                (category: Category, modelSiteArray: [ModelSite]) -> Bool in
+//                print(filteredData)
                 return modelSiteArray.contains(where: { (modelSite) -> Bool in
                     modelSite.siteName.lowercased().contains(searchText.lowercased())
                 })
                 
             })
             
-//            print(filteredData)
-            mainTableView.reloadData()
+            
+//            mainTableView.reloadData()
 
         }
     }
@@ -103,11 +107,12 @@ extension ViewController: CategoryRowDelegate {
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
-
     }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -124,20 +129,28 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
-       
+        
+        var validCategoryIndex = [Int]()
         cell.delegate = self
         cell.backgroundColor = Theme.current.background
         
         // Array(self.filteredData.keys) returns an array, instead of a collection of only the dictionary keys.
         // As such, we can then access each key with an Integer Subscript [0] or [indexPath.row]
 
-        cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
-        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
-        if let sites = filteredData[Category.getRawValueFromIndex(index: indexPath.row)]{
-            cell.sites = sites
+        for k in filteredData.keys{
+            validCategoryIndex.append(Category.getIndexFromRawValue(rawValue: k))
         }
-        cell.collectionView.backgroundColor = Theme.current.background
+        validCategoryIndex = validCategoryIndex.sorted()
+
+        cell.sectionLabel.text = Category.getRawValueFromIndex(index: validCategoryIndex[indexPath.row]).rawValue
+        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
         
+        if let sites = filteredData[Category.getRawValueFromIndex(index: validCategoryIndex[indexPath.row])]{
+            cell.sites = sites
+            
+        }
+
+        cell.collectionView.backgroundColor = Theme.current.background
         return cell
         
     }

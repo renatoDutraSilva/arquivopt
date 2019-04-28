@@ -106,13 +106,13 @@ class SiteFunctions {
                                                 websiteFileId:
                 ["bn", "tombo", "igeo"])],
             .fundacoes: [Structure(websiteName:
-                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest", "Fundação Gil"],
+                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest", "Fundação do Gil"],
                                            websiteFileId:
                 ["gulbenkian", "fct", "fundsaramago", "culturgest", "gil"])],
             .organismosGovernamentais: [Structure(websiteName:
-                ["Presidencia", "Direcção Geral da Eduação"],
+                ["Presidencia", "Direcção Geral da Eduação", "Ministério da Justiça"],
                                                   websiteFileId:
-                ["presidencia", "dge"])],
+                ["presidencia", "dge", "mj"])],
             .universidades: [Structure(websiteName:
                 ["Uni. de Lisboa", "Uni. Nova de Lisboa", "IST", "Uni. Lusófona", "ISEG"],
                                        websiteFileId:
