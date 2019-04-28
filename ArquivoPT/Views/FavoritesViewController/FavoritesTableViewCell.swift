@@ -68,10 +68,12 @@ class FavoritesTableViewCell: UITableViewCell {
         recordLabel.textColor = UIColor.white
         recordLabel.font = UIFont.systemFont(ofSize: 20)
         recordLabel.frame = CGRect(x: (chicletButton.frame.width / 2) - 40, y: 32, width: 80, height: 22)
+        recordLabel.adjustsFontSizeToFitWidth = true
         
         yearLabel.textColor = UIColor.white
         yearLabel.font = UIFont.systemFont(ofSize: 20)
         yearLabel.frame = CGRect(x: (chicletButton.frame.width / 1.5) , y: 32, width: 90, height: 22)
+        yearLabel.adjustsFontSizeToFitWidth = true
 
         recordDescriptionLabel.text = "REGISTOS"
         recordDescriptionLabel.textColor = Theme.current.cellGradientDark

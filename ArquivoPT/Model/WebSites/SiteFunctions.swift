@@ -114,7 +114,7 @@ class SiteFunctions {
                                                   websiteFileId:
                 ["presidencia", "dge", "mj"])],
             .universidades: [Structure(websiteName:
-                ["Uni. de Lisboa", "Uni. Nova de Lisboa", "IST", "Uni. Lusófona", "ISEG"],
+                ["Universidade de Lisboa", "Universidade Nova de Lisboa", "IST", "Universidade Lusófona", "ISEG"],
                                        websiteFileId:
                 ["ul", "universidadenova", "ist", "lusofona", "iseg"])],
             .eventos: [Structure(websiteName:

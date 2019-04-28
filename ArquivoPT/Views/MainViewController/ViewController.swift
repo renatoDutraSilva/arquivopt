@@ -80,19 +80,43 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        if let searchText = searchController.searchBar.text {
+        if let modSearchText = searchController.searchBar.text {
             // Swift Ternary operator -> Condition ? valueToReturnIfTrue : valueToReturnIfFalse
-            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({
-                (category: Category, modelSiteArray: [ModelSite]) -> Bool in
-//                print(filteredData)
-                return modelSiteArray.contains(where: { (modelSite) -> Bool in
-                    modelSite.siteName.lowercased().contains(searchText.lowercased())
+            
+//            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({
+//                (category: Category, modelSiteArray: [ModelSite]) -> Bool in
+//                let returnValue = modelSiteArray.contains(where: { (modelSite) -> Bool in
+//                    modelSite.siteName.lowercased().contains(searchText.lowercased())
+//                })
+//                return returnValue
+//            })
+//
+            
+            let modSearchText = modSearchText.folding(options: .diacriticInsensitive, locale: .current).lowercased()
+            
+            print(modSearchText.lowercased())
+            if modSearchText.isEmpty {
+                filteredData = GlobalData.mainSiteArray
+            } else{
+                let filterDic = filteredData.filter({
+                    (category: Category, modelSiteArray: [ModelSite]) -> Bool in
+                    let returnValue = modelSiteArray.contains(where: { (modelSite) -> Bool in
+                        modelSite.siteName.folding(options: .diacriticInsensitive, locale: .current).lowercased().contains(modSearchText)
+                    })
+                    return returnValue
                 })
                 
-            })
-            
-            
-//            mainTableView.reloadData()
+                filteredData = filterDic.mapValues { (modelSite) -> [ModelSite] in
+                    var tempArray = [ModelSite]()
+                    for site in modelSite{
+                        if site.siteName.folding(options: .diacriticInsensitive, locale: .current).lowercased().contains(modSearchText) {
+                            tempArray.append(site)
+                        }
+                    }
+                    return tempArray
+                }
+                
+            }
 
         }
     }
