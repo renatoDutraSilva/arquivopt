@@ -49,16 +49,18 @@ class TimeMachineViewController: UIViewController {
     var validDates = [String?]()
     var validLinks = [String]()
     
-    var countReused = 0
-    var count = 0
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        adjustLargeTitleSize()
         loadImages()
         ThemeFunctions.applyTheme(view: view)
         checkIsFavorite()
-//        navigationItem.rightBarButtonItem?.tintColor = Theme.current.textColor
-        navigationItem.leftBarButtonItem?.tintColor = Theme.current.textColor
+//        navigationItem.rightBarButtonItem?.tintColor = Theme.current.accent
+        
+        navigationItem.leftBarButtonItem?.tintColor = Theme.current.accent
+        
+        
+//        UIFont(name: "Papyrus", size: 30) ?? UIFont.systemFont(ofSize: 30)
     }
     
     override func viewDidLoad() {
@@ -224,6 +226,7 @@ class TimeMachineViewController: UIViewController {
     
     func updateView(with site: ModelSite){
         self.title = site.siteName
+        
         self.site = site
     }
     
@@ -334,15 +337,10 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
         if let view = view as? UIImageView {
             
             imageView = view
-            countReused += 1
-            print("Reused cells:")
-            print(countReused)
+
             imageView.image = nil
         } else{
-            count += 1
-            print("New cells:")
-            print(count)
-            
+
             imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             imageView.contentMode = .scaleToFill
             let shadowSize: CGFloat = 20
@@ -393,16 +391,22 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         switch (option) {
         case .visibleItems:
-            return 20;
+            return 20
         case .tilt:
             if UIDevice.current.userInterfaceIdiom == .pad {
-                return 0.6
+                return 0.65
             }else{
                 return 0.35
             }
-            
+//        case .spacing:
+//            if UIDevice.current.userInterfaceIdiom == .pad {
+//                return 0.95
+//            }else{
+//                return 1.0
+//            }
+        
         default:
-            return value;
+            return value
         }
     }
     
@@ -426,3 +430,23 @@ extension TimeMachineViewController: iCarouselDelegate, iCarouselDataSource{
     }
     
 }
+
+extension UIViewController {
+    func adjustLargeTitleSize() {
+        guard let title = title, #available(iOS 11.0, *) else { return }
+        
+        let maxWidth = UIScreen.main.bounds.size.width - 60
+        var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+        var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+        
+        while width > maxWidth {
+            fontSize -= 1
+            width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+        }
+        
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: Theme.current.accent ,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: fontSize)
+        ]
+    }
+}
+

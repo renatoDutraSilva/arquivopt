@@ -18,6 +18,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     var filteredData: [Category: [ModelSite]]! = [.semCategoria: [ModelSite.placeHolder()]] {
         didSet{
             mainTableView.reloadData()
+
         }
     }
     var categories = [Category]()
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         ThemeFunctions.applyTheme(view: view)
         mainTableView.reloadData()
+        
         searchController.searchBar.tintColor = Theme.current.accent
         searchController.searchBar.barTintColor = Theme.current.navigationBackground
     }
@@ -54,6 +56,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         mainTableView.canCancelContentTouches = true
         
+    
         // Initializing with searchResultsController set to nil means that
         // searchController will use this view controller to display the search results
         searchController = UISearchController(searchResultsController: nil)
@@ -77,18 +80,43 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        if let searchText = searchController.searchBar.text {
+        if let modSearchText = searchController.searchBar.text {
             // Swift Ternary operator -> Condition ? valueToReturnIfTrue : valueToReturnIfFalse
-            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({(category: Category, modelSiteArray: [ModelSite]) -> Bool in
-                
-                return modelSiteArray.contains(where: { (modelSite) -> Bool in
-                    modelSite.siteName.lowercased().contains(searchText.lowercased())
+            
+//            filteredData = searchText.isEmpty ? GlobalData.mainSiteArray : filteredData.filter({
+//                (category: Category, modelSiteArray: [ModelSite]) -> Bool in
+//                let returnValue = modelSiteArray.contains(where: { (modelSite) -> Bool in
+//                    modelSite.siteName.lowercased().contains(searchText.lowercased())
+//                })
+//                return returnValue
+//            })
+//
+            
+            let modSearchText = modSearchText.folding(options: .diacriticInsensitive, locale: .current).lowercased()
+            
+            print(modSearchText.lowercased())
+            if modSearchText.isEmpty {
+                filteredData = GlobalData.mainSiteArray
+            } else{
+                let filterDic = filteredData.filter({
+                    (category: Category, modelSiteArray: [ModelSite]) -> Bool in
+                    let returnValue = modelSiteArray.contains(where: { (modelSite) -> Bool in
+                        modelSite.siteName.folding(options: .diacriticInsensitive, locale: .current).lowercased().contains(modSearchText)
+                    })
+                    return returnValue
                 })
                 
-            })
-            
-//            print(filteredData)
-            mainTableView.reloadData()
+                filteredData = filterDic.mapValues { (modelSite) -> [ModelSite] in
+                    var tempArray = [ModelSite]()
+                    for site in modelSite{
+                        if site.siteName.folding(options: .diacriticInsensitive, locale: .current).lowercased().contains(modSearchText) {
+                            tempArray.append(site)
+                        }
+                    }
+                    return tempArray
+                }
+                
+            }
 
         }
     }
@@ -103,11 +131,12 @@ extension ViewController: CategoryRowDelegate {
         let vc = storyboard.instantiateInitialViewController() as! TimeMachineViewController
         vc.site = site
         navigationController?.pushViewController(vc, animated: true)
-
     }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -124,20 +153,28 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
-       
+        
+        var validCategoryIndex = [Int]()
         cell.delegate = self
         cell.backgroundColor = Theme.current.background
         
         // Array(self.filteredData.keys) returns an array, instead of a collection of only the dictionary keys.
         // As such, we can then access each key with an Integer Subscript [0] or [indexPath.row]
 
-        cell.sectionLabel.text = Category.getRawValueFromIndex(index: indexPath.row).rawValue
-        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
-        if let sites = filteredData[Category.getRawValueFromIndex(index: indexPath.row)]{
-            cell.sites = sites
+        for k in filteredData.keys{
+            validCategoryIndex.append(Category.getIndexFromRawValue(rawValue: k))
         }
-        cell.collectionView.backgroundColor = Theme.current.background
+        validCategoryIndex = validCategoryIndex.sorted()
+
+        cell.sectionLabel.text = Category.getRawValueFromIndex(index: validCategoryIndex[indexPath.row]).rawValue
+        cell.sectionLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
         
+        if let sites = filteredData[Category.getRawValueFromIndex(index: validCategoryIndex[indexPath.row])]{
+            cell.sites = sites
+            
+        }
+
+        cell.collectionView.backgroundColor = Theme.current.background
         return cell
         
     }

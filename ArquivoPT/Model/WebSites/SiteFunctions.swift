@@ -98,29 +98,29 @@ class SiteFunctions {
     static func generateStructure(){
         GlobalData.structureSiteArray = [
             .artesECultura: [Structure(websiteName:
-                ["Gulbenkian", "Instituto Camões", "Património Cultural", "Casa da Música", "Centro Cultural de Belém"],
+                ["Instituto Camões", "Património Cultural", "Casa da Música", "C. Cultural de Belém", "Teatro D. Maria II"],
                                   websiteFileId:
-                ["gulbenkian", "institutocamoes", "patrimoniocultural", "casadamusica", "ccb"])],
+                ["institutocamoes", "patrimoniocultural", "casadamusica", "ccb", "tdm2"])],
             .bibliotecasEArquivos: [ Structure(websiteName:
                 ["Biblioteca Nacional", "Torre do Tombo", "iGEO"],
                                                 websiteFileId:
                 ["bn", "tombo", "igeo"])],
-            .organismosSociais: [Structure(websiteName:
-                ["FCT"],
+            .fundacoes: [Structure(websiteName:
+                ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest", "Fundação do Gil"],
                                            websiteFileId:
-                ["fct"])],
+                ["gulbenkian", "fct", "fundsaramago", "culturgest", "gil"])],
             .organismosGovernamentais: [Structure(websiteName:
-                ["Presidencia"],
+                ["Presidencia", "Direcção Geral da Eduação", "Ministério da Justiça"],
                                                   websiteFileId:
-                ["presidencia"])],
+                ["presidencia", "dge", "mj"])],
             .universidades: [Structure(websiteName:
-                ["Uni. de Lisboa", "Uni. Nova de Lisboa", "IST", "Uni. Lusófona", "ISEG"],
+                ["Universidade de Lisboa", "Universidade Nova de Lisboa", "IST", "Universidade Lusófona", "ISEG"],
                                        websiteFileId:
                 ["ul", "universidadenova", "ist", "lusofona", "iseg"])],
             .eventos: [Structure(websiteName:
-                ["Expo 98", "Euro 2004"],
+                ["Expo 98", "Euro 2004", "Porto 2001", "FIL", "Web Summit"],
                                  websiteFileId:
-                ["expo98", "euro2004"])],
+                ["expo98", "euro2004", "porto2001", "fil", "websummit"])],
             .personalidades: [Structure(websiteName:
                 ["José Saramago"],
                                         websiteFileId:
@@ -132,7 +132,7 @@ class SiteFunctions {
         GlobalData.mainSiteArray = [
             .artesECultura: [],
             .bibliotecasEArquivos: [],
-            .organismosSociais: [],
+            .fundacoes: [],
             .organismosGovernamentais: [],
             .universidades: [],
             .eventos: [],
