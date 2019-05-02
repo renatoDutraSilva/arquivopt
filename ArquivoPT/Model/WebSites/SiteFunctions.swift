@@ -100,7 +100,7 @@ class SiteFunctions {
             .artesECultura: [Structure(websiteName:
                 ["Instituto Camões", "Património Cultural", "Casa da Música", "C. Cultural de Belém", "Teatro D. Maria II"],
                                   websiteFileId:
-                ["institutocamoes", "patrimoniocultural", "casadamusica", "ccb", "tndmii"])],
+                ["institutocamoes", "patrimoniocultural", "casadamusica", "ccb", "tdm2"])],
             .bibliotecasEArquivos: [ Structure(websiteName:
                 ["Biblioteca Nacional", "Torre do Tombo", "iGEO"],
                                                 websiteFileId:
@@ -108,7 +108,7 @@ class SiteFunctions {
             .fundacoes: [Structure(websiteName:
                 ["Fundação C. Gulbenkian", "FCT", "Fundação J. Saramago", "Culturgest", "Fundação do Gil"],
                                            websiteFileId:
-                ["gulbenkian", "fct", "fundacaosaramago", "culturgest", "gil"])],
+                ["gulbenkian", "fct", "fundsaramago", "culturgest", "gil"])],
             .organismosGovernamentais: [Structure(websiteName:
                 ["Presidencia", "Direcção Geral da Eduação", "Ministério da Justiça"],
                                                   websiteFileId:
@@ -124,7 +124,7 @@ class SiteFunctions {
             .personalidades: [Structure(websiteName:
                 ["José Saramago"],
                                         websiteFileId:
-                ["josesaramago"])]
+                ["saramago"])]
         ]
     }
     
