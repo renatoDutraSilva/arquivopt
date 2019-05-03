@@ -1,3 +1,2 @@
 # arquivopt
-Git repository for the Arquivo.PT iOS app source control!
-This is a private repo.
+Git repository for the Arquivo.PT iOS app source control.
