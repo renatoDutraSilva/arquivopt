@@ -10,12 +10,13 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
-    weak var delegate:CategoryRowDelegate?
-    
+    weak var delegate: CategoryRowDelegate?
+
     let impact = UIImpactFeedbackGenerator()
     
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     let layout = UICollectionViewFlowLayout()
     var sites = [ModelSite]() {
         didSet {
@@ -26,19 +27,19 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        collectionView.canCancelContentTouches = true
         sectionLabel.textColor = Theme.current.accent
-//        sectionLabel.backgroundColor = Theme.current.background
+        //sectionLabel.backgroundColor = Theme.current.background
         
-        layout.itemSize = CGSize(width: 140, height: 140)
+        layout.itemSize = CGSize(width: 150, height: 150)
         layout.scrollDirection = .horizontal
         layout.sectionHeadersPinToVisibleBounds = true
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         
-        collectionView.backgroundColor = Theme.current.background
         collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundView?.backgroundColor = UIColor(displayP3Red: 55, green: 55, blue: 55, alpha: 100)
+        collectionView.backgroundView?.backgroundColor = UIColor(displayP3Red: 100, green: 100, blue: 100, alpha: 100)
         
     }
 
@@ -50,7 +51,6 @@ class CustomTableViewCell: UITableViewCell {
 }
 
 extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
-//    , UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sites.count
@@ -59,19 +59,28 @@ extension CustomTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
 
+        cell.delegate = self
         cell.site = sites[indexPath.row]
-        cell.siteCardBackgroundView.image = UIImage(contentsOfFile: sites[indexPath.row].cardImage )
+        
+        cell.logoImage = UIImage(named: sites[indexPath.row].siteLogo) ?? UIImage(named: "default.png")
+        cell.logoImageView.frame = CGRect(x: 16, y: 16, width: cell.logoImage!.size.width, height: cell.logoImage!.size.height)
+        cell.logoImageView.image = cell.logoImage
         cell.siteNameLabel.text = sites[indexPath.row].siteName
+        cell.isFavorite = sites[indexPath.row].isFavorite
+        
         
         return cell
-        
     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+}
+
+extension CustomTableViewCell: CustomCollectionViewCellDelegate{
+    func chicletButtonTapped(site: ModelSite) {
+
         if delegate != nil {
-            delegate?.cellTapped(site: sites[indexPath.row])
+            delegate?.cellTapped(site: site)
         }
         impact.impactOccurred()
     }
+    
+    
 }

@@ -10,9 +10,17 @@ import UIKit
 
 class LightTheme: ThemeProtocol {
     var accent: UIColor = UIColor(named: "LightAccent")!
-    var textColor: UIColor = UIColor(named: "Accent")!
+    var textColor: UIColor = .black
     var background: UIColor = UIColor(named: "LightBackground")!
     var navigationBackground: UIColor = UIColor(named: "LightNavigationBackground")!
     var chicletBackground: UIColor = UIColor(named: "LightChicletBackground")!
     
+    // Cell Gradients
+    var cellGradientLight: UIColor = UIColor(named: "CellGradientLight")!
+    var cellGradientDark: UIColor = UIColor(named: "CellGradientDark")!
+    
+    var favoritesTableHeader: UIColor = UIColor(named: "CellGradientLight")!
+    
+    //var blurEffectStyle = UIBlurEffect.Style.dark
 }
+

@@ -14,4 +14,13 @@ protocol ThemeProtocol {
     var background: UIColor { get }
     var navigationBackground: UIColor { get }
     var chicletBackground: UIColor { get }
+    
+    // Cell Gradients
+    var cellGradientLight: UIColor { get }
+    var cellGradientDark: UIColor { get }
+    
+    var favoritesTableHeader: UIColor { get }
+    
+    //var blurEffectStyle: UIBlurEffect.Style { get }
+
 }

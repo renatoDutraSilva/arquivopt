@@ -10,11 +10,9 @@ import Foundation
 
 enum Category: String, CaseIterable {
     
-    case desporto = "Desporto"
     case artesECultura = "Artes e Cultura"
-    case organismosSociais = "Organismos Sociais"
-    case jornais = "Jornais e Notícias"
-    case radioETV = "Rádio e Televisão"
+    case bibliotecasEArquivos = "Bibliotecas e Arquivos"
+    case fundacoes = "Fundações"
     case organismosGovernamentais = "Organismos Governamentais"
     case universidades = "Universidades"
     case eventos = "Eventos e Exposições"
@@ -24,16 +22,27 @@ enum Category: String, CaseIterable {
    
     static func getRawValueFromIndex(index: Int) -> Category {
         switch index {
-            case 0: return .desporto
-            case 1: return .artesECultura
-            case 2: return .organismosSociais
-            case 3: return .jornais
-            case 4: return .radioETV
-            case 5: return .organismosGovernamentais
-            case 6: return .universidades
-            case 7: return .eventos
-            case 8: return .personalidades
+            case 0: return .artesECultura
+            case 1: return .fundacoes
+            case 2: return .organismosGovernamentais
+            case 3: return .universidades
+            case 4: return .eventos
+            case 5: return .personalidades
+            case 6: return .bibliotecasEArquivos
             default: return .semCategoria
+        }
+    }
+    
+    static func getIndexFromRawValue(rawValue: Category) -> Int {
+        switch rawValue {
+        case .artesECultura: return 0
+        case .fundacoes: return 1
+        case .organismosGovernamentais: return 2
+        case .universidades: return 3
+        case .eventos: return 4
+        case .personalidades: return 5
+        case .bibliotecasEArquivos: return 6
+        default: return 0
         }
     }
 }

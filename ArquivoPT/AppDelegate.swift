@@ -17,8 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if UserDefaults.standard.object(forKey: "LightTheme") != nil {
-            Theme.current = UserDefaults.standard.bool(forKey: "LightTheme") ? LightTheme() : DarkTheme()
+        UIApplication.shared.statusBarStyle = UserDefaults.standard.bool(forKey: "DarkTheme") ? .lightContent : .default
+        
+        if UserDefaults.standard.object(forKey: GlobalKeys.themeKey) != nil {
+            Theme.current = UserDefaults.standard.bool(forKey: GlobalKeys.themeKey) ? DarkTheme() : LightTheme()
+        }
+        
+        if UserDefaults.standard.object(forKey: GlobalKeys.dayFilterKey) != nil {
+            SettingsParams.filterDateHiddden = UserDefaults.standard.bool(forKey: GlobalKeys.dayFilterKey) ? false : true
+        }
+        
+        if UserDefaults.standard.object(forKey: GlobalKeys.initialFilterDateKey) != nil {
+            SettingsParams.initialFilterDate = UserDefaults.standard.object(forKey: GlobalKeys.initialFilterDateKey) as! Date
+        }
+        
+        if UserDefaults.standard.object(forKey: GlobalKeys.finalFilterDateKey) != nil {
+            SettingsParams.finalFilterDate = UserDefaults.standard.object(forKey: GlobalKeys.finalFilterDateKey) as! Date
+        }
+        
+        if UserDefaults.standard.object(forKey: GlobalKeys.favoriteKey) != nil {
+            GlobalData.favoriteID = UserDefaults.standard.object(forKey: GlobalKeys.favoriteKey) as! [String]
+            
         }
         
         return true

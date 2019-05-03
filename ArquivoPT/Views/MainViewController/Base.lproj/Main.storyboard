@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vuZ-Ko-Yth">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vuZ-Ko-Yth">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -38,7 +39,7 @@
                                                             <color key="textColor" red="0.45490196078431372" green="0.80000000000000004" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="highlightedColor" red="0.32156862749999998" green="0.75294117650000003" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                         </label>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TGr-TM-XB6">
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TGr-TM-XB6">
                                                             <rect key="frame" x="0.0" y="20.5" width="414" height="168.5"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G3v-7D-XRb">
                                                                 <size key="itemSize" width="112" height="112"/>
@@ -53,40 +54,9 @@
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
-                                                                        <subviews>
-                                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-yP-LrS">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            </view>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8h6-hT-W7r">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
-                                                                            </imageView>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dnLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="zxj-5e-4tL">
-                                                                                <rect key="frame" x="11" y="0.0" width="50" height="50"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            </imageView>
-                                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XeS-5k-QqA">
-                                                                                <rect key="frame" x="0.0" y="75" width="112" height="37"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            </view>
-                                                                        </subviews>
                                                                     </view>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="8h6-hT-W7r" firstAttribute="leading" secondItem="pve-mF-Ifa" secondAttribute="leading" id="90V-Ro-pDg"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="8h6-hT-W7r" secondAttribute="bottom" id="CaQ-iA-M2O"/>
-                                                                        <constraint firstItem="8h6-hT-W7r" firstAttribute="top" secondItem="pve-mF-Ifa" secondAttribute="top" id="Csz-p2-e6f"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="8h6-hT-W7r" secondAttribute="trailing" id="Pfj-VO-Z8F"/>
-                                                                    </constraints>
                                                                     <size key="customSize" width="112" height="112"/>
-                                                                    <connections>
-                                                                        <outlet property="chicletView" destination="NQw-yP-LrS" id="Egf-5J-Tr4"/>
-                                                                        <outlet property="siteCardBackgroundView" destination="8h6-hT-W7r" id="Wu8-ki-xuy"/>
-                                                                        <outlet property="siteCardImageView" destination="zxj-5e-4tL" id="9fd-Q2-3wc"/>
-                                                                        <outlet property="siteNameView" destination="XeS-5k-QqA" id="usT-Nj-Rqp"/>
-                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
@@ -126,17 +96,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" springLoaded="YES" systemItem="search" id="9iD-jo-nbd">
+                    <tabBarItem key="tabBarItem" title="Pesquisa" springLoaded="YES" id="9iD-jo-nbd">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Arquivo PT" id="9pF-Cq-gtA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <connections>
                         <outlet property="mainTableView" destination="vuZ-Ko-Yth" id="Dm6-UX-1uq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1914" y="-40"/>
+            <point key="canvasLocation" x="1913.0434782608697" y="-40.178571428571423"/>
         </scene>
         <!--FavoritesViewController-->
         <scene sceneID="FaY-NT-cX9">
@@ -152,13 +123,17 @@
         <scene sceneID="Gck-BT-w1C">
             <objects>
                 <navigationController title="Arquivo PT" automaticallyAdjustsScrollViewInsets="NO" id="rhj-mJ-efH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ugs-V1-hIT"/>
+                    <tabBarItem key="tabBarItem" title="Pesquisa" image="searchIcon" id="ugs-V1-hIT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" largeTitles="YES" id="Knf-5d-oxC">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" red="0.32156862749999998" green="0.75294117650000003" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.32156862749999998" green="0.75294117650000003" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -178,6 +153,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="fu5-lO-hLc">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Accent"/>
                     </tabBar>
                     <connections>
                         <segue destination="rhj-mJ-efH" kind="relationship" relationship="viewControllers" id="dwN-5O-4Ml"/>
@@ -201,6 +177,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dnLogo.png" width="108" height="60"/>
+        <image name="searchIcon" width="24" height="24"/>
+        <namedColor name="Accent">
+            <color red="0.31764705882352939" green="0.75294117647058822" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

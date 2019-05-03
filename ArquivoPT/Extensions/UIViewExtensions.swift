@@ -10,19 +10,44 @@ import UIKit
 
 extension UIView {
     
-    func addShadowAndRoundedCorners() {
-        layer.shadowOffset = CGSize(width: 1, height: 2)
-        layer.shadowRadius = 7.0
-        layer.shadowOpacity = 0.25
-        layer.masksToBounds = true
-        layer.cornerRadius = 14
+    func addRoundedCorners() {
+        
+        self.layer.cornerRadius = 14.0
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.masksToBounds = true
     }
     
     func addBlurEffect() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView)
+    }
+    
+    func applyGradient(colours: [UIColor]) -> Void {
+        self.applyGradient(colours, locations: nil)
+    }
+    
+    func applyGradient(_ colours: [UIColor], locations: [NSNumber]?) -> Void {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+        
+    }
+}
+
+extension CALayer {
+    func addShadow(followingPathOf contentView: UIView) {
+        self.shadowColor = Theme.current.cellGradientDark.cgColor //UIColor.lightGray.cgColor
+        self.shadowOffset = CGSize(width: 0.0, height: 2.5)
+        self.shadowRadius = 4
+        self.shadowOpacity = 1.0
+        self.masksToBounds = false
+        //self.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+        self.backgroundColor = UIColor.clear.cgColor
     }
 }

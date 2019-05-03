@@ -18,22 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXU-Yd-IS7">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBv-0t-C5G">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TXU-Yd-IS7" firstAttribute="top" secondItem="c3c-sg-0gt" secondAttribute="top" id="BIm-Ge-Y5m"/>
-                            <constraint firstItem="c3c-sg-0gt" firstAttribute="trailing" secondItem="TXU-Yd-IS7" secondAttribute="trailing" id="Dau-6x-GnM"/>
-                            <constraint firstItem="TXU-Yd-IS7" firstAttribute="leading" secondItem="c3c-sg-0gt" secondAttribute="leading" id="aim-Si-g5x"/>
-                            <constraint firstItem="c3c-sg-0gt" firstAttribute="bottom" secondItem="TXU-Yd-IS7" secondAttribute="bottom" id="vRs-SU-ABD"/>
+                            <constraint firstItem="c3c-sg-0gt" firstAttribute="bottom" secondItem="UBv-0t-C5G" secondAttribute="bottom" id="835-WJ-ghn"/>
+                            <constraint firstItem="UBv-0t-C5G" firstAttribute="top" secondItem="c3c-sg-0gt" secondAttribute="top" id="CI6-f7-4cG"/>
+                            <constraint firstItem="c3c-sg-0gt" firstAttribute="trailing" secondItem="UBv-0t-C5G" secondAttribute="trailing" id="EvB-EH-W2R"/>
+                            <constraint firstItem="UBv-0t-C5G" firstAttribute="leading" secondItem="c3c-sg-0gt" secondAttribute="leading" id="q7x-dK-aEK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c3c-sg-0gt"/>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="TXU-Yd-IS7" id="fxP-Nh-eux"/>
+                        <outlet property="websiteView" destination="UBv-0t-C5G" id="qZ8-ub-46z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3eZ-Nr-Eno" userLabel="First Responder" sceneMemberID="firstResponder"/>
