@@ -240,7 +240,6 @@ class SettingsViewController: UITableViewController {
         initialDateCalendarPicker.setValue(false, forKeyPath: "highlightsToday")
         initialDateCalendarPicker.setValue(Theme.current.textColor, forKeyPath: "textColor")
         
-        
     }
     
     func setUpFinalPicker(minDate: Date, maxDate: Date, currentDate: Date){
